@@ -1,14 +1,14 @@
 const { MongoClient } = require("mongodb");
-
-const mongoClient = new MongoClient("mongodb://0.0.0.0/");
+require("dotenv").config();
+const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
 const clientPromise = mongoClient.connect();
 
 const handler = async (event) => {
   try {
     console.log("In getUsers function");
-    const db = (await clientPromise).db("acebook_test");
-    const collection = db.collection("users");
+    const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
+    const collection = db.collection(process.env.MONGODB_COLLECTION);
     const results = await collection.find({}).toArray();
     console.log("from getUsers:", results[0]);
     return { statusCode: 200, body: JSON.stringify(results) };
