@@ -10,7 +10,6 @@ let results = ref([])
 const getResults = async () => {
   try {
     results.value = await fetch("/.netlify/functions/getUsers").then(response => response.json())
-    console.log("temp is", temp)
   } catch (error) {
     console.error(error)
   }
