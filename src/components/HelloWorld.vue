@@ -23,7 +23,7 @@ getResults();
 <template>
   <h1>Home page</h1>
 
-  <p v-for="result of results">{{ result.username }}</p>
+  <p v-for="result of results">{{ result.email }}</p>
 </template>
 
 <style scoped>
