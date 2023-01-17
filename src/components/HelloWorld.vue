@@ -21,7 +21,7 @@ getResults();
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1>Home page</h1>
 
   <p v-for="result of results">{{ result.username }}</p>
 </template>
