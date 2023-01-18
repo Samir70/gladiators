@@ -1,16 +1,11 @@
-
 $black: #333;
 $white: #eee;
 $color-1: #00BCD4;
 $label-z: 200;
 $svg-z: 100;
 
-.mainbody{
-  width:100vw
-}
-
 .muscle-groups {
-  position: left;
+  position: relative;
   background: #eee;
   width: 320px;
   padding: .5rem 1rem;
@@ -95,31 +90,26 @@ body {
   font-family: Roboto;
 }
 
-.bodyparts-actual{
-  position:center
-
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 0;
+  .info {
+    font-size: .8rem;
+    display: block;
+    width: 250px;
+    padding-top: 200px;
+    color: $white;
+    padding-left: 2rem;
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+    }
+    a {
+      color: $white;
+    }
+  }
 }
-
-// main {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   min-height: 100vh;
-//   width: 100%;
-//   padding: 2rem 0;
-//   .info {
-//     font-size: .8rem;
-//     display: block;
-//     width: 250px;
-//     padding-top: 200px;
-//     color: $white;
-//     padding-left: 2rem;
-//     opacity: .5;
-//     &:hover {
-//       opacity: 1;
-//     }
-//     a {
-//       color: $white;
-//     }
-//   }
-// }

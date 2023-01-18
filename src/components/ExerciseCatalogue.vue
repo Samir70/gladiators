@@ -2,10 +2,30 @@
 document
   .querySelectorAll(".muscle-groups svg g g[id]")
   .forEach(function (group) {
+    // For the hover
+    group.addEventListener("mouseover", function (el) {
+      let id = el.path[1].id.toLowerCase();
+      if (!id) id = el.path[2].id.toLowerCase();
+      let label = document.querySelectorAll("label[for=" + id + "]")[0];
+      if (label.classList) label.classList.add("hover");
+      else label.className += " " + "hover";
+    });
+    group.addEventListener("mouseout", function (el) {
+      let id = el.path[1].id.toLowerCase();
+      if (!id) id = el.path[2].id.toLowerCase();
+      let label = document.querySelectorAll("label[for=" + id + "]")[0];
+      let clss = "hover";
+      if (label.classList) label.classList.remove(clss);
+      else
+        label.className = label.className.replace(
+          new RegExp("(^|\\b)" + clss.split(" ").join("|") + "(\\b|$)", "gi"),
+          " "
+        );
+    });
     // For the click
     group.addEventListener("click", function (el) {
       let id = el.path[1].id.toLowerCase();
-      if (!id) id = el.path[1].id.toLowerCase();
+      if (!id) id = el.path[2].id.toLowerCase();
       let input = document.getElementById(id);
       if (input.checked) input.checked = false;
       else input.checked = true;
@@ -18,86 +38,70 @@ document
     <h1>All Exercises Catalogue</h1>
   </div>
 
-  <div id="mainbody">
-    <div id="topnav-buttons">
-      <!--
+  <div id="topnav-buttons">
+    <!--
     - back to dashboard button
     - logout button?
     - profile buton?
 -->
-    </div>
+  </div>
 
-    <div id="bodyparts-selectors">
-      <main>
-        <div id="muscle-groups">
-          <h1>Muscle Group Selector</h1>
-          <h2>Arms</h2>
-          <input type="checkbox" class="biceps muscles-helper" id="biceps" />
-          <label for="biceps">Biceps</label>
-          <input
-            type="checkbox"
-            class="deltoids muscles-helper"
-            id="deltoids"
-          />
-          <label for="deltoids">Deltoids</label>
-          <input
-            type="checkbox"
-            class="forearms muscles-helper"
-            id="forearms"
-          />
-          <label for="forearms">Forearms</label>
-          <input type="checkbox" class="triceps muscles-helper" id="triceps" />
-          <label for="triceps">Triceps</label>
-          <h2>Back</h2>
-          <input
-            type="checkbox"
-            class="trapezius muscles-helper"
-            id="trapezius"
-          />
-          <label for="trapezius">Trapezius</label>
-          <input type="checkbox" class="lats muscles-helper" id="lats" />
-          <label for="lats">Lats</label>
-          <h2>Core</h2>
-          <input type="checkbox" class="abs muscles-helper" id="abs" />
-          <label for="abs">Abs</label>
-          <input
-            type="checkbox"
-            class="obliques muscles-helper"
-            id="obliques"
-          />
-          <label for="obliques">Obliques</label>
-          <input
-            type="checkbox"
-            class="pectorals muscles-helper"
-            id="pectorals"
-          />
-          <label for="pectorals">Pectorals</label>
-          <h2>Legs</h2>
-          <input
-            type="checkbox"
-            class="adductors muscles-helper"
-            id="adductors"
-          />
-          <label for="adductors">Adductors</label>
-          <input type="checkbox" class="calves muscles-helper" id="calves" />
-          <label for="calves">Calves</label>
-          <input
-            type="checkbox"
-            class="hamstrings muscles-helper"
-            id="hamstrings"
-          />
-          <label for="hamstrings">Hamstrings</label>
-          <input type="checkbox" class="glutes muscles-helper" id="glutes" />
-          <label for="glutes">Glutes</label>
-          <input type="checkbox" class="quads muscles-helper" id="quads" />
-          <label for="quads">Quads</label>
-        </div>
-      </main>
+  <div id="bodyparts-selectors">
+    <main>
+      <div class="muscle-groups">
+        <h1>Muscle Group Selector</h1>
+        <h2>Arms</h2>
+        <input type="checkbox" class="biceps muscles-helper" id="biceps" />
+        <label for="biceps">Biceps</label>
+        <input type="checkbox" class="deltoids muscles-helper" id="deltoids" />
+        <label for="deltoids">Deltoids</label>
+        <input type="checkbox" class="forearms muscles-helper" id="forearms" />
+        <label for="forearms">Forearms</label>
+        <input type="checkbox" class="triceps muscles-helper" id="triceps" />
+        <label for="triceps">Triceps</label>
+        <h2>Back</h2>
+        <input
+          type="checkbox"
+          class="trapezius muscles-helper"
+          id="trapezius"
+        />
+        <label for="trapezius">Trapezius</label>
+        <input type="checkbox" class="lats muscles-helper" id="lats" />
+        <label for="lats">Lats</label>
+        <h2>Core</h2>
+        <input type="checkbox" class="abs muscles-helper" id="abs" />
+        <label for="abs">Abs</label>
+        <input type="checkbox" class="obliques muscles-helper" id="obliques" />
+        <label for="obliques">Obliques</label>
+        <input
+          type="checkbox"
+          class="pectorals muscles-helper"
+          id="pectorals"
+        />
+        <label for="pectorals">Pectorals</label>
+        <h2>Legs</h2>
+        <input
+          type="checkbox"
+          class="adductors muscles-helper"
+          id="adductors"
+        />
+        <label for="adductors">Adductors</label>
+        <input type="checkbox" class="calves muscles-helper" id="calves" />
+        <label for="calves">Calves</label>
+        <input
+          type="checkbox"
+          class="hamstrings muscles-helper"
+          id="hamstrings"
+        />
+        <label for="hamstrings">Hamstrings</label>
+        <input type="checkbox" class="glutes muscles-helper" id="glutes" />
+        <label for="glutes">Glutes</label>
+        <input type="checkbox" class="quads muscles-helper" id="quads" />
+        <label for="quads">Quads</label>
 
-      <div id="bodyparts-actual">
         <svg
-          width="80%"
-          height="80%"
+          width="100%"
+          height="100%"
           viewBox="0 0 176 207"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -270,7 +274,7 @@ document
           />
         </svg>
       </div>
-    </div>
+    </main>
   </div>
 
   <!-- Category filter buttons, cardio, strength, stretches -->
