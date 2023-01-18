@@ -23,24 +23,9 @@
     <div class="background">
        <div class="card">
            <div class="innercard">
-               <div class="text">
-                    <h1>Catalogues</h1>
-               </div>
                <div class="button">
                     <button>
-                        <h2>All Exercises</h2>
-                    </button>
-                    <br>
-                    <button>
-                        <h2>Cardio</h2>
-                    </button>
-                    <br>
-                    <button>
-                        <h2>Strength</h2>
-                    </button>
-                    <br>
-                    <button>
-                        <h2>Flexibility</h2>
+                        <h2>Exercise Catalogue</h2>
                     </button>
                </div>
            </div>
@@ -65,7 +50,7 @@
 <style scoped>
 
 * {
-    background: url("https://t3.ftcdn.net/jpg/03/50/81/90/360_F_350819094_ASJQuvwGOy4BpQwb096TntNE9J1D4UP5.jpg");
+    background: url("");
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -145,7 +130,7 @@ h2 {
 button {
     width: 30vmin;
     height: 8vmin;
-    background: rgb(64, 93, 189);
+    background: rgb(0, 0, 0);
     border: none;
     border-radius: 5vmin;
     outline: transparent;
@@ -153,7 +138,7 @@ button {
 }
 
 button:hover {
-    background: rgb(92, 128, 226);
+    background: rgb(126, 126, 126);
     box-shadow: 0 0 .5vmin #fff;
 }
 
