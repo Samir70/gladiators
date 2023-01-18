@@ -18,14 +18,11 @@ const seedExercises = async () => {
     await Exercise.deleteMany({});
     for (let u = 0; u < exercises.length; u++) {
         const exercise = new Exercise(exercises[u]);
-        exercise.save((err) => {
-            if (err) {
-                throw err;
-            }
+        await exercise.save()
             // console.log("seeded exercise:" + exercise);
-        });
-    }
-};
+        };
+    };
+
 
 
 module.exports = seedExercises;
