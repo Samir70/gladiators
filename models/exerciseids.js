@@ -1,14 +1,14 @@
-const { ObjectID } = require("mongodb");
+const { ObjectId } = require("mongodb");
 
 const curlIDString = "63b810bd87affe92a654e710";
 const squatIDString = "63b810bd87affe92a654e711";
 const benchpressIDString = "63b810bd87affe92a654e802";
 const lungeIDString = "63b810bd87affe92a654e997";
 
-const curlID = ObjectID(curlIDString);
-const squatID = ObjectID(squatIDString);
-const benchpressID = ObjectID(benchpressIDString);
-const lungeID = ObjectID(lungeIDString);
+const curlID = ObjectId(curlIDString);
+const squatID = ObjectId(squatIDString);
+const benchpressID = ObjectId(benchpressIDString);
+const lungeID = ObjectId(lungeIDString);
 
 module.exports = {
   curlID,
