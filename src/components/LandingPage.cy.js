@@ -5,5 +5,6 @@ describe('<LandingPage />', () => {
     // see: https://on.cypress.io/mounting-vue
     cy.mount(LandingPage)
     cy.get("h1").should("have.id", "landingpage-title")
+    cy.get("GlassBubble")
   })
 })

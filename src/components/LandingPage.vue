@@ -1,10 +1,17 @@
 <script setup>
-
+import GlassBubble from './GlassBubble.vue';
 
 </script>
 
 <template>
-  <h1 id="landingpage-title">Landing Page</h1>
+  <GlassBubble>
+    <h1 id="landingpage-title">Landing Page</h1>
+  </GlassBubble>
+
+  <GlassBubble>
+    <button>Sign In</button>
+    <button>Sign Up</button>
+  </GlassBubble>
 </template>
 
 <style scoped>
