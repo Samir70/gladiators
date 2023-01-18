@@ -5,10 +5,16 @@
 
 
 <template>
+
+<div id="dashboard">
   <h1>Gladiator Dashboard</h1>
 
+<br>
 
-  <div>
+  <!-- Navigation -->
+  <div class="glass_bubble" style="width: 30vmin;
+    height: 30vmin; float:left;">
+    <p>navigation</p>
  <!--
 "dashboard nav"
 - profile
@@ -20,59 +26,69 @@
   </div>
 
     <!-- exersice catalogues -->
-    <div class="background">
-       <div class="card">
+    <!-- <div class="background"> -->
+
+
+       <!-- <div class="glass_bubble">
            <div class="innercard">
-               <div class="button">
-                    <button>
+               <div class="exercise_catalogue_button"> -->
+                    <!-- <button>
                         <h2>Exercise Catalogue</h2>
-                    </button>
-               </div>
+                    </button> -->
+               <!-- </div>
            </div>
-       </div>
-   </div>
+       </div> -->
+
+<!-- Exercise catalogue -->
+ <div class="glass_bubble" style="width: 60vmin;
+    height: 30vmin;">
+<p>catalogue</p>
+</div>
+
+
  
+   <br>
 
 
-  <div>
-    <h2>My current workout</h2>
-    <!-- has the 4 buttons -->
+  <div class="glass_bubble" style="position: relative; width: 60vmin;
+    height: 60vmin;">
+    <p>current workout</p>
   </div>
 
 
-  <div>
-    <h3>Utilities</h3>
+  <div class="glass_bubble">
+    <p>Utilities</p>
   </div>
 
-
+</div>
 </template>
+
+
+
 
 <style scoped>
 
-* {
-    background: url("");
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#dashboard{
+    width: 95vw;
 }
 
-body, .card::before {
+body, .glass_bubble::before {
     background-position: 40%;
     background-size: cover;
     background-attachment: fixed;
 }
 
-.background {
+/* .background {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 h1, h2 {
     font-family: 'Roboto', sans-serif;
-    color: rgb(206, 206, 206);
+    color: rgb(0, 0, 0);
 }
 
 h1 {
@@ -86,10 +102,10 @@ h2 {
     letter-spacing: .3vmin;
 }
 
-.card {
-    position: relative;
+.glass_bubble {
+    /* position: relative;
     width: 70vmin;
-    height: 50vmin;
+    height: 50vmin; */
     background: rgba(255, 255, 255, 0.2);
     border: .1vmin solid rgba(219, 219, 219, 0.1);
     border-radius: 4vmin;
@@ -97,9 +113,9 @@ h2 {
     box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .4);
 }
 
-.card::before {
+.glass_bubble::before {
     content: "";
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
@@ -108,38 +124,19 @@ h2 {
     margin: -5vmin;
 }
 
-.innercard {
+
+/* .innercard {
     position: relative;
     width: 70vmin;
     height: 50vmin;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .text {
     position: absolute;
     top: 16vmin;
-}
-
-.button {
-    position: absolute;
-    bottom: 18vmin;
-}
-
-button {
-    width: 30vmin;
-    height: 8vmin;
-    background: rgb(0, 0, 0);
-    border: none;
-    border-radius: 5vmin;
-    outline: transparent;
-    cursor: pointer;
-}
-
-button:hover {
-    background: rgb(126, 126, 126);
-    box-shadow: 0 0 .5vmin #fff;
 }
 
 @media (min-width: 731px) {
@@ -160,7 +157,7 @@ button:hover {
     .text {
         top: 15vmin;
     }
-
+/* 
     .button {
         bottom: 16vmin;
     }
@@ -168,7 +165,7 @@ button:hover {
     button {
         width: 25vmin;
         height: 7vmin;
-    }
+    } */
 }
 
 </style>
