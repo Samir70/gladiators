@@ -7,8 +7,8 @@ const increment = () => {
 
 <template>
   <h1>This is Tanya's Page</h1>
-  <p>Counter is {{ store.state.count }}</p>
-  <button v-on:click="increment">Increment counter</button>
+  <p id="counterblock">Counter is {{ store.state.count }}</p>
+  <button v-on:click="increment" id="counterbutton">Increment counter</button>
 </template>
 
 <style scoped>
