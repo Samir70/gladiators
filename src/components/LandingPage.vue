@@ -8,7 +8,7 @@ import GlassBubble from './GlassBubble.vue';
     <h1 id="landingpage-title">Landing Page</h1>
   </GlassBubble>
 
-  <GlassBubble>
+  <GlassBubble id="buttons-bubble">
     <button>Sign In</button>
     <button>Sign Up</button>
   </GlassBubble>
