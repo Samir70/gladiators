@@ -1,41 +1,79 @@
 <script setup>
+import GlassBubble from './GlassBubble.vue';
 
 
 </script>
 
 <template>
-  
-  <div id="homebutton">
-    <button>
-      <h2>Home</h2>
-    </button>
-  </div>
+  <GlassBubble>
+    <div id="homebutton" style="display:inline-block;">
+      <button>
+        <h2>Home</h2>
 
-  <div id="profmenu">
+      </button>
+    </div>
+    <div style="display:inline-block; float:right;">
       <h1 id="profile-title">My Profile</h1>
-  
-    <br>
-    <button>
-      <h2 id="goals-button">Goals</h2>
-    </button>
-    <br>
-    <button>
-      <h2 id="history-button">History</h2>
-    </button>
-    <br>
-    <button>
-      <h2 id="timesheet-button">Timesheet</h2>
-    </button>
-    <br>
-    <button>
-      <h2 id="calculator-button">Calculator</h2>
-    </button>
-  </div>
+    </div>
+  </GlassBubble>
 
+  <GlassBubble id="profmenu">
+    <div id="profmenu">
+
+      <br>
+      <button>
+        <h4 id="goals-button">Goals</h4>
+      </button>
+      <br>
+      <button>
+        <h4 id="history-button">History</h4>
+      </button>
+      <br>
+      <button>
+        <h4 id="timesheet-button">Timesheet</h4>
+      </button>
+      <br>
+      <button>
+        <h4 id="calculator-button">Calculator</h4>
+      </button>
+    </div>
+  </GlassBubble>
+
+  <div id="usersettings">
+    <GlassBubble id="userinfo">
+
+      <h4> User Info </h4>
+
+    </GlassBubble>
+
+    <GlassBubble id="accountsettings">
+      <h4> Account settings </h4>
+
+    </GlassBubble>
+  </div>
 
 
 </template>
 
 <style scoped>
+#profmenu {
+  width: 200px;
+  height: 300px;
+  display: inline-block;
+}
 
+#userinfo {
+  vertical-align: 70px;
+  width: 200px;
+  height: 190px;
+}
+
+#accountsettings {
+  width: 200px;
+  height: 100px;
+}
+
+#usersettings {
+  display: inline-block;
+}
 </style>
