@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { store } from "../store"
 
 defineProps({
   msg: String,
@@ -17,17 +18,20 @@ const getResults = async () => {
 
 getResults();
 
+const increment = () => {
+  store.commit("increment", 5)
+}
 
 </script>
 
 <template>
   <h1>Home page</h1>
+  <p>Counter is {{ store.state.count }}</p>
+  <button v-on:click="increment">Increment counter</button>
 
   <p v-for="result of results">{{ result.username }}</p>
 </template>
 
 <style scoped>
-.read-the-docs {
-  color: #888;
-}
+
 </style>
