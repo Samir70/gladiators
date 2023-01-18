@@ -13,7 +13,7 @@
 
   <!-- Navigation -->
   <div class="glass_bubble" style="width: 30vmin;
-    height: 30vmin; float:left;">
+    height: 90vmin; float:left;">
     <p>navigation</p>
  <!--
 "dashboard nav"
@@ -23,6 +23,11 @@
 - local weather
 - date/time
 -->
+  </div>
+
+  <div class="glass_bubble" style="width: 30vmin;
+    height: 90vmin; float:right;">
+    <p>Utilities</p>
   </div>
 
     <!-- exersice catalogues -->
@@ -41,7 +46,8 @@
 
 <!-- Exercise catalogue -->
  <div class="glass_bubble" style="width: 60vmin;
-    height: 30vmin;">
+    height: 30vmin; margin-left: auto;
+  margin-right: auto;">
 <p>catalogue</p>
 </div>
 
@@ -51,13 +57,9 @@
 
 
   <div class="glass_bubble" style="position: relative; width: 60vmin;
-    height: 60vmin;">
+    height: 55vmin; margin-left: auto;
+  margin-right: auto;">
     <p>current workout</p>
-  </div>
-
-
-  <div class="glass_bubble">
-    <p>Utilities</p>
   </div>
 
 </div>
