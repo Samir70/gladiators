@@ -8,6 +8,7 @@ import GlassBubble from './GlassBubble.vue';
   <div id="profilecontainer">
     <GlassBubble>
       <div id="homebutton" style="display:inline-block;">
+
         <button @click="$router.push('dashboard')">
           <h2>Home</h2>
         </button>
@@ -48,7 +49,7 @@ import GlassBubble from './GlassBubble.vue';
 
       <GlassBubble id="accountsettings">
         <h4> Account settings </h4>
-        <button @click="$router.push('UpdateDetails')">
+        <button @click="$router.push('Update')">
           <h5> Update Details </h5>
         </button>
 
