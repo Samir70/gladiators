@@ -1,6 +1,5 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
-
 </script>
 
 <template>
@@ -13,8 +12,8 @@ import GlassBubble from './GlassBubble.vue';
     </GlassBubble>
 
     <GlassBubble id="buttons-bubble">
-      <button>Sign In</button>
-      <button>Sign Up</button>
+      <button @click="$router.push('signinpage')">Sign In</button>
+      <button @click="$router.push('signuppage')">Sign Up</button>
     </GlassBubble>
   </div>
 </template>
@@ -24,6 +23,7 @@ import GlassBubble from './GlassBubble.vue';
 #landingpage {
   width: 85vw;
 }
+
 #landingpage-welcome {
   margin: auto;
   width: fit-content;
