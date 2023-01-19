@@ -2,9 +2,17 @@ import LandingPage from './LandingPage.vue'
 
 describe('<LandingPage />', () => {
   it('renders', () => {
-    // see: https://on.cypress.io/mounting-vue
     cy.mount(LandingPage)
-    cy.get("h1").should("have.id", "landingpage-title")
+  })
+  it('has a welcome bubble', () => {
+    cy.mount(LandingPage)
+    cy.get("#welcome-bubble").should("have.css", "float", "right")
+    cy.get("#welcome-bubble").get("h1").should("have.id", "landingpage-welcome").should("contain", "Welcome To Gladimakers")
+    cy.get("#welcome-bubble").get("img").should("have.attr", "src", "/__cypress/src/public/GladiatorThumbsUp.png")
+    cy.get("#welcome-bubble").get("#welcome-blurb")
+  })
+  it('has a buttons bubble', () => {
+    cy.mount(LandingPage)
     cy.get("#buttons-bubble").find("button").should("have.length", 2)
     cy.get("#buttons-bubble").find("button").eq(0).should("contain", "Sign In").click()
     cy.get("#buttons-bubble").find("button").eq(1).should("contain", "Sign Up").click()
