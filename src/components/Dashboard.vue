@@ -5,89 +5,165 @@
 
 
 <template>
+
+<div id="dashboard">
   <h1>Gladiator Dashboard</h1>
 
+<br>
 
-  <div>
- <!--
-"dashboard nav"
-- profile
-- logout
-- spotify
-- local weather
-- date/time
--->
+
+  <!-- Navigation -->
+  <div class="glass_bubble" style="width: 30vmin;
+    height: 90vmin; float:left;">
+
+<br>
+<button class="button"> 
+    <img src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top" style="width: 150px;
+    height: 100px; border-radius: 80px;">
+    <p>Profile</p>
+    </button>
+
+    <br>
+
+    <button class="button"> 
+    <img src="https://cdn.icon-icons.com/icons2/3685/PNG/512/spotify_logo_icon_229290.png" style="width: 100px;
+    height: 100px; border-radius: 80px;">
+     <p>Spotify</p>
+    </button>
+
+    <br>
+
+    <button class="button"> 
+    <img src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" style="width: 100px;
+    height: 100px; border-radius: 80px;">
+    <p>Weather</p>
+    </button>
+
+    <br>
+
+    <button class="button">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd6y2CpNlcrydpptu63X_yAyk_tIuF2sYByA&usqp=CAU" style="width: 100px;
+    height: 100px; border-radius: 80px;">
+    <p>date/time</p>
+    </button>
+
   </div>
 
-    <!-- exersice catalogues -->
-    <div class="background">
-       <div class="card">
-           <div class="innercard">
-               <div class="text">
-                    <h1>Catalogues</h1>
-               </div>
-               <div class="button">
-                    <button>
-                        <h2>All Exercises</h2>
-                    </button>
-                    <br>
-                    <button>
-                        <h2>Cardio</h2>
-                    </button>
-                    <br>
-                    <button>
-                        <h2>Strength</h2>
-                    </button>
-                    <br>
-                    <button>
-                        <h2>Flexibility</h2>
-                    </button>
-               </div>
-           </div>
-       </div>
-   </div>
+
+  <!-- Utilities -->
+  <div class="glass_bubble" style="width: 30vmin;
+    height: 90vmin; float:right;">
+    <p>Utilities</p>
+
+    <br>
+
+<button class="button"> 
+<p>Log Out</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>User Guide</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>Facilities Finder</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>Leaderboard</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>Lifting Calculator</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>Stop Watch</p>
+</button>
+  </div>
+
+
+<!-- Exercise catalogue -->
+ <div class="glass_bubble" style="width: 60vmin;
+    height: 30vmin; margin-left: auto;
+  margin-right: auto;">
+<button class="button">
+    <p>Exercise Catalogue</p>
+</button>
+</div>
+
+
  
+   <br>
 
 
-  <div>
-    <h2>My current workout</h2>
-    <!-- has the 4 buttons -->
+
+  <div class="glass_bubble" style="position: relative; width: 60vmin;
+    height: 55vmin; margin-left: auto;
+  margin-right: auto;">
+    <p>current workout</p>
+
+    <br>
+
+<button class="button"> 
+<p>Random Workout Generator</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>Workout Complete</p>
+</button>
+
+<br>
+
+<button class="button"> 
+<p>Clear All</p>
+</button>
+
+<p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
+
   </div>
 
-
-  <div>
-    <h3>Utilities</h3>
-  </div>
-
-
+</div>
 </template>
+
+
+
 
 <style scoped>
 
-* {
-    background: url("https://t3.ftcdn.net/jpg/03/50/81/90/360_F_350819094_ASJQuvwGOy4BpQwb096TntNE9J1D4UP5.jpg");
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#dashboard{
+    width: 95vw;
 }
 
-body, .card::before {
+body, .glass_bubble::before {
     background-position: 40%;
     background-size: cover;
     background-attachment: fixed;
 }
 
-.background {
+/* .background {
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 h1, h2 {
     font-family: 'Roboto', sans-serif;
-    color: rgb(206, 206, 206);
+    color: rgb(0, 0, 0);
 }
 
 h1 {
@@ -101,20 +177,21 @@ h2 {
     letter-spacing: .3vmin;
 }
 
-.card {
-    position: relative;
+.glass_bubble {
+    /* position: relative;
     width: 70vmin;
-    height: 50vmin;
+    height: 50vmin; */
     background: rgba(255, 255, 255, 0.2);
     border: .1vmin solid rgba(219, 219, 219, 0.1);
-    border-radius: 4vmin;
+    border-radius: 80px;
+    /* padding: 10px 10px; */
     overflow: hidden;
     box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .4);
 }
 
-.card::before {
+.glass_bubble::before {
     content: "";
-    position: absolute;
+    position: relative;
     top: 0;
     right: 0;
     bottom: 0;
@@ -123,38 +200,31 @@ h2 {
     margin: -5vmin;
 }
 
-.innercard {
+.button {
+  background-color: rgba(255, 255, 255, 0.248);
+  border: none;
+  color: black;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 80px;
+}
+
+/* .innercard {
     position: relative;
     width: 70vmin;
     height: 50vmin;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .text {
     position: absolute;
     top: 16vmin;
-}
-
-.button {
-    position: absolute;
-    bottom: 18vmin;
-}
-
-button {
-    width: 30vmin;
-    height: 8vmin;
-    background: rgb(64, 93, 189);
-    border: none;
-    border-radius: 5vmin;
-    outline: transparent;
-    cursor: pointer;
-}
-
-button:hover {
-    background: rgb(92, 128, 226);
-    box-shadow: 0 0 .5vmin #fff;
 }
 
 @media (min-width: 731px) {
@@ -175,7 +245,7 @@ button:hover {
     .text {
         top: 15vmin;
     }
-
+/* 
     .button {
         bottom: 16vmin;
     }
@@ -183,7 +253,7 @@ button:hover {
     button {
         width: 25vmin;
         height: 7vmin;
-    }
+    } */
 }
 
 </style>
