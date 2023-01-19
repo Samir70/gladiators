@@ -1,5 +1,8 @@
 <script setup>
+import { store } from "../store"
+import {ref} from "vue"
 
+const user = ref(store.state.user)
 
 </script>
 
@@ -8,7 +11,7 @@
 
 <div id="dashboard">
   <h1>Gladiator Dashboard</h1>
-
+    <p v-if="user">{{ user.username }}</p>
 <br>
 
 
