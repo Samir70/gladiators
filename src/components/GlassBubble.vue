@@ -18,4 +18,3 @@
     margin: 10px;
 }
 </style>
-Footer

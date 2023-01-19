@@ -1,21 +1,63 @@
 <script setup>
-
+import GlassBubble from './GlassBubble.vue';
 
 </script>
 
 <template>
-  <h1 style = "color: #4F182B;">Landing Page</h1>
+  <div id="landingpage">
+    <GlassBubble id="welcome-bubble">
+      <h1 id="landingpage-welcome">Welcome To Gladimakers</h1>
+      <img id="gladiator-thumbsup" src="../../public/GladiatorThumbsUp.png" />
+      <p id="welcome-blurb">Even if your name isn't Maximus Decimus Meridius, we can still help you achieve your goals.
+      </p>
+    </GlassBubble>
 
-<p>colour pallete 1</p>
-<p1>tyrian purple</p1>
-<p2></p2>
+    <GlassBubble id="buttons-bubble">
+      <button>Sign In</button>
+      <button>Sign Up</button>
+    </GlassBubble>
+  </div>
 </template>
 
 <style scoped>
-/* colouor pallete idea */
-p1 {
-    color: #4F182B;}
+/* colour pallete idea */
+#landingpage {
+  width: 85vw;
+}
+#landingpage-welcome {
+  margin: auto;
+  width: fit-content;
+  font-size: large;
+}
 
+#gladiator-thumbsup {
+  width: 65vw;
+}
 
+#welcome-blurb {
+  width: 60vw;
+  margin: auto;
+}
 
+#welcome-bubble {
+  float: right;
+  top: 50px;
+  width: 65vw;
+}
+
+#buttons-bubble {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  float: left;
+  top: 50;
+  padding: 0px 20px;
+  max-width: 25vw;
+}
+
+button {
+  width: fit-content;
+  margin: 2px auto;
+}
 </style>
