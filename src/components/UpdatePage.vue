@@ -77,7 +77,8 @@ function selectEquipment() {
                         <input type="checkbox" v-model="selectedAdvanced" :disabled="selectedAdvanced"
                             @click="selectExperience" />
                         <span>Advanced <img class=toggles src="advanced.png"></span>
-                    </label>
+                    </label> <br>
+                    <button id="experienceupdate"> Update</button>
                 </div>
 
                 <div id="equipment">
@@ -92,7 +93,8 @@ function selectEquipment() {
                     <label>
                         <input type="checkbox" :value="false" v-model="selectedEquipped" :disabled="selectedEquipped"
                             @click="selectEquipment" />
-                        <span>Yes <img class=toggles src="equipment.png"></span>
+                        <span>Yes <img class=toggles src="equipment.png"></span> <br>
+                        <button id="equipmentupdate">Update</button>
                     </label>
 
                 </div>
