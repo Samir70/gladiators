@@ -8,7 +8,8 @@ import ExerciseBody from "./ExerciseCatalogueBody.vue";
     <h1>All Exercises Catalogue</h1>
   </div>
 
-  <GlassBubble id="userguide-nav-bubble">
+  <GlassBubble id="userguide-nav-bubble" style=" position: absolute;
+  left: 100px;">
 
 <button class="button" @click="$router.push('dashboard')"> 
 <p>Dashboard</p>
@@ -31,7 +32,8 @@ height: 100px; border-radius: 80px;">
 
 
 
-  <GlassBubble id="muscles">
+  <GlassBubble id="muscles" style=" position: absolute;
+  left: 100px; top:400px;">
     <ExerciseBody>
     </ExerciseBody>
   </GlassBubble>

@@ -1,5 +1,7 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
+// import CurrentWorkout from "./CurrentWorkout.vue";
+
 // import ButtonIcon from './ButtonIcon.vue';
 
 

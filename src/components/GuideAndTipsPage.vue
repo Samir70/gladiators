@@ -27,6 +27,27 @@ import GlassBubble from './GlassBubble.vue';
 
 <br>
   </GlassBubble>
+  
+  <br>
+
+  <GlassBubble id="info">
+    <h1>Strength Training Guide</h1>
+    <br>
+    <h2> Endurance Training</h2>
+    <p> Weight - 50% to 65% of 1 Rep Max</p>
+    <p>REPS - 12 to 20</p>
+    <p>Sets - 2 to 4</p>
+    <br>
+    <h2> Hypertrophy Training</h2>
+    <p> Weight - 70% to 85% of 1 Rep Max</p>
+    <p>REPS - 8 to 12</p>
+    <p>Sets - 3 to 4</p>
+    <br>
+    <h2> Maximal Strength Training</h2>
+    <p> Weight - 85% to 100% of 1 Rep Max</p>
+    <p>REPS - 1 to 5</p>
+    <p>Sets - </p>
+  </GlassBubble>
 
 </template>
 
