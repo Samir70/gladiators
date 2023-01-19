@@ -20,7 +20,8 @@ import GlassBubble from './GlassBubble.vue';
 <br>
 <!-- <ButtonIcon id="profile-button"> -->
     <button class="button" @click="$router.push('profilepage')">
-        <img src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top" style="width: 150px;
+
+        <img id="profile_logo" src="../../public/profile_logo.webp" style="width: 150px;
     height: 100px; border-radius: 80px;">
     <p>Profile</p>
 </button>
@@ -28,8 +29,9 @@ import GlassBubble from './GlassBubble.vue';
 
     <br>
 
-    <button class="button"> 
-    <img src="https://cdn.icon-icons.com/icons2/3685/PNG/512/spotify_logo_icon_229290.png" style="width: 100px;
+    <button class="button">
+    <img id="spotify_logo" src="../../public/spotify_logo.png"
+    style="width: 100px;
     height: 100px; border-radius: 80px;">
      <p>Spotify</p>
     </button>
@@ -37,7 +39,7 @@ import GlassBubble from './GlassBubble.vue';
     <br>
 
     <button class="button"> 
-    <img src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" style="width: 100px;
+    <img id="weather" src="../../public/weather.png" style="width: 100px;
     height: 100px; border-radius: 80px;">
     <p>Weather</p>
     </button>
@@ -45,7 +47,7 @@ import GlassBubble from './GlassBubble.vue';
     <br>
 
     <button class="button">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd6y2CpNlcrydpptu63X_yAyk_tIuF2sYByA&usqp=CAU" style="width: 100px;
+    <img id="clock" src="../../public/clock.png" style="width: 100px;
     height: 100px; border-radius: 80px;">
     <p>date/time</p>
     </button>
@@ -194,7 +196,7 @@ h2 {
 }
 
 .button {
-  background-color: rgba(255, 255, 255, 0.248);
+  background-color: rgba(255, 255, 255, 0.652);
   border: none;
   color: black;
   padding: 1px 10px;

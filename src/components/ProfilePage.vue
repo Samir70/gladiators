@@ -78,7 +78,7 @@ import GlassBubble from './GlassBubble.vue';
 }
 
 button {
-  width: fit-content;
+  width: 100px;
   margin: 2px auto;
   background-color: rgba(255, 255, 255, 0.248);
   border: none;
