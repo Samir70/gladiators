@@ -9,9 +9,11 @@ const newUserName = ref("")
 const newUserEmail = ref("")
 const newUserPassword = ref("")
 
-const signUp = () => {
+const signUp = async () => {
   console.log(newUserName.value, newUserEmail.value, newUserPassword.value)
   // router.push("dashboard")
+  await fetch(`/.netlify/functions/addUser?email=${newUserEmail.value}&username=${newUserName.value}&password=${newUserPassword.value}`)
+
 }
 </script>
 
