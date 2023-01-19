@@ -7,6 +7,9 @@ import Dashboard from "./components/Dashboard.vue";
 import ExerciseCatalogue from "./components/ExerciseCatalogue.vue";
 import ProfilePage from "./components/ProfilePage.vue";
 import GuideAndTipsPage from "./components/GuideAndTipsPage.vue";
+import HistoryPage from "./components/HistoryPage.vue";
+import MilestonePage from "./components/MilestonePage.vue";
+import UpdatePage from "./components/UpdatePage.vue";
 
 export const routes = [
   // { path: "/hello", name: "HelloWorld", component: HelloWorld },
@@ -18,4 +21,7 @@ export const routes = [
   { path: "/ExerciseCatalogue", name: "ExerciseCatalogue", component: ExerciseCatalogue },
   { path: "/ProfilePage", name: "ProfilePage", component: ProfilePage },
   { path: "/GuideAndTipsPage", name: "GuideAndTipsPage", component: GuideAndTipsPage },
+  { path: "/History", name: "HistoryPage", component: HistoryPage },
+  { path: "/Milestones", name: "MilestonePage", component: MilestonePage },
+  { path: "/UpdateDetails", name: "UpdatePage", component: UpdatePage },
 ];
