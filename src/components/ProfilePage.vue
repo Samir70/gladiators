@@ -76,4 +76,18 @@ import GlassBubble from './GlassBubble.vue';
 #usersettings {
   display: inline-block;
 }
+
+button {
+  width: fit-content;
+  margin: 2px auto;
+  background-color: rgba(255, 255, 255, 0.248);
+  border: none;
+  color: black;
+  padding: 1px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 80px;
+}
 </style>

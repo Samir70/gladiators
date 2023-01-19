@@ -1,4 +1,6 @@
 <script setup>
+import GlassBubble from './GlassBubble.vue';
+// import ButtonIcon from './ButtonIcon.vue';
 
 
 </script>
@@ -13,15 +15,16 @@
 
 
   <!-- Navigation -->
-  <div class="glass_bubble" style="width: 30vmin;
-    height: 90vmin; float:left;">
 
+  <GlassBubble id="dash-nav-bubble">
 <br>
-<button class="button"> 
-    <img src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top" style="width: 150px;
+<!-- <ButtonIcon id="profile-button"> -->
+    <button class="button" @click="$router.push('profilepage')">
+        <img src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top" style="width: 150px;
     height: 100px; border-radius: 80px;">
     <p>Profile</p>
-    </button>
+</button>
+<!-- </ButtonIcon> -->
 
     <br>
 
@@ -47,23 +50,22 @@
     <p>date/time</p>
     </button>
 
-  </div>
-
+</GlassBubble>
 
   <!-- Utilities -->
-  <div class="glass_bubble" style="width: 30vmin;
-    height: 90vmin; float:right;">
+  <GlassBubble id="utilities-bubble">
+
     <p>Utilities</p>
 
     <br>
 
-<button class="button"> 
+<button class="button" @click="$router.push('landingpage')"> 
 <p>Log Out</p>
 </button>
 
 <br>
 
-<button class="button"> 
+<button class="button" @click="$router.push('guideandtipspage')"> 
 <p>User Guide</p>
 </button>
 
@@ -90,27 +92,20 @@
 <button class="button"> 
 <p>Stop Watch</p>
 </button>
-  </div>
+</GlassBubble>
 
 
 <!-- Exercise catalogue -->
- <div class="glass_bubble" style="width: 60vmin;
-    height: 30vmin; margin-left: auto;
-  margin-right: auto;">
-<button class="button">
+<GlassBubble id="exercise-catalogue-bubble">
+ 
+<button class="button" @click="$router.push('exercisecatalogue')">
     <p>Exercise Catalogue</p>
 </button>
-</div>
+</GlassBubble>
 
-
- 
    <br>
 
-
-
-  <div class="glass_bubble" style="position: relative; width: 60vmin;
-    height: 55vmin; margin-left: auto;
-  margin-right: auto;">
+   <GlassBubble id="current-workout-bubble">
     <p>current workout</p>
 
     <br>
@@ -133,7 +128,7 @@
 
 <p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
 
-  </div>
+</GlassBubble>
 
 </div>
 </template>
@@ -177,34 +172,32 @@ h2 {
     letter-spacing: .3vmin;
 }
 
-.glass_bubble {
-    /* position: relative;
-    width: 70vmin;
-    height: 50vmin; */
-    background: rgba(255, 255, 255, 0.2);
-    border: .1vmin solid rgba(219, 219, 219, 0.1);
-    border-radius: 80px;
-    /* padding: 10px 10px; */
-    overflow: hidden;
-    box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .4);
+#dash-nav-bubble {
+    width: 30vmin;
+    height: 90vmin;
+    float:left;
+}
+#utilities-bubble {
+  width: 30vmin;
+    height: 90vmin; float:right;
 }
 
-.glass_bubble::before {
-    content: "";
-    position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    filter: blur(4.5vmin);
-    margin: -5vmin;
+#exercise-catalogue-bubble {width: 60vmin;
+    height: 30vmin; margin-left: auto;
+  margin-right: auto;
+}
+
+#current-workout-bubble{
+    position: relative; width: 60vmin;
+    height: 55vmin; margin-left: auto;
+  margin-right: auto;
 }
 
 .button {
   background-color: rgba(255, 255, 255, 0.248);
   border: none;
   color: black;
-  padding: 10px 10px;
+  padding: 1px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
