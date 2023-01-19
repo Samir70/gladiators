@@ -4,27 +4,21 @@ const mongoClient = new MongoClient(process.env.MONGODB_URI);
 
 const clientPromise = mongoClient.connect();
 
-// const jet = {
-//   username: "Jet2",
-//   email: "jet2@email.com",
-//   password: "jet",
-//   gladiatorScore: 10,
-//   experience: "A",
-//   equipment: true,
-// };
-
 module.exports.handler = async (event) => {
   try {
-    console.log("In addUser function");
-    console.log(event.queryStringParameters);
+    // console.log("In addUser function, incoming:", event.queryStringParameters);
     const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
     const collection = db.collection("accounts");
-    const result = await collection.insertOne(event.queryStringParameters)
-    console.log("from addUser:", result);
-    // return { statusCode: 200, body: "Temp result" };
-    return { statusCode: 200, body: JSON.stringify(result) };
+    const newUserId = await collection
+      .insertOne(event.queryStringParameters)
+      .then((res) => res.insertedId);
+    // console.log("In addUser function: made newUserId", newUserId);
+    // .findById doesn't seem to exist
+    const newUser = await collection.findOne({ _id: newUserId });
+    // console.log("In addUser function: made newUser", newUser);
+    return { statusCode: 200, body: JSON.stringify(newUser) };
   } catch (error) {
-    console.log("In addUser function");
+    console.log("In addUser function: ERROR");
     return { statusCode: 500, body: error.toString() };
   }
 };
