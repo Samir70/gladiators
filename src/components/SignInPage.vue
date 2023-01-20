@@ -17,6 +17,8 @@ const signIn = async () => {
     body: JSON.stringify({ userEmail: userEmail.value, userPassword: userPassword.value })
   }).then(response => response.json())
   console.log("SignIn result:", result)
+  store.commit("login", result)
+  router.push("dashboard")
   return
 }
 
