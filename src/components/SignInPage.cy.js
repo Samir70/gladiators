@@ -20,6 +20,8 @@ describe("<SignInPage />", () => {
       .get("#password-field")
       .should("have.attr", "type", "password")
       .type(user.password);
+    cy.get("#home-button").click();
+    cy.get("#signup-button").click();
     // cy.get("#signin-bubble").get("#signin-button").click();
   });
 });

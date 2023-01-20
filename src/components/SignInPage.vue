@@ -25,6 +25,11 @@ const signIn = async () => {
 </script>
 
 <template>
+  <GlassBubble id="home-link">
+   <button @click="$router.push('/')" id="home-button"> Home </button>
+   <button @click="$router.push('signuppage')" id="signup-button"> Sign Up </button>
+
+ </GlassBubble>
   <GlassBubble id="signin-bubble">
     <h1>Sign In</h1>
     <input id="email-field" type="email" placeholder="Email" v-model="userEmail" required />
@@ -34,9 +39,14 @@ const signIn = async () => {
 </template>
 
 <style scoped>
-#signin-form {
+#signin-bubble {
   display: flex;
   flex-direction: column;
+  padding: 10px;
+}
+
+#home-link {
+  width: fit-content;
   padding: 10px;
 }
 
