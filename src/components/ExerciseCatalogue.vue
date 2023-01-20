@@ -5,11 +5,34 @@ import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBod
 import StrengthScript from "./ExerciseCatalogueFiles/StrengthScript.vue";
 import FlexScript from "./ExerciseCatalogueFiles/FlexScript.vue";
 import CardioScript from "./ExerciseCatalogueFiles/CardioScript.vue";
-let show = ref("")
+let show = ref("");
 </script>
 
 <template>
+  <GlassBubble
+    id="userguide-nav-bubble"
+    style="position: absolute; left: 100px"
+  >
+    <button class="button" @click="$router.push('dashboard')">
+      <p>Dashboard</p>
+    </button>
+    <br />
+    <button class="button" @click="$router.push('profilepage')">
+      <img
+        id="profile_logo"
+        src="../../public/spartan-helmet.png"
+        style="width: 100px; height: 100px; border-radius: 80px"
+      />
+    </button>
 
+    <br />
+
+    <button class="button" @click="$router.push('landingpage')">
+      <p>Log Out</p>
+    </button>
+
+    <br />
+  </GlassBubble>
 
   <div id="ExerciseCatalogue">
     <div id="header">
@@ -17,45 +40,14 @@ let show = ref("")
     </div>
   </div>
 
-  <div id="Body">
-    <ExerciseCatalogueBody> </ExerciseCatalogueBody>
-  </div>
-
   <GlassBubble>
     <div id="All-button">
       <button @click="show = 'all'">All</button>
     </div>
   </GlassBubble>
-  <GlassBubble id="userguide-nav-bubble" style=" position: absolute;
-  left: 100px;">
 
-    <button class="button" @click="$router.push('dashboard')">
-      <p>Dashboard</p>
-    </button>
-
-    <button class="button" @click="$router.push('profilepage')">
-      <img
-        src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top"
-        style="width: 150px;
-height: 100px; border-radius: 80px;">
-      <p>Profile</p>
-    </button>
-
-    <br>
-
-    <button class="button" @click="$router.push('landingpage')">
-      <p>Log Out</p>
-    </button>
-
-    <br>
-  </GlassBubble>
-
-
-
-  <GlassBubble id="muscles" style=" position: absolute;
-  left: 100px; top:400px;">
-    <ExerciseBody>
-    </ExerciseBody>
+  <GlassBubble id="muscles" style="position: absolute; left: 100px; top: 400px">
+    <ExerciseBody> </ExerciseBody>
   </GlassBubble>
 
   <GlassBubble>
@@ -80,48 +72,32 @@ height: 100px; border-radius: 80px;">
   <CardioScript v-if="show == 'cardio' || show == 'all'"> </CardioScript>
   <FlexScript v-if="show == 'flex' || show == 'all'"> </FlexScript>
 
+  <div id="Body">
+    <ExerciseCatalogueBody> </ExerciseCatalogueBody>
+  </div>
 </template>
 
 <style scoped>
 #Body {
-  position: absolute;
-  left: 20px;
-  top: -100px;
-}
-
-#exercises-bubble {
-  padding: 10px;
-  width: 200px;
-  height: 150px;
-}
-
-#selection-bubble {
-  padding: 10px;
-  width: 200px;
-}
-
-#dropdown-for-type {
-  position: absolute;
-  right: 9pc;
-  top: 10pc;
+  position: relative;
 }
 
 #flexibility {
-  position: absolute;
-  right: 9pc;
-  top: 30pc;
+  position: relative;
 }
 
 #cardio {
-  position: absolute;
-  right: 9pc;
-  top: 30pc;
+  position: relative;
+  right: -100;
 }
 
 #placeholder {
-  position: absolute;
-  right: 9pc;
-  top: 17pc;
+  position: relative;
+}
+
+#userguide-nav-bubble {
+  width: fit-content;
+  position: relative;
 }
 
 button {

@@ -26,7 +26,7 @@ const user = ref(store.state.user)
 <!-- <ButtonIcon id="profile-button"> -->
     <button class="button" @click="$router.push('profilepage')">
 
-        <img id="profile_logo" src="../../public/profile_logo.webp" style="width: 150px;
+        <img id="profile_logo" src="../../public/spartan-helmet.png" style="width: 150px;
     height: 100px; border-radius: 80px;">
     <p>Profile</p>
 </button>
