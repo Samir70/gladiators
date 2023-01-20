@@ -27,7 +27,7 @@ let show = ref("");
 
     <br />
 
-    <button class="button" @click="$router.push('landingpage')">
+    <button class="button" @click="$router.push('/')">
       <p>Log Out</p>
     </button>
 
@@ -46,8 +46,10 @@ let show = ref("");
     </div>
   </GlassBubble>
 
-  <GlassBubble id="muscles" style="position: absolute; left: 100px; top: 400px">
-    <ExerciseBody> </ExerciseBody>
+  <GlassBubble id="muscles" style=" position: absolute;
+  left: 100px; top:400px;">
+    <ExerciseBody>
+    </ExerciseBody>
   </GlassBubble>
 
   <GlassBubble>

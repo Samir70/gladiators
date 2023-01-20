@@ -67,8 +67,8 @@ const user = ref(store.state.user)
       </GlassBubble>
 
       <GlassBubble id="accountsettings">
-        <h4> <u> Account Settings </u> </h4>
-        <button class="button" @click="$router.push('Update')">
+        <h4> Account settings </h4>
+        <button @click="$router.push('UpdateDetails')">
           <h5> Update Details </h5>
         </button>
 
