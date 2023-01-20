@@ -41,7 +41,7 @@ height: 100px; border-radius: 80px;">
 
     <br>
 
-    <button class="button" @click="$router.push('landingpage')">
+    <button class="button" @click="$router.push('/')">
       <p>Log Out</p>
     </button>
 
