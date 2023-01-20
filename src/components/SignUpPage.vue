@@ -23,6 +23,10 @@ const signUp = async () => {
 </script>
 
 <template>
+  <GlassBubble id="home-link">
+   <button @click="$router.push('/')" id="home-button"> Home </button>
+
+ </GlassBubble>
   <GlassBubble id="signup-bubble">
     <h1>Sign Up</h1>
     <input id="name-field" type="text" placeholder="Username" v-model="newUserName" required />
@@ -31,12 +35,19 @@ const signUp = async () => {
     <p></p>
     <button id="signup-button" v-on:click="signUp">Sign Up</button>
   </GlassBubble>
+  
+  
 
 </template>
 
 <style scoped>
 input {
   width: 40vw;
+}
+
+#home-link {
+  width: fit-content;
+  padding: 10px;
 }
 
 #signup-bubble {
