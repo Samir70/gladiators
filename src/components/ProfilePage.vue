@@ -8,11 +8,12 @@ import GlassBubble from './GlassBubble.vue';
   <div id="profilecontainer">
     <GlassBubble>
       <div id="homebutton" style="display:inline-block;">
+
         <button @click="$router.push('dashboard')">
           <h2>Home</h2>
         </button>
       </div>
-      <div style="display:inline-block; float:right;">
+      <div style="display:inline-block;">
         <h1 id="profile-title">My Profile</h1>
       </div>
     </GlassBubble>
@@ -21,11 +22,8 @@ import GlassBubble from './GlassBubble.vue';
     <GlassBubble id="profmenu">
       <div id="profmenu">
 
-        <!-- <br>
-      <button>
-        <h4 id="goals-button">Goals</h4>
-      </button>
-      <br> -->
+        <br>
+        <br>
         <br>
         <button @click="$router.push('History')">
           <h4 id="history-button">History</h4>
@@ -36,9 +34,6 @@ import GlassBubble from './GlassBubble.vue';
           <h4 id="milestone-button">Milestones</h4>
         </button>
         <br>
-        <!-- <button>
-        <h4 id="calculator-button">Calculator</h4>
-      </button> -->
       </div>
     </GlassBubble>
 
@@ -54,7 +49,7 @@ import GlassBubble from './GlassBubble.vue';
 
       <GlassBubble id="accountsettings">
         <h4> Account settings </h4>
-        <button @click="$router.push('UpdateDetails')">
+        <button @click="$router.push('Update')">
           <h5> Update Details </h5>
         </button>
 
@@ -67,32 +62,48 @@ import GlassBubble from './GlassBubble.vue';
 <style scoped>
 #profilecontainer {
   width: 85vw;
+  
 
 }
 
+#profile-title {
+  display: flex;
+  justify-content: center;
+  
+}
+
+/* #homebutton button {
+  margin-left: -20px;
+} */
+
+
+
 #profmenu {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 200px;
-  height: 350px;
+  /* display: grid; */
+  width: 300px;
+  height: 380px;
   display: inline-block;
 }
 
 #history-button,
 #milestone-button {
   grid-column: 1/2;
+  font-size: 20px;
+  padding: 10px;
+  width: 150px;
 
 }
 
+
 #userinfo {
   vertical-align: 70px;
-  width: 200px;
+  width: 300px;
   height: 190px;
 }
 
 #accountsettings {
-  width: 200px;
-  height: 150px;
+  width: 300px;
+  height: 180px;
 }
 
 #usersettings {

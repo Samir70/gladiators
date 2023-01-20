@@ -19,9 +19,46 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+// ******** original
+// import { mount } from 'cypress/vue'
+
+// Cypress.Commands.add('mount', mount)
+
+// // Example use:
+// // cy.mount(MyComponent)
+// ******************* end of original
+
 import { mount } from 'cypress/vue'
+import { createMemoryHistory, createRouter } from 'vue-router'
+import { routes } from '../../src/routes'
+import GlassBubble from "../../src/components/GlassBubble.vue"
 
-Cypress.Commands.add('mount', mount)
+Cypress.Commands.add('mount', (component, options = {}) => {
+  // Setup options object
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
 
-// Example use:
-// cy.mount(MyComponent)
+  // create router if one is not provided
+  if (!options.router) {
+    options.router = createRouter({
+      routes: routes,
+      history: createMemoryHistory(),
+    })
+  }
+
+  // Add router plugin
+  options.global.plugins.push({
+    install(app) {
+      app.use(options.router)
+    },
+  })
+
+  // using the GlassBubble component in tests
+  options.extensions = options.extensions || {}
+  options.extensions.plugins = options.extensions.plugins || []
+  options.extensions.components = options.extensions.components || {}
+
+  options.extensions.components['GlassBubble'] = GlassBubble
+
+  return mount(component, options)
+})
