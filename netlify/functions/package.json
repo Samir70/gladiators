@@ -1,0 +1,3 @@
+{
+    "why?" : "To supress [The CommonJS 'module' variable is treated as a global variable in an ECMAScript module and may not work as expected] warning"
+}
