@@ -20,11 +20,9 @@ const signIn = () => {
 <template>
   <GlassBubble id="signin-bubble">
     <h1>Sign In</h1>
-    <form id="signin-form">
       <input id="email-field" type="email" placeholder="Email" v-model="userEmail" required />
       <input id="password-field" type="password" placeholder="Password" v-model="userPassword" required />
       <button id="signin-button" v-on:click="signIn" type="submit">Sign In</button>
-    </form>
   </GlassBubble>
 </template>
 

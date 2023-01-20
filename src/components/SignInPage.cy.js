@@ -13,9 +13,6 @@ describe("<SignInPage />", () => {
     cy.mount(SignInPage);
     cy.get("#signin-bubble").get("h1").should("contain", "Sign In");
     cy.get("#signin-bubble")
-      .get("form")
-      .should("have.attr", "id", "signin-form");
-    cy.get("#signin-bubble")
       .get("#email-field")
       .should("have.attr", "type", "email")
       .type(user.email);
