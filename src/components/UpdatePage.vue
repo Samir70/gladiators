@@ -1,31 +1,5 @@
-<script setup>
-import GlassBubble from './GlassBubble.vue';
-import { ref } from "vue";
-
-//for experience toggles
-let selectedBeginner = ref(true);
-let selectedIntermediate = ref(false);
-let selectedAdvanced = ref(false);
-//maybe these will actually need to be pulled out of the database for each account
-//maybe would have to be 'selected({{user.experience}}) or something? and then have that =ref(true); we would initialise ref(false) for all 3 initially'
-function selectExperience() {
-    selectedBeginner.value = !selectedBeginner;
-    selectedIntermediate.value = !selectedIntermediate;
-    selectedAdvanced.value = !selectedAdvanced;
-    //need to add a route to send this to the database to update
-}
-//for equipment toggles
-let selectedUnequipped = ref(true);
-let selectedEquipped = ref(false);
-//if the value for equipped is selected, the toggle ref toggle is inverted
-function selectEquipment() {
-    selectedEquipped.value = !selectedEquipped;
-    selectedUnequipped.value = !selectedUnequipped;
-}
-</script>
-
-
 <template>
+
     <div id="pagecontainer">
         <GlassBubble>
             <div id="homebanner" style="display:inline-block;">
@@ -150,4 +124,8 @@ input {
     top: 20px;
 }
 </style>
+
+
+    
+</template>
 
