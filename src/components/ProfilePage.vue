@@ -1,6 +1,11 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
 
+import { store } from "../store"
+import {ref} from "vue"
+
+const user = ref(store.state.user)
+
 
 </script>
 
@@ -14,7 +19,8 @@ import GlassBubble from './GlassBubble.vue';
         </button>
       </div>
       <div style="display:inline-block;">
-        <h1 id="profile-title">My Profile</h1>
+        <h1 id="profile-title" v-if="user"> Hi {{ user.username }}
+        </h1>
       </div>
     </GlassBubble>
 
@@ -41,7 +47,7 @@ import GlassBubble from './GlassBubble.vue';
         <h4> <u>User Info</u> </h4>
         <h5> My goal is to: </h5>
         <!-- <form>
-          <label for="goal"> <input type="text" id="goal" name="goal">
+          <label for="goal"> <input v-model="usergoal" type="text" id="goal" name="goal">
           </label>
         </form> -->
 
