@@ -179,22 +179,36 @@ h2 {
 #dash-nav-bubble {
     width: 30vmin;
     height: 90vmin;
-    float:left;
+    position: adsolute;
+    float: left;
+    /* left: 100px;
+    top: 300px; */
 }
 #utilities-bubble {
   width: 30vmin;
-    height: 90vmin; float:right;
+    height: 90vmin;
+    float: right;
+    /* position: adsolute; */
+    /* top: 300px; */
 }
 
 #exercise-catalogue-bubble {width: 60vmin;
-    height: 30vmin; margin-left: auto;
-  margin-right: auto;
+    height: 30vmin;
+    position: absolute;
+    left: 350px;
+    /* margin-left: auto;
+  margin-right: auto; */
 }
 
 #current-workout-bubble{
     position: relative; width: 60vmin;
-    height: 55vmin; margin-left: auto;
-  margin-right: auto;
+    height: 55vmin;
+    position: absolute;
+    left: 350px;
+    top: 450px;
+
+    /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .button {
