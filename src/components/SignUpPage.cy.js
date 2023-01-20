@@ -18,7 +18,6 @@ describe("<SignUpPage />", () => {
     };
     cy.mount(SignUpPage);
     cy.intercept("/.netlify/functions/addUser*", async (req) => {
-      // asynchronously retrieve fixture filename at request-time
       req.reply(serverResponse);
     }).as("fetch");
     cy.get("#signup-bubble").get("h1").should("contain", "Sign Up");
