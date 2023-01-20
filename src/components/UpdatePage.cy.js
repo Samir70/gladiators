@@ -21,18 +21,26 @@ describe('<UpdatePage />', () => {
   })
   it('allows you to select equipment yes or no', () => {
     cy.mount(UpdatePage)
-
-    cy.get('button[id="equipmentupdate"]').should('exist')
-
-
-
+    cy.get('button[id="equipmentupdate"]').should('exist') //upbdate button for equipment exists
+    cy.get('input[id="selectedUnequipped"]').should('be.checked')
+    cy.get('input[id="selectedEquipped"]' ).click().should('be.checked')
+    cy.get('input[id="selectedUnequipped"]').should('not.be.checked')
 
   })
-  xit('allows you to select your experience level and click update', () => {
+  it('allows you to select your experience level and click update', () => {
     cy.mount(UpdatePage)
-    
     cy.get('button[id="experienceupdate"]').should('exist')
-
+    cy.get('input[id="selectedBeginner"]').should('be.checked')
+    cy.get('input[id="selectedIntermediate"]').should('not.be.checked')
+    cy.get('input[id="selectedAdvanced"]').should('not.be.checked')
+    cy.get('input[id="selectedIntermediate"]').click()
+    cy.get('input[id="selectedBeginner"]').should('not.be.checked')
+    cy.get('input[id="selectedIntermediate"]').should('be.checked')
+    cy.get('input[id="selectedAdvanced"]').should('not.be.checked')
+    cy.get('input[id="selectedAdvanced"]').click()
+    cy.get('input[id="selectedBeginner"]').should('not.be.checked')
+    cy.get('input[id="selectedIntermediate"]').should('not.be.checked')
+    cy.get('input[id="selectedAdvanced"]').should('be.checked')
 
   })
 })
