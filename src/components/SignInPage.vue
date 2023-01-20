@@ -30,10 +30,9 @@ const signIn = async () => {
 
 <template>
   <GlassBubble id="home-link">
-   <button @click="$router.push('/')" id="home-button"> Home </button>
-   <button @click="$router.push('signuppage')" id="signup-button"> Sign Up </button>
-
- </GlassBubble>
+    <button @click="$router.push('/')" id="home-button"> Home </button>
+    <button @click="$router.push('signuppage')" id="signup-button"> Sign Up </button>
+  </GlassBubble>
   <GlassBubble id="signin-bubble">
     <h1>Sign In</h1>
     <p id="failed-login-warning" v-if="failedLogin">Sorry. At least one of email/password is wrong</p>
@@ -47,7 +46,7 @@ const signIn = async () => {
 #signin-bubble {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 20px;
 }
 
 #home-link {
@@ -62,5 +61,10 @@ input {
 button {
   margin: 10px 5px;
   width: fit-content;
+}
+
+#failed-login-warning {
+  color: red;
+  font-weight: bold;
 }
 </style>
