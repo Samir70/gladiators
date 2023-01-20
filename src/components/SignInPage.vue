@@ -9,6 +9,7 @@ const router = useRouter()
 
 const userEmail = ref("")
 const userPassword = ref("")
+const failedLogin = ref(false)
 
 const signIn = async () => {
   console.log("user wants to sign in")
@@ -17,9 +18,12 @@ const signIn = async () => {
     body: JSON.stringify({ email: userEmail.value, password: userPassword.value })
   }).then(response => response.json())
   console.log("SignIn result:", result)
-  store.commit("login", result)
-  router.push("dashboard")
-  return
+  if (result === "Failed login") {
+    failedLogin.value = true
+  } else {
+    store.commit("login", result)
+    router.push("dashboard")
+  }
 }
 
 </script>
@@ -32,6 +36,7 @@ const signIn = async () => {
  </GlassBubble>
   <GlassBubble id="signin-bubble">
     <h1>Sign In</h1>
+    <p id="failed-login-warning" v-if="failedLogin">Sorry. At least one of email/password is wrong</p>
     <input id="email-field" type="email" placeholder="Email" v-model="userEmail" required />
     <input id="password-field" type="password" placeholder="Password" v-model="userPassword" required />
     <button id="signin-button" v-on:click="signIn" type="submit">Sign In</button>
