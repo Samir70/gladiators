@@ -11,7 +11,7 @@ import GuideAndTipsPage from "./components/GuideAndTipsPage.vue";
 export const routes = [
   // { path: "/hello", name: "HelloWorld", component: HelloWorld },
   // { path: "/tanyaspage", name: "TanyasPage", component: TanyasPage },
-  { path: "/Landingpage", name: "LandingPage", component: LandingPage },
+  { path: "/", name: "LandingPage", component: LandingPage },
   { path: "/SignUpPage", name: "SignUpPage", component: SignUpPage },
   { path: "/SignInPage", name: "SignInPage", component: SignInPage },
   { path: "/Dashboard", name: "Dashboard", component: Dashboard },
