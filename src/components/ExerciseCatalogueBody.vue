@@ -36,7 +36,7 @@ document
 <template id="templatebody">
   <main>
     <div class="muscle-groups">
-      <h1>Muscles</h1>
+      <h1>Muscles </h1>
       <div class="labels">
         <h3>Arms</h3>
         <input type="checkbox" class="biceps muscles-helper" id="biceps" />
