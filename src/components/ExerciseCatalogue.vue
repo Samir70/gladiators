@@ -15,28 +15,22 @@ import ExerciseBody from "./ExerciseCatalogueBody.vue";
     </div>
 
     <div id="Body">
-        <ExerciseBody >
-        </ExerciseBody>
+      <ExerciseBody> </ExerciseBody>
     </div>
 
     <div id="dropdown-for-type">
       <GlassBubble id="exercises-bubble">
         <p>Training Type</p>
-        <label>Exercises</label>
-        <select>
-          <option id="strength" value="strength">Strength</option>
-          <!-- figure out if statement, maybe use buttons instead -->
+        <button id="strength" value="strength" @click="isShow = !isShow">Strength</button>
+        <!-- figure out if statement, maybe use buttons instead -->
 
-
-          <option id="flexibility" value="flexibility">Flexibility</option>
-          <option id="cardio" value="cardio">Cardio</option>
-        </select>
+        <button id="flexibility" value="flexibility" @click="isShow = !isShow">Flexibility</button>
+        <button id="cardio" value="cardio" @click="isShow = !isShow">Cardio</button>
       </GlassBubble>
-
     </div>
 
     <!-- If statement to show specific dropdown -->
-    
+
     <div id="strength">
       <GlassBubble id="selection-bubble">
         <p>Pick an exercise to see the parts used</p>
@@ -53,44 +47,37 @@ import ExerciseBody from "./ExerciseCatalogueBody.vue";
       <p>Pick summat else</p>
     </div>
 
-
-    
-
     <!-- Category filter buttons, cardio, strength, stretches -->
   </div>
-
 </template>
 
 <style scoped>
-
 #Body {
   position: absolute;
   left: 20px;
   top: -100px;
 }
 
-
-
-#exercises-bubble{
+#exercises-bubble {
   padding: 10px;
-  width: 200px
+  width: 200px;
 }
 
-#selection-bubble{
+#selection-bubble {
   padding: 10px;
-  width: 200px
+  width: 200px;
 }
 
-#dropdown-for-type{
+#dropdown-for-type {
   position: absolute;
   right: 9pc;
-  top: 10pc
+  top: 10pc;
 }
 
-#dropdown-for-exercise {
+#strength {
   position: absolute;
   right: 9pc;
-  top: 17pc;
+  top: 18pc;
 }
 
 #placeholder {
@@ -98,5 +85,4 @@ import ExerciseBody from "./ExerciseCatalogueBody.vue";
   right: 9pc;
   top: 17pc;
 }
-
 </style>
