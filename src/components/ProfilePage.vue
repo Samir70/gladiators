@@ -1,6 +1,11 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
 
+import { store } from "../store"
+import {ref} from "vue"
+
+const user = ref(store.state.user)
+
 
 </script>
 
@@ -9,28 +14,27 @@ import GlassBubble from './GlassBubble.vue';
     <GlassBubble>
       <div id="homebutton" style="display:inline-block;">
 
-        <button @click="$router.push('dashboard')">
+        <button class="button" style="width:120px" @click="$router.push('dashboard')">
           <h2>Home</h2>
         </button>
       </div>
       <div style="display:inline-block;">
-        <h1 id="profile-title">My Profile</h1>
+        <h1 id="profile-title" v-if="user"> Hi {{ user.username }}
+        </h1>
       </div>
     </GlassBubble>
 
-   
+
     <GlassBubble id="profmenu">
       <div id="profmenu">
-
         <br>
         <br>
-        <br>
-        <button @click="$router.push('History')">
+        <button class="button" @click="$router.push('History')">
           <h4 id="history-button">History</h4>
         </button>
         <br>
         <br>
-        <button @click="$router.push('Milestones')">
+        <button class="button" @click="$router.push('Milestones')">
           <h4 id="milestone-button">Milestones</h4>
         </button>
         <br>
@@ -40,16 +44,31 @@ import GlassBubble from './GlassBubble.vue';
     <div id="usersettings">
       <GlassBubble id="userinfo">
 
-        <h4> User Info </h4>
-        <h5> My goal is to </h5>
-        <h5> My experience level is </h5>
-        <h5> Preference: </h5>
+        <h4> <u>User Info</u> </h4>
+        <h5> My goal is to: </h5>
+        <!-- <form>
+          <label for="goal"> <input v-model="usergoal" type="text" id="goal" name="goal">
+          </label>
+        </form> -->
+
+        <h5> My experience level is: </h5>
+          <form>
+      <select>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="c">C</option>
+       
+      </select>
+    </form>
+       
+        <h5> Workout Preference: </h5>
+
 
       </GlassBubble>
 
       <GlassBubble id="accountsettings">
-        <h4> Account settings </h4>
-        <button @click="$router.push('Update')">
+        <h4> <u> Account Settings </u> </h4>
+        <button class="button" @click="$router.push('Update')">
           <h5> Update Details </h5>
         </button>
 
@@ -62,14 +81,14 @@ import GlassBubble from './GlassBubble.vue';
 <style scoped>
 #profilecontainer {
   width: 85vw;
-  
-
 }
+
+
 
 #profile-title {
   display: flex;
   justify-content: center;
-  
+
 }
 
 /* #homebutton button {
@@ -80,8 +99,8 @@ import GlassBubble from './GlassBubble.vue';
 
 #profmenu {
   /* display: grid; */
-  width: 300px;
-  height: 380px;
+  width: 400px;
+  height: 450px;
   display: inline-block;
 }
 
@@ -91,22 +110,37 @@ import GlassBubble from './GlassBubble.vue';
   font-size: 20px;
   padding: 10px;
   width: 150px;
-
 }
+
 
 
 #userinfo {
   vertical-align: 70px;
   width: 300px;
-  height: 190px;
+  height: 290px;
 }
 
 #accountsettings {
   width: 300px;
-  height: 180px;
+  height: 150px;
 }
 
 #usersettings {
   display: inline-block;
+}
+
+
+
+.button {
+  background-color: rgba(255, 255, 255, 0.248);
+  border: none;
+  color: black;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 80px;
 }
 </style>
