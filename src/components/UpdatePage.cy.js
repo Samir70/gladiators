@@ -41,6 +41,5 @@ describe('<UpdatePage />', () => {
     cy.get('input[id="selectedBeginner"]').should('not.be.checked')
     cy.get('input[id="selectedIntermediate"]').should('not.be.checked')
     cy.get('input[id="selectedAdvanced"]').should('be.checked')
-
   })
 })
