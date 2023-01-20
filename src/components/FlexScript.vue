@@ -1,20 +1,10 @@
-<script>
-
+<script setup>
 import GlassBubble from './GlassBubble.vue';
-
-export default {
-  data() {
-    return {
-      show: true,
-    };
-  },
-  components: { GlassBubble },
-};
 
 </script>
 
 <template>
-  <div id="flex-div" v-if="flex">
+  <div id="flex-div">
       <GlassBubble id="flex-bubble">
         <p>Pick an exercise to see the parts used</p>
         <label>Exercises</label>

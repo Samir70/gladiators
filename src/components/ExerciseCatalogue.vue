@@ -1,22 +1,11 @@
-<script>
-export default {
-  data() {
-    return {
-      show: true
-    }
-
-  },
-  components: { GlassBubble },
-};
-
-</script>
-
 <script setup>
+import {ref} from "vue";
 import GlassBubble from "./GlassBubble.vue";
 import ExerciseCatalogueBody from "./ExerciseCatalogueBody.vue";
 import StrengthScript from "./StrengthScript.vue";
 import FlexScript from "./FlexScript.vue";
-import CardioScript from "./CardioScript.vue"
+import CardioScript from "./CardioScript.vue";
+let show = ref("")
 </script>
 
 <template>
@@ -32,31 +21,31 @@ import CardioScript from "./CardioScript.vue"
 
   <GlassBubble>
     <div id="All-button">
-      <button @click="show = !show">All</button>
+      <button @click="show = 'all'">All</button>
     </div>
   </GlassBubble>
 
   <GlassBubble>
     <div id="strength-button">
-      <button @click="strength = !strength">Strength</button>
+      <button @click="show = 'strength'">Strength</button>
     </div>
   </GlassBubble>
 
   <GlassBubble>
     <div id="Flexibility-button">
-      <button @click="flex = !flex">Flexibility</button>
+      <button @click="show = 'flex'">Flexibility</button>
     </div>
   </GlassBubble>
 
   <GlassBubble>
     <div id="Cardio-button">
-      <button @click="cardio = !cardio">Cardio</button>
+      <button @click="show = 'cardio'">Cardio</button>
     </div>
   </GlassBubble>
 
-  <StrengthScript v-if="show"> </StrengthScript>
-  <CardioScript> </CardioScript>
-  <FlexScript> </FlexScript>
+  <StrengthScript v-if="show=='strength'|| show=='all'"></StrengthScript>
+  <CardioScript v-if="show=='cardio'|| show=='all'"> </CardioScript>
+  <FlexScript v-if="show=='flex'|| show=='all'"> </FlexScript>
 
 </template>
 

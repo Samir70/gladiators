@@ -1,20 +1,9 @@
-<script>
-
+<script setup>
 import GlassBubble from './GlassBubble.vue';
-
-export default {
-  data() {
-    return {
-      show: true,
-    };
-  },
-  components: { GlassBubble },
-};
-
 </script>
 
 <template>
-      <div id="strength-div" v-if="strength">
+      <div id="strength-div">
       <GlassBubble id="strength-bubble">
         <p>Pick an exercise to see the parts used</p>
         <label>Exercises</label>

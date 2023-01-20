@@ -1,20 +1,11 @@
-<script>
+<script setup>
 
 import GlassBubble from './GlassBubble.vue';
-
-export default {
-  data() {
-    return {
-      show: true,
-    };
-  },
-  components: { GlassBubble },
-};
 
 </script>
 
 <template>
-  <div id="cardio-div" v-if="cardio">
+  <div id="cardio-div">
       <GlassBubble id="cardio-bubble">
         <p>Pick an exercise to see the parts used</p>
         <label>Exercises</label>
