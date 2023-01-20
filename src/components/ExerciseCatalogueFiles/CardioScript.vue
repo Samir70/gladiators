@@ -1,6 +1,6 @@
 <script setup>
 
-import GlassBubble from './GlassBubble.vue';
+import GlassBubble from '../GlassBubble.vue';
 
 </script>
 

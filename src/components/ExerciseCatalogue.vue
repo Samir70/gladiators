@@ -1,14 +1,16 @@
 <script setup>
 import { ref } from "vue";
 import GlassBubble from "./GlassBubble.vue";
-import ExerciseCatalogueBody from "./ExerciseCatalogueBody.vue";
-import StrengthScript from "./StrengthScript.vue";
-import FlexScript from "./FlexScript.vue";
-import CardioScript from "./CardioScript.vue";
+import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBody.vue";
+import StrengthScript from "./ExerciseCatalogueFiles/StrengthScript.vue";
+import FlexScript from "./ExerciseCatalogueFiles/FlexScript.vue";
+import CardioScript from "./ExerciseCatalogueFiles/CardioScript.vue";
 let show = ref("")
 </script>
 
 <template>
+
+
   <div id="ExerciseCatalogue">
     <div id="header">
       <h1>All Exercises Catalogue</h1>
