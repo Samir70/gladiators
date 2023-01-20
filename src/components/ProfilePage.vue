@@ -49,7 +49,7 @@ import GlassBubble from './GlassBubble.vue';
 
       <GlassBubble id="accountsettings">
         <h4> Account settings </h4>
-        <button @click="$router.push('Update')">
+        <button @click="$router.push('UpdateDetails')">
           <h5> Update Details </h5>
         </button>
 

@@ -97,7 +97,6 @@
                         <span>Yes <img class=toggles src="equipment.png"></span> <br>
                         <button id="equipmentupdate">Update</button>
                     </label>
-
                 </div>
 
             </GlassBubble>
