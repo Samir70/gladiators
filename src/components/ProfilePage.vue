@@ -129,17 +129,16 @@ const user = ref(store.state.user)
   display: inline-block;
 }
 
-
-
-.button {
+button {
+  width: 100px;
+  margin: 2px auto;
   background-color: rgba(255, 255, 255, 0.248);
   border: none;
   color: black;
-  padding: 10px 10px;
+  padding: 1px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  margin: 4px 2px;
   cursor: pointer;
   border-radius: 80px;
 }
