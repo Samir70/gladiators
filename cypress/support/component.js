@@ -31,6 +31,7 @@ import './commands'
 import { mount } from 'cypress/vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 import { routes } from '../../src/routes'
+import GlassBubble from "../../src/components/GlassBubble.vue"
 
 Cypress.Commands.add('mount', (component, options = {}) => {
   // Setup options object
@@ -51,6 +52,13 @@ Cypress.Commands.add('mount', (component, options = {}) => {
       app.use(options.router)
     },
   })
+
+  // using the GlassBubble component in tests
+  options.extensions = options.extensions || {}
+  options.extensions.plugins = options.extensions.plugins || []
+  options.extensions.components = options.extensions.components || {}
+
+  options.extensions.components['GlassBubble'] = "GlassBubble"
 
   return mount(component, options)
 })
