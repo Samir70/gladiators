@@ -58,7 +58,7 @@ Cypress.Commands.add('mount', (component, options = {}) => {
   options.extensions.plugins = options.extensions.plugins || []
   options.extensions.components = options.extensions.components || {}
 
-  options.extensions.components['GlassBubble'] = "GlassBubble"
+  options.extensions.components['GlassBubble'] = GlassBubble
 
   return mount(component, options)
 })
