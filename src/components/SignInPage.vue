@@ -14,7 +14,7 @@ const signIn = async () => {
   console.log("user wants to sign in")
   let result = await fetch(`/.netlify/functions/loginUser`, {
     method: "POST",
-    body: JSON.stringify({ userEmail: userEmail.value, userPassword: userPassword.value })
+    body: JSON.stringify({ email: userEmail.value, password: userPassword.value })
   }).then(response => response.json())
   console.log("SignIn result:", result)
   store.commit("login", result)

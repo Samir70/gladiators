@@ -10,12 +10,12 @@ module.exports.handler = async (event) => {
     console.log("In loginUser function, incoming:", details);
     const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
     const collection = db.collection("accounts");
-    const user = await collection.findOne({ email: details.userEmail });
+    const user = await collection.findOne({ email: details.email });
     console.log("loginUser found:", user);
     if (user === null) {
       return { statusCode: 401, body: JSON.stringify("Failed login") };
     }
-    if (details.userPassword === user.password) {
+    if (details.password === user.password) {
       return { statusCode: 200, body: JSON.stringify(user) };
     } else {
       return { statusCode: 401, body: JSON.stringify("Failed login") };
