@@ -2,16 +2,21 @@
 export default {
   data() {
     return {
-      show: false,
-    };
+      show: true
+    }
+
   },
   components: { GlassBubble },
 };
+
 </script>
 
 <script setup>
 import GlassBubble from "./GlassBubble.vue";
 import ExerciseCatalogueBody from "./ExerciseCatalogueBody.vue";
+import StrengthScript from "./StrengthScript.vue";
+import FlexScript from "./FlexScript.vue";
+import CardioScript from "./CardioScript.vue"
 </script>
 
 <template>
@@ -33,59 +38,26 @@ import ExerciseCatalogueBody from "./ExerciseCatalogueBody.vue";
 
   <GlassBubble>
     <div id="strength-button">
-      <button @click="show = !show">Strength</button>
+      <button @click="strength = !strength">Strength</button>
     </div>
   </GlassBubble>
 
   <GlassBubble>
     <div id="Flexibility-button">
-      <button @click="show = !show">Flexibility</button>
+      <button @click="flex = !flex">Flexibility</button>
     </div>
   </GlassBubble>
 
   <GlassBubble>
     <div id="Cardio-button">
-      <button @click="show = !show">Cardio</button>
+      <button @click="cardio = !cardio">Cardio</button>
     </div>
   </GlassBubble>
 
-  <div id="strength-div">
-    <p v-if="show">
-      <GlassBubble id="strength-bubble">
-        <p>Pick an exercise to see the parts used</p>
-        <label>Exercises</label>
-        <select>
-          <option value="Curls">Curls</option>
-          <option value="Squats">Squats</option>
-          <option value="Pushups">Pushups</option>
-        </select>
-      </GlassBubble>
-    </p>
-  </div>
+  <StrengthScript v-if="show"> </StrengthScript>
+  <CardioScript> </CardioScript>
+  <FlexScript> </FlexScript>
 
-  <div id="flex-div">
-    <p v-if="show">
-      <GlassBubble id="flex-bubble">
-        <p>Pick an exercise to see the parts used</p>
-        <label>Exercises</label>
-        <select>
-          <option value="Pecstretch">Pec stretch</option>
-        </select>
-      </GlassBubble>
-    </p>
-  </div>
-
-  <div id="cardio-div">
-    <p v-if="show">
-      <GlassBubble id="cardio-bubble">
-        <p>Pick an exercise to see the parts used</p>
-        <label>Exercises</label>
-        <select>
-          <option value="Starjumps">Starjumps</option>
-        </select>
-      </GlassBubble>
-    </p>
-  </div>
 </template>
 
 
