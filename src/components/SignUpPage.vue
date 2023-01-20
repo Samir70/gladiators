@@ -14,7 +14,10 @@ const newUserPassword = ref("")
 const signUp = async () => {
   // console.log(newUserName.value, newUserEmail.value, newUserPassword.value)
   // must be better way to send the data, the below gets displayed by the server
-  let result = await fetch(`/.netlify/functions/addUser?email=${newUserEmail.value}&username=${newUserName.value}&password=${newUserPassword.value}`).then(response => response.json())
+  let result = await fetch(`/.netlify/functions/addUser`, {
+    method: "POST",
+    body: JSON.stringify({ username: newUserName.value, email: newUserEmail.value, password: newUserPassword.value })
+  }).then(response => response.json())
   console.log("From SignUp Page", result)
   store.commit("login", result)
   router.push("dashboard")
