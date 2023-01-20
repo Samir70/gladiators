@@ -1,4 +1,5 @@
 <script setup>
+
 </script>
 
 <template>
@@ -12,7 +13,7 @@
 .bubble-class {
     background: rgba(255, 255, 255, 0.2);
     border: .1vmin solid rgba(219, 219, 219, 0.1);
-    border-radius: 80px;
+    border-radius: 4vmin;
     overflow: hidden;
     box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .4);
     margin: 10px;

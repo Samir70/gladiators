@@ -6,11 +6,11 @@ const clientPromise = mongoClient.connect();
 
 const handler = async (event) => {
   try {
-    console.log("In getUsers function");
+    console.log("In getExercises function");
     const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
-    const collection = db.collection("accounts");
+    const collection = db.collection("exercises");
     const results = await collection.find({}).toArray();
-    console.log("from getUsers:", results[0]);
+    console.log("from getExercises:", results[0]);
     return { statusCode: 200, body: JSON.stringify(results) };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
