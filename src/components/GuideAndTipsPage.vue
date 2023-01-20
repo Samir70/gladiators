@@ -21,7 +21,7 @@ import GlassBubble from './GlassBubble.vue';
 
     <br>
 
-<button class="button" @click="$router.push('landingpage')"> 
+<button class="button" @click="$router.push('/')"> 
 <p>Log Out</p>
 </button>
 
