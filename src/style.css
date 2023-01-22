@@ -3,7 +3,7 @@
 }
 
 body {
-  background: url("background_idea.jpeg") center / cover no-repeat fixed;
+  background: url("/background_idea.jpeg") center / cover no-repeat fixed;
   margin: auto;
   padding: 0;
   box-sizing: border-box;
