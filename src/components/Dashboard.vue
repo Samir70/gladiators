@@ -92,7 +92,7 @@ const user = ref(store.state.user)
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 95vw;
+    width: fit-content;
 }
 
 #catalogue-current-container {
@@ -139,5 +139,36 @@ h1 {
     height: 55vmin;
 }
 
-@media (min-width: 731px) {}
+@media only screen and (max-width: 780px) {
+    #dashboard {
+        flex-direction: column;
+        margin: auto;
+    }
+
+    #dash-nav-bubble {
+        flex-direction: row;
+        margin: auto;
+        transform: scale(0.75);
+    }
+
+    #catalogue-current-container {
+        margin: auto;
+    }
+
+    #utilities-bubble {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: center;
+        max-width: 85vw;
+    }
+
+    #exercise-catalogue-bubble {
+        width: 90vmin;
+    }
+
+    #current-workout-bubble {
+        width: 90vmin;
+    }
+}
 </style>
