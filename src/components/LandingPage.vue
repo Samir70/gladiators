@@ -43,6 +43,7 @@ import GlassBubble from './GlassBubble.vue';
   float: right;
   top: 50px;
   width: 65vw;
+  padding: 20px 0px 5px;
 }
 
 #buttons-bubble {
