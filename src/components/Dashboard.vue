@@ -3,16 +3,11 @@ import { store } from "../store"
 import { ref } from "vue"
 import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
-// import CurrentWorkout from "./CurrentWorkout.vue";
-
-// import ButtonIcon from './ButtonIcon.vue';
 
 const user = ref(store.state.user)
 
 </script>
 <template>
-    <h1>Gladiator Dashboard</h1>
-    <p v-if="user">{{ user.username }}</p>
     <div id="dashboard">
         <GlassBubble id="dash-nav-bubble">
             <ProfileButton />
@@ -34,6 +29,8 @@ const user = ref(store.state.user)
         </GlassBubble>
 
         <div id="catalogue-current-container">
+            <h1>Gladiator Dashboard</h1>
+            <p v-if="user">{{ user.username }}</p>
             <GlassBubble id="exercise-catalogue-bubble">
                 <button class="button" @click="$router.push('exercisecatalogue')">
                     <p>Exercise Catalogue</p>
@@ -50,54 +47,38 @@ const user = ref(store.state.user)
                 <button>
                     <p>Clear All</p>
                 </button>
-    
+
                 <p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
-    
+
             </GlassBubble>
         </div>
 
-        <br>
-
-
         <GlassBubble id="utilities-bubble">
-                <p>Utilities</p>
+            <p>Utilities</p>
+            <button class="button" @click="$router.push('/')">
+                <p>Log Out</p>
+            </button>
 
-                <br>
+            <button class="button" @click="$router.push('guideandtipspage')">
+                <p>User Guide</p>
+            </button>
 
-                <button class="button" @click="$router.push('/')">
-                    <p>Log Out</p>
-                </button>
+            <button class="button">
+                <p>Facilities Finder</p>
+            </button>
 
-                <br>
+            <button class="button">
+                <p>Leaderboard</p>
+            </button>
 
-                <button class="button" @click="$router.push('guideandtipspage')">
-                    <p>User Guide</p>
-                </button>
+            <button class="button">
+                <p>Lifting Calculator</p>
+            </button>
 
-                <br>
-
-                <button class="button">
-                    <p>Facilities Finder</p>
-                </button>
-
-                <br>
-
-                <button class="button">
-                    <p>Leaderboard</p>
-                </button>
-
-                <br>
-
-                <button class="button">
-                    <p>Lifting Calculator</p>
-                </button>
-
-                <br>
-
-                <button class="button">
-                    <p>Stop Watch</p>
-                </button>
-            </GlassBubble>
+            <button class="button">
+                <p>Stop Watch</p>
+            </button>
+        </GlassBubble>
 
     </div>
 </template>
@@ -109,6 +90,7 @@ const user = ref(store.state.user)
 #dashboard {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     width: 95vw;
 }
@@ -140,8 +122,9 @@ h1 {
 }
 
 #utilities-bubble {
-    width: 30vmin;
-    height: 90vmin;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
 }
 
 #exercise-catalogue-bubble {
@@ -156,7 +139,5 @@ h1 {
     height: 55vmin;
 }
 
-@media (min-width: 731px) {
-
-}
+@media (min-width: 731px) {}
 </style>
