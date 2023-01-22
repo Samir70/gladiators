@@ -139,7 +139,7 @@ h1 {
     height: 55vmin;
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 860px) {
     #dashboard {
         flex-direction: column;
         margin: auto;
