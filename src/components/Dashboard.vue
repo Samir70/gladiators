@@ -19,40 +19,21 @@ const user = ref(store.state.user)
 
         <GlassBubble id="dash-nav-bubble">
             <ProfileButton />
-            <br>
-            <!-- <ButtonIcon id="profile-button"> -->
-            <!-- <button class="button" @click="$router.push('profilepage')">
-
-                <img id="profile_logo" src="../../public/profile_logo.webp" style="width: 150px;
-    height: 100px; border-radius: 80px;">
-                <p>Profile</p>
-            </button> -->
-            <!-- </ButtonIcon> -->
-
-            <br>
 
             <button class="button">
-                <img id="spotify_logo" src="../../public/spotify_logo.png" style="width: 100px;
-    height: 100px; border-radius: 80px;">
+                <img id="spotify_logo" src="spotify_logo.png">
                 <p>Spotify</p>
             </button>
 
-            <br>
-
             <button class="button">
-                <img id="weather" src="../../public/weather.png" style="width: 100px;
-    height: 100px; border-radius: 80px;">
+                <img id="weather" src="weather.png">
                 <p>Weather</p>
             </button>
 
-            <br>
-
             <button class="button">
-                <img id="clock" src="../../public/clock.png" style="width: 100px;
-    height: 100px; border-radius: 80px;">
+                <img id="clock" src="clock.png">
                 <p>date/time</p>
             </button>
-
         </GlassBubble>
 
         <!-- Utilities -->
@@ -151,6 +132,12 @@ body,
     background-attachment: fixed;
 }
 
+button img {
+    width: 100px;
+    height: 100px;
+    border-radius: 80px;
+}
+
 /* .background {
     width: 100vw;
     height: 100vh;
@@ -177,12 +164,10 @@ h2 {
 }
 
 #dash-nav-bubble {
-    width: 30vmin;
-    height: 90vmin;
-    position: adsolute;
-    float: left;
-    /* left: 100px;
-    top: 300px; */
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 3px;
 }
 
 #utilities-bubble {
