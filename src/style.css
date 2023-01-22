@@ -1,12 +1,4 @@
 body {
-  /* background: url(""); */
-  /* background-color: #848C7B; */
-
-  /* https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1823&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY0ODQ4MTE4Mw&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=2400
-
-  src: "../../public/background_idea.jpeg"
-  */
-
   background: url("background_idea.jpeg") center / cover no-repeat fixed;
   margin: 0;
   padding: 0;
@@ -35,6 +27,7 @@ a {
   color: #000000;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #000000;
 }
@@ -44,6 +37,7 @@ a {
   color: #000000;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -51,10 +45,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  /* place-items: left; */
   min-width: 500px;
   min-height: 100vh;
-  /* align-items: left; */
 }
 
 h1 {
@@ -74,40 +66,15 @@ button {
   cursor: pointer;
   border-radius: 80px;
 }
+
 button:hover {
   border-color: #000000;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-
-
-/* .exercise_catalogue_button {
-  position: absolute;
-  bottom: 18vmin;
-}
-
-.exercise_catalogue_button {
-  width: 30vmin;
-  height: 8vmin;
-  background: rgb(0, 0, 0);
-  border: none;
-  border-radius: 5vmin;
-  outline: transparent;
-  cursor: pointer;
-}
-
-.exercise_catalogue_button:hover {
-  background: rgb(126, 126, 126);
-  box-shadow: 0 0 .5vmin #fff;
-} */
-
-
-
-
-
 
 .card {
   padding: 2em;
@@ -126,9 +93,11 @@ button:focus-visible {
     color: #000000;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #000000;
   }
