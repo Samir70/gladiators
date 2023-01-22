@@ -1,7 +1,8 @@
 <script setup>
 import { store } from "../store"
-import {ref} from "vue"
+import { ref } from "vue"
 import GlassBubble from './GlassBubble.vue';
+import ProfileButton from "./Buttons/ProfileButton.vue";
 // import CurrentWorkout from "./CurrentWorkout.vue";
 
 // import ButtonIcon from './ButtonIcon.vue';
@@ -9,147 +10,142 @@ import GlassBubble from './GlassBubble.vue';
 const user = ref(store.state.user)
 
 </script>
-
-
 <template>
+    <div id="dashboard">
+        <h1>Gladiator Dashboard</h1>
+        <p v-if="user">{{ user.username }}</p>
 
-<div id="dashboard">
-  <h1>Gladiator Dashboard</h1>
-    <p v-if="user">{{ user.username }}</p>
-<br>
+        <!-- Navigation -->
 
+        <GlassBubble id="dash-nav-bubble">
+            <ProfileButton />
+            <br>
+            <!-- <ButtonIcon id="profile-button"> -->
+            <!-- <button class="button" @click="$router.push('profilepage')">
 
-  <!-- Navigation -->
-
-  <GlassBubble id="dash-nav-bubble">
-<br>
-<!-- <ButtonIcon id="profile-button"> -->
-    <button class="button" @click="$router.push('profilepage')">
-
-        <img id="profile_logo" src="../../public/profile_logo.webp" style="width: 150px;
+                <img id="profile_logo" src="../../public/profile_logo.webp" style="width: 150px;
     height: 100px; border-radius: 80px;">
-    <p>Profile</p>
-</button>
-<!-- </ButtonIcon> -->
+                <p>Profile</p>
+            </button> -->
+            <!-- </ButtonIcon> -->
 
-    <br>
+            <br>
 
-    <button class="button">
-    <img id="spotify_logo" src="../../public/spotify_logo.png"
-    style="width: 100px;
+            <button class="button">
+                <img id="spotify_logo" src="../../public/spotify_logo.png" style="width: 100px;
     height: 100px; border-radius: 80px;">
-     <p>Spotify</p>
-    </button>
+                <p>Spotify</p>
+            </button>
 
-    <br>
+            <br>
 
-    <button class="button"> 
-    <img id="weather" src="../../public/weather.png" style="width: 100px;
+            <button class="button">
+                <img id="weather" src="../../public/weather.png" style="width: 100px;
     height: 100px; border-radius: 80px;">
-    <p>Weather</p>
-    </button>
+                <p>Weather</p>
+            </button>
 
-    <br>
+            <br>
 
-    <button class="button">
-    <img id="clock" src="../../public/clock.png" style="width: 100px;
+            <button class="button">
+                <img id="clock" src="../../public/clock.png" style="width: 100px;
     height: 100px; border-radius: 80px;">
-    <p>date/time</p>
-    </button>
+                <p>date/time</p>
+            </button>
 
-</GlassBubble>
+        </GlassBubble>
 
-  <!-- Utilities -->
-  <GlassBubble id="utilities-bubble">
+        <!-- Utilities -->
+        <GlassBubble id="utilities-bubble">
 
-    <p>Utilities</p>
+            <p>Utilities</p>
 
-    <br>
+            <br>
 
-<button class="button" @click="$router.push('/')"> 
-<p>Log Out</p>
-</button>
+            <button class="button" @click="$router.push('/')">
+                <p>Log Out</p>
+            </button>
 
-<br>
+            <br>
 
-<button class="button" @click="$router.push('guideandtipspage')"> 
-<p>User Guide</p>
-</button>
+            <button class="button" @click="$router.push('guideandtipspage')">
+                <p>User Guide</p>
+            </button>
 
-<br>
+            <br>
 
-<button class="button"> 
-<p>Facilities Finder</p>
-</button>
+            <button class="button">
+                <p>Facilities Finder</p>
+            </button>
 
-<br>
+            <br>
 
-<button class="button"> 
-<p>Leaderboard</p>
-</button>
+            <button class="button">
+                <p>Leaderboard</p>
+            </button>
 
-<br>
+            <br>
 
-<button class="button"> 
-<p>Lifting Calculator</p>
-</button>
+            <button class="button">
+                <p>Lifting Calculator</p>
+            </button>
 
-<br>
+            <br>
 
-<button class="button"> 
-<p>Stop Watch</p>
-</button>
-</GlassBubble>
+            <button class="button">
+                <p>Stop Watch</p>
+            </button>
+        </GlassBubble>
 
 
-<!-- Exercise catalogue -->
-<GlassBubble id="exercise-catalogue-bubble">
- 
-<button class="button" @click="$router.push('exercisecatalogue')">
-    <p>Exercise Catalogue</p>
-</button>
-</GlassBubble>
+        <!-- Exercise catalogue -->
+        <GlassBubble id="exercise-catalogue-bubble">
 
-   <br>
+            <button class="button" @click="$router.push('exercisecatalogue')">
+                <p>Exercise Catalogue</p>
+            </button>
+        </GlassBubble>
 
-   <GlassBubble id="current-workout-bubble">
-    <p>current workout</p>
+        <br>
 
-    <br>
+        <GlassBubble id="current-workout-bubble">
+            <p>current workout</p>
 
-<button class="button"> 
-<p>Random Workout Generator</p>
-</button>
+            <br>
 
-<br>
+            <button class="button">
+                <p>Random Workout Generator</p>
+            </button>
 
-<button class="button"> 
-<p>Workout Complete</p>
-</button>
+            <br>
 
-<br>
+            <button class="button">
+                <p>Workout Complete</p>
+            </button>
 
-<button class="button"> 
-<p>Clear All</p>
-</button>
+            <br>
 
-<p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
+            <button class="button">
+                <p>Clear All</p>
+            </button>
 
-</GlassBubble>
+            <p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
 
-</div>
+        </GlassBubble>
+
+    </div>
 </template>
 
 
 
 
 <style scoped>
-
-#dashboard{
+#dashboard {
     width: 95vw;
 }
 
-body, .glass_bubble::before {
+body,
+.glass_bubble::before {
     background-position: 40%;
     background-size: cover;
     background-attachment: fixed;
@@ -163,7 +159,8 @@ body, .glass_bubble::before {
     align-items: center;
 } */
 
-h1, h2 {
+h1,
+h2 {
     font-family: 'Roboto', sans-serif;
     color: rgb(0, 0, 0);
 }
@@ -187,15 +184,17 @@ h2 {
     /* left: 100px;
     top: 300px; */
 }
+
 #utilities-bubble {
-  width: 30vmin;
+    width: 30vmin;
     height: 90vmin;
     float: right;
     /* position: adsolute; */
     /* top: 300px; */
 }
 
-#exercise-catalogue-bubble {width: 60vmin;
+#exercise-catalogue-bubble {
+    width: 60vmin;
     height: 30vmin;
     position: absolute;
     left: 350px;
@@ -203,8 +202,9 @@ h2 {
   margin-right: auto; */
 }
 
-#current-workout-bubble{
-    position: relative; width: 60vmin;
+#current-workout-bubble {
+    position: relative;
+    width: 60vmin;
     height: 55vmin;
     position: absolute;
     left: 350px;
@@ -212,19 +212,6 @@ h2 {
 
     /* margin-left: auto;
   margin-right: auto; */
-}
-
-.button {
-  background-color: rgba(255, 255, 255, 0.652);
-  border: none;
-  color: black;
-  padding: 1px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 80px;
 }
 
 /* .innercard {
@@ -251,7 +238,8 @@ h2 {
         font-size: 2.4vmin;
     }
 
-    .card, .innercard {
+    .card,
+    .innercard {
         width: 60vmin;
         height: 45vmin;
     }
@@ -259,7 +247,8 @@ h2 {
     .text {
         top: 15vmin;
     }
-/* 
+
+    /* 
     .button {
         bottom: 16vmin;
     }
@@ -269,5 +258,4 @@ h2 {
         height: 7vmin;
     } */
 }
-
 </style>
