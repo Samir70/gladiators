@@ -11,7 +11,7 @@ import GlassBubble from './GlassBubble.vue';
 
     <GlassBubble id="welcome-bubble">
       <h1 id="landingpage-welcome">Welcome To Gladimakers</h1>
-      <img id="gladiator-thumbsup" src="../../public/GladiatorThumbsUp.png" />
+      <img id="gladiator-thumbsup" src="/GladiatorThumbsUp.png" />
       <p id="welcome-blurb">Even if your name isn't Maximus Decimus Meridius, we can still help you achieve your goals.
       </p>
     </GlassBubble>

@@ -4,7 +4,7 @@
 
 <template>
     <button id="profile-button" @click="$router.push('profilepage')">
-        <img id="profile_logo" src="profile_logo.webp">
+        <img id="profile_logo" src="/profile_logo.webp">
         <p>Profile</p>
     </button>
 </template>

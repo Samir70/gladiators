@@ -13,17 +13,17 @@ const user = ref(store.state.user)
             <ProfileButton />
 
             <button class="button">
-                <img id="spotify_logo" src="spotify_logo.png">
+                <img id="spotify_logo" src="/spotify_logo.png">
                 <p>Spotify</p>
             </button>
 
             <button class="button">
-                <img id="weather" src="weather.png">
+                <img id="weather" src="/weather.png">
                 <p>Weather</p>
             </button>
 
             <button class="button">
-                <img id="clock" src="clock.png">
+                <img id="clock" src="/clock.png">
                 <p>date/time</p>
             </button>
         </GlassBubble>
