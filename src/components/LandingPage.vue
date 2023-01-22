@@ -4,16 +4,16 @@ import GlassBubble from './GlassBubble.vue';
 
 <template>
   <div id="landingpage">
+    <GlassBubble id="buttons-bubble">
+      <button @click="$router.push('signinpage')">Sign In</button>
+      <button @click="$router.push('signuppage')">Sign Up</button>
+    </GlassBubble>
+
     <GlassBubble id="welcome-bubble">
       <h1 id="landingpage-welcome">Welcome To Gladimakers</h1>
       <img id="gladiator-thumbsup" src="../../public/GladiatorThumbsUp.png" />
       <p id="welcome-blurb">Even if your name isn't Maximus Decimus Meridius, we can still help you achieve your goals.
       </p>
-    </GlassBubble>
-
-    <GlassBubble id="buttons-bubble">
-      <button @click="$router.push('signinpage')">Sign In</button>
-      <button @click="$router.push('signuppage')">Sign Up</button>
     </GlassBubble>
   </div>
 </template>
@@ -21,13 +21,15 @@ import GlassBubble from './GlassBubble.vue';
 <style scoped>
 /* colour pallete idea */
 #landingpage {
-  width: 85vw;
+  width: fit-content;
+  margin: auto;
 }
 
 #landingpage-welcome {
   margin: auto;
   width: fit-content;
   font-size: large;
+  padding: 0px 20px;
 }
 
 #gladiator-thumbsup {
@@ -35,15 +37,17 @@ import GlassBubble from './GlassBubble.vue';
 }
 
 #welcome-blurb {
-  width: 60vw;
+  width: fit-content;
   margin: auto;
+  padding: 0px 10px;
+  width: 65vw;
 }
 
 #welcome-bubble {
   float: right;
   top: 50px;
-  width: 65vw;
-  padding: 20px 0px 5px;
+  width: fit-content;
+  padding: 20px 0px;
 }
 
 #buttons-bubble {
@@ -54,11 +58,35 @@ import GlassBubble from './GlassBubble.vue';
   float: left;
   top: 50;
   padding: 0px 20px;
-  max-width: 25vw;
+  width: fit-content;
+  /* max-width: 25vw; */
 }
 
 button {
   width: fit-content;
   margin: 2px auto;
+}
+
+@media only screen and (max-width: 600px) {
+  #welcome-bubble {
+    margin: auto;
+    position: unset;
+    float: unset;
+  }
+
+  #buttons-bubble {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: unset;
+    float: unset;
+    margin: 0px auto 10px;
+    padding: 0px 10px;
+  }
+
+  button {
+    margin: 2px 10px;
+  }
 }
 </style>
