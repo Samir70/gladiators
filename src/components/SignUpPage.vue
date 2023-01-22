@@ -21,7 +21,7 @@ const signUp = async () => {
   if (result.signUpFailed) {
     signUpStatus.value = {signUpFailed: true, msg: result.msg}
   } else {
-    store.commit("login", result)
+    store.commit("login", result.newUser)
     router.push("dashboard")
   }
 }
