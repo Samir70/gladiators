@@ -6,6 +6,7 @@ import { store } from "../store"
 //current user
 const user = ref(store.state.user)
 
+
 //for experience toggles
 let selectedBeginner = ref(true);
 let selectedIntermediate = ref(false);
@@ -29,7 +30,6 @@ function selectEquipment() {
 let currentPassword = ref("")
 let newPassword = ref("")
 let confirmPassword = ref("")
-
 
 const changePassword = async () => {
     let result = await fetch(`/.netlify/functions/updatePassword`, {
@@ -72,7 +72,9 @@ const updateExperience = async () => {
 </script>
 
 <template>
-
+<p>{{ selectedBeginner}} </p>
+<p>{{selectedIntermediate}} </p>
+<p>{{selectedAdvanced }}</p>
     <div id="pagecontainer">
         <GlassBubble>
             <div id="homebanner" style="display:inline-block;">
