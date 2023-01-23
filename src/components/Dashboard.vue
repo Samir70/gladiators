@@ -3,6 +3,7 @@ import { store } from "../store"
 import { ref } from "vue"
 import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
+import ShowExercise from "./ShowExercise.vue";
 
 const user = ref(store.state.user)
 const currentworkout = ref(store.state.currentworkout)
@@ -32,13 +33,13 @@ const currentworkout = ref(store.state.currentworkout)
         <div id="catalogue-current-container">
             <h1>Gladiator Dashboard</h1>
             <p v-if="user">{{ user.username }}</p>
-            <GlassBubble id="exercise-catalogue-bubble">
+            <GlassBubble id="current-workout-bubble">
+                <div v-for="exercise of currentworkout">
+                <ShowExercise :exercise="exercise"></ShowExercise>
+                </div>
                 <button class="button" @click="$router.push('exercisecatalogue')">
                     <p>Exercise Catalogue</p>
                 </button>
-            </GlassBubble>
-            <GlassBubble id="current-workout-bubble">
-                <p>{{currentworkout}}</p>
                 <button>
                     <p>Random Workout Generator</p>
                 </button>
@@ -140,7 +141,7 @@ h1 {
     height: 55vmin;
 }
 
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 990px) {
     #dashboard {
         flex-direction: column;
         margin: auto;
