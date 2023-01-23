@@ -6,14 +6,14 @@ export const store = createStore({
       user: { username: "Steve" },
       currentworkout: [
         {
-          _id: curlID,
+          _id: "curlID",
           name: "curl",
           tags: ["arms", "equipped", "hypertrophy", "strength"],
           experience: "B",
           bodyarea: "upper",
         },
         {
-          _id: squatID,
+          _id: "squatID",
           name: "squat",
           tags: ["legs", "equipped"],
           experience: "A",
