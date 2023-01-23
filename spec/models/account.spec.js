@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const seedAccounts = require("../../models/seedaccount");
 require("../mongodb_helper");
-const Account = require("../../models/account");
+const { Account } = require("../../models/account");
 
 describe("Account model", () => {
   beforeEach((done) => {
@@ -9,9 +9,9 @@ describe("Account model", () => {
     //   done();
     // });
     seedAccounts().then(() => {
-      console.log("from beforeEach")
-      done()
-    })
+      console.log("from beforeEach");
+      done();
+    });
     // (()=>{
     //   console.log("from beforeEach")
     //   done()
@@ -21,15 +21,15 @@ describe("Account model", () => {
     const account = new Account({
       email: "someone@example.com",
       password: "password",
-      username: "somebody"
+      username: "somebody",
     });
 
     Account.find((err, accounts) => {
       expect(err).toBeNull();
       console.log("accounts:", accounts);
       expect(accounts.length).toEqual(4);
-      done()
-    })
+      done();
+    });
   });
 
   it("can create an account object with the right properties", () => {
@@ -38,7 +38,7 @@ describe("Account model", () => {
       password: "lightning123",
       username: "Lightning",
       experience: "A",
-      equipment: true
+      equipment: true,
     });
     expect(account.email).toEqual("lightning@msn.com");
     expect(account.password).toEqual("lightning123");
@@ -53,16 +53,17 @@ describe("Account model", () => {
       password: "lightning123",
       username: "Lightning",
       experience: "A",
-      equipment: true
+      equipment: true,
     });
-    await account.save()
-    Account.findOne({username: "Lightning"}), (err, accountDetails) => {
-    expect(err).toBeNull()
-    expect(accountDetails.email).toEqual("lightning@msn.com");
-    expect(accountDetails.password).toEqual("lightning123");
-    expect(accountDetails.username).toEqual("Lightning");
-    expect(accountDetails.experience).toEqual("A");
-    expect(accountDetails.equipment).toEqual(true);
-  }
+    await account.save();
+    Account.findOne({ username: "Lightning" }),
+      (err, accountDetails) => {
+        expect(err).toBeNull();
+        expect(accountDetails.email).toEqual("lightning@msn.com");
+        expect(accountDetails.password).toEqual("lightning123");
+        expect(accountDetails.username).toEqual("Lightning");
+        expect(accountDetails.experience).toEqual("A");
+        expect(accountDetails.equipment).toEqual(true);
+      };
   });
-  });
+});
