@@ -2,7 +2,8 @@
 import GlassBubble from "../GlassBubble.vue";
 import { ref } from "vue";
 import { propsToAttrMap } from "@vue/shared";
-import { store } from "../store"
+import { useRouter } from "vue-router";
+import { store } from "../../store"
 
 document
   .querySelectorAll(".muscle-groups svg g g[id]")
@@ -41,6 +42,8 @@ const props = defineProps({
   tag: String,
 });
 
+const router = useRouter()
+
 // let results = [{ username: "Bob" }, { username: "Sally" }];
 let exercises = ref([]);
 const getExercises = async () => {
@@ -55,9 +58,29 @@ const getExercises = async () => {
     console.error(error);
   }
 };
+
+const addExercise = async (exercise) => {
+  console.log("add exercise to array", exercise)
+  // let result = await fetch(`/.netlify/functions/addExercise`, {
+  //   method: "POST",
+  //   body: JSON.stringify({ name: exercises.name })
+  // }).then(response => response.json())
+  // console.log("Exercise:", result)
+  store.commit("add_to_workout", exercise)
+  router.push("dashboard")
+  return
+}
+
+
 console.log(props.tag);
 getExercises();
 </script>
+
+
+
+
+
+
 
 <template>
   <!--
@@ -75,10 +98,19 @@ getExercises();
     <GlassBubble>
       <p v-for="exercise of exercises">
         <button>{{ exercise.name }}</button>
+        <button @click="addExercise(exercise)" >Add to Workout</button>
       </p>
     </GlassBubble>
   </div>
 </template>
+
+
+
+
+
+
+
+
 
 <style lang="scss" scoped>
 $black: #333;

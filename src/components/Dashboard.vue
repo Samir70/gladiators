@@ -7,6 +7,7 @@ import GlassBubble from './GlassBubble.vue';
 // import ButtonIcon from './ButtonIcon.vue';
 
 const user = ref(store.state.user)
+const currentworkout = ref(store.state.currentworkout)
 
 </script>
 
@@ -113,7 +114,7 @@ const user = ref(store.state.user)
    <br>
 
    <GlassBubble id="current-workout-bubble">
-    <p>current workout</p>
+    <p>{{currentworkout}}</p>
 
     <br>
 
