@@ -43,7 +43,7 @@ const props = defineProps({
 
 // let results = [{ username: "Bob" }, { username: "Sally" }];
 let results = ref([])
-const getStrength = async () => {
+const getExercises = async () => {
   try {
     results.value = await fetch("/.netlify/functions/getExercises", {
       method: "POST",
@@ -56,7 +56,7 @@ const getStrength = async () => {
   }
 }
 console.log(props.tag)
-getStrength();
+getExercises();
 
 </script>
 
