@@ -5,6 +5,7 @@ import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
 
 const user = ref(store.state.user)
+const currentworkout = ref(store.state.currentworkout)
 
 </script>
 <template>
@@ -37,7 +38,7 @@ const user = ref(store.state.user)
                 </button>
             </GlassBubble>
             <GlassBubble id="current-workout-bubble">
-                <p>current workout</p>
+                <p>{{currentworkout}}</p>
                 <button>
                     <p>Random Workout Generator</p>
                 </button>

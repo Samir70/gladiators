@@ -6,10 +6,11 @@ const clientPromise = mongoClient.connect();
 
 const handler = async (event) => {
   try {
-    console.log("In getExercises function");
+    let tag = JSON.parse(event.body).tag
+    console.log("In getExercises function", tag);
     const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
     const collection = db.collection("exercises");
-    const results = await collection.find({}).toArray();
+    const results = await (await collection.find({}).toArray()).filter(e => e.tags.includes(tag));
     console.log("from getExercises:", results[0]);
     return { statusCode: 200, body: JSON.stringify(results) };
   } catch (error) {
