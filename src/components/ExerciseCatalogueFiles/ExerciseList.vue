@@ -1,6 +1,7 @@
 <script setup>
 import GlassBubble from '../GlassBubble.vue';
 import { ref } from 'vue'
+import { propsToAttrMap } from '@vue/shared';
 
 document
   .querySelectorAll(".muscle-groups svg g g[id]")
@@ -36,26 +37,32 @@ document
   });
 
 
-defineProps({
-  msg: String,
+const props = defineProps({
+  tag: String,
 })
 
 // let results = [{ username: "Bob" }, { username: "Sally" }];
 let results = ref([])
 const getStrength = async () => {
   try {
-    results.value = await fetch("/.netlify/functions/getStrength").then(response => response.json())
+    results.value = await fetch("/.netlify/functions/getExercises", {
+      method: "POST",
+      body: JSON.stringify({
+        tag: props.tag
+      })
+    }).then(response => response.json())
   } catch (error) {
     console.error(error)
   }
 }
-
+console.log(props.tag)
 getStrength();
 
 </script>
 
 <template>
   <p>{{ results }}</p>
+  <p> {{ tag }}</p>
       <div id="strength-div">
       <GlassBubble id="strength-bubble">
         <p>Pick an exercise to see the parts used</p>

@@ -2,9 +2,7 @@
 import { ref } from "vue";
 import GlassBubble from "./GlassBubble.vue";
 import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBody.vue";
-import StrengthScript from "./ExerciseCatalogueFiles/StrengthScript.vue";
-import FlexScript from "./ExerciseCatalogueFiles/FlexScript.vue";
-import CardioScript from "./ExerciseCatalogueFiles/CardioScript.vue";
+import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
 let show = ref("");
 </script>
 
@@ -70,9 +68,11 @@ let show = ref("");
     </div>
   </GlassBubble>
 
-  <StrengthScript v-if="show == 'strength' || show == 'all'"></StrengthScript>
-  <CardioScript v-if="show == 'cardio' || show == 'all'"> </CardioScript>
-  <FlexScript v-if="show == 'flex' || show == 'all'"> </FlexScript>
+  <ExerciseList v-if="show == 'strength' || show == 'all'" tag="strength"></ExerciseList>
+  <ExerciseList v-if="show == 'flex' || show == 'all'" tag="flex"></ExerciseList>
+  <ExerciseList v-if="show == 'cardio' || show == 'all'" tag="cardio"></ExerciseList>
+  
+
 
   <div id="Body">
     <ExerciseCatalogueBody> </ExerciseCatalogueBody>
