@@ -1,5 +1,5 @@
-describe('template spec', () => {
-  it('passes', () => {
+describe('Signup survey component', () => {
+  it('can select options and submit it before revealing another selection (experience level -> equipment status and then redirects on last confirmation', () => {
     cy.visit("http://localhost:8888/#/Survey");
     cy.get('button[id="experienceupdate"]').should('exist')
     cy.get('input[id="selectedBeginner"]').should('be.checked')
