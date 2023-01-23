@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const seedAccounts = require("../../models/seedaccount");
 require("../mongodb_helper");
 const Account = require("../../models/account");
+// const updatePass = require("../../netlify/functions/updatePassword")
+
 
 describe("Account model", () => {
   beforeEach((done) => {
@@ -65,4 +67,23 @@ describe("Account model", () => {
     expect(accountDetails.equipment).toEqual(true);
   }
   });
+  it("updates a password given the right credentials", async () => {
+    const newAccount = new Account({
+        username: "newAccount",
+        password: "password",
+        email: "email@newaccount.com"
+    })
+    await newAccount.save()
+    // const body = JSON.stringify({ password: "password1", username: "newAccount", currentPass: "password", confirmPass: "password1" })
+    // await updatePass(body).then(function (response) { return response.json() }).then(function (data) {expect(data.msg).toEqual("Password changed!")} 
+    // )
+        let result = await fetch(`../../netlify/functions/updatePassword`, {
+            method: "POST",
+            body: JSON.stringify({ password: "password1", username: "newAccount", currentPass: "password", confirmPass: "password1" })
+        }).then(function (response) { return response.json() }).then(function (data) {expect(data.msg).toEqual("Password changed!") })
+    })
+    
+    
+    
+   
   });

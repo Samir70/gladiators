@@ -10,6 +10,7 @@ import GuideAndTipsPage from "./components/GuideAndTipsPage.vue";
 import HistoryPage from "./components/HistoryPage.vue";
 import MilestonePage from "./components/MilestonePage.vue";
 import UpdatePage from "./components/UpdatePage.vue";
+import SignupSurvey from "./components/SignupSurvey.vue"
 
 export const routes = [
   // { path: "/hello", name: "HelloWorld", component: HelloWorld },
@@ -24,4 +25,6 @@ export const routes = [
   { path: "/History", name: "HistoryPage", component: HistoryPage },
   { path: "/Milestones", name: "MilestonePage", component: MilestonePage },
   { path: "/UpdateDetails", name: "UpdatePage", component: UpdatePage },
+  { path: "/Survey", name: "SignupSurvey", component: SignupSurvey },
+  
 ];
