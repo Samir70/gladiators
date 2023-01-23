@@ -1,7 +1,8 @@
 <script setup>
-import GlassBubble from '../GlassBubble.vue';
-import { ref } from 'vue'
-import { propsToAttrMap } from '@vue/shared';
+import GlassBubble from "../GlassBubble.vue";
+import { ref } from "vue";
+import { propsToAttrMap } from "@vue/shared";
+import { store } from "../store"
 
 document
   .querySelectorAll(".muscle-groups svg g g[id]")
@@ -36,45 +37,50 @@ document
     });
   });
 
-
 const props = defineProps({
   tag: String,
-})
+});
 
 // let results = [{ username: "Bob" }, { username: "Sally" }];
-let results = ref([])
+let exercises = ref([]);
 const getExercises = async () => {
   try {
-    results.value = await fetch("/.netlify/functions/getExercises", {
+    exercises.value = await fetch("/.netlify/functions/getExercises", {
       method: "POST",
       body: JSON.stringify({
-        tag: props.tag
-      })
-    }).then(response => response.json())
+        tag: props.tag,
+      }),
+    }).then((response) => response.json());
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
-console.log(props.tag)
+};
+console.log(props.tag);
 getExercises();
-
 </script>
 
 <template>
-  <p>{{ results }}</p>
-  <p> {{ tag }}</p>
-      <div id="strength-div">
-      <GlassBubble id="strength-bubble">
-        <p>Pick an exercise to see the parts used</p>
-        <div id="curls-button">
-          <button @click="show = 'curls'">Curls</button>
-        </div>
-      </GlassBubble>
+  <!--
+        Description of exercise (maybe later)  
+        Add button / toggle
+
+        
+  -->
+  <!-- <p>{{ results }}</p> -->
+  <!-- <p> {{ tag }}</p> -->
+
+  <h2>Pick an exercise</h2>
+
+  <div id="exercise-buttons">
+    <GlassBubble>
+      <p v-for="exercise of exercises">
+        <button>{{ exercise.name }}</button>
+      </p>
+    </GlassBubble>
   </div>
 </template>
 
 <style lang="scss" scoped>
-
 $black: #333;
 $white: #eee;
 $color-1: #00bcd4;
@@ -107,15 +113,15 @@ $svg-z: 100;
     font-size: 0.8rem;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    text-align:left
+    text-align: left;
   }
   h3 {
-    text-align:left;
+    text-align: left;
     margin: 0 0 0.5rem;
     font-size: 0.8rem;
     letter-spacing: -0.03em;
     text-transform: uppercase;
-    text-align:left
+    text-align: left;
   }
   label + h2 {
     margin-top: 1rem;

@@ -37,7 +37,7 @@ let show = ref("");
       <h1>All Exercises Catalogue</h1>
     </div>
   </div>
-
+  
   <GlassBubble>
     <div id="All-button">
       <button @click="show = 'all'">All</button>

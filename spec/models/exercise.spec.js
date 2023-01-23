@@ -14,7 +14,7 @@ describe("Exercise model", () => {
       Exercise.find((err, exercises) => {
           expect(err).toBeNull();
           console.log("exercises:", exercises);
-          expect(exercises.length).toEqual(4);
+          expect(exercises.length).toEqual(10);
           expect(exercises[0].tags).toContain("arms")
           expect(exercises[0].experience).toEqual("B")
           done()
