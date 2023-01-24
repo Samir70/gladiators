@@ -1,4 +1,4 @@
-import ExerciseCatalogue from './ExerciseCatalogue.vue'
+import ExerciseCatalogue from '../src/components/ExerciseCatalogue.vue'
 
 describe('<ExerciseCatalogue />', () => {
   it('renders', () => {
