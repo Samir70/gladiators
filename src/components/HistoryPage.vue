@@ -17,6 +17,16 @@ import GlassBubble from './GlassBubble.vue';
     </GlassBubble>
 
 
+    <div id="bodycontainer">
+
+
+
+
+
+      
+    </div>
+
+
 </template>
 
 <style scoped>
