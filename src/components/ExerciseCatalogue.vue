@@ -10,7 +10,6 @@ let show = ref("");
 
 const exercisecount = ref(store.state.currentworkout.length);
 const exAdded = (exercise) => {
-  console.log("Log this exercise", exercise)
   exercisecount.value += 1;
 }
 
@@ -100,7 +99,7 @@ export default {
     <div id="current-workout">
       <GlassBubble>
         <p>{{ exercisecount }} of 5 exercises selected</p>
-
+        
       </GlassBubble>
     </div>
 

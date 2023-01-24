@@ -70,6 +70,13 @@ const addExercise = async (exercise) => {
   return
 }
 
+const removeExercise = async (exercise) => {
+  console.log("remove exercise from array", exercise)
+  store.commit("remove_from_workout", exercise);
+  // router.push("dashboard")
+  return
+}
+
 const showDescription = async(exercise) => {
   let desc = exercise.description
   window.alert(desc)
@@ -88,6 +95,7 @@ getExercises();
       <p v-for="exercise of exercises">
         <button @click="showDescription(exercise)">{{ exercise.name }}</button>
         <button @click="addExercise(exercise);">Add to Workout</button>
+        <button @click="removeExercise(exercise);">Remove from Workout</button>
       </p>
     </GlassBubble>
   </div>

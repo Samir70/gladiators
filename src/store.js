@@ -15,6 +15,6 @@ export const store = createStore({
         add_to_workout(state, payload) {
             console.log("adding this: ", payload)
             state.currentworkout = state.currentworkout.concat(payload)
-        }
+        },
     }
 })
