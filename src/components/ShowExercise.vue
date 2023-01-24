@@ -10,7 +10,7 @@ const props = defineProps({
         <div :id="`${exercise._id}-title`">{{ exercise.name }}</div>
         <div class="exercise-buttons">
             <button class="exercise-button">Start</button>
-            <button class="exercise-button">Skip</button>
+            <button class="exercise-button">Remove</button>
             <button class="exercise-button">Done</button>
         </div>
     </GlassBubble>

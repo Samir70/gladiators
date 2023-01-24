@@ -4,10 +4,16 @@ import { store } from "../store";
 import GlassBubble from "./GlassBubble.vue";
 import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBody.vue";
 import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
+import ShowExercise from "./ShowExercise.vue";
+
 let show = ref("");
 
-const currentworkout = ref(store.state.currentworkout);
 const exercisecount = ref(store.state.currentworkout.length);
+const exAdded = (exercise) => {
+  console.log("Log this exercise", exercise)
+  exercisecount.value += 1;
+}
+
 </script>
 
 <script>
@@ -71,9 +77,16 @@ export default {
       </GlassBubble>
     </div>
 
-    <ExerciseList
+    <div v-for="choice in ['strength', 'flex', 'cardio']">
+      <ExerciseList
+      v-if="show == choice || show == 'all'"
+      :tag="choice" @exercise-added="exAdded"
+    ></ExerciseList>
+    </div>
+
+    <!-- <ExerciseList
       v-if="show == 'strength' || show == 'all'"
-      tag="strength"
+      tag="strength" @exercise-added="exAdded"
     ></ExerciseList>
     <ExerciseList
       v-if="show == 'flex' || show == 'all'"
@@ -82,15 +95,12 @@ export default {
     <ExerciseList
       v-if="show == 'cardio' || show == 'all'"
       tag="cardio"
-    ></ExerciseList>
+    ></ExerciseList> -->
 
     <div id="current-workout">
       <GlassBubble>
         <p>{{ exercisecount }} of 5 exercises selected</p>
-        <button id="refreshworkout" @click="refreshPage()">
-          Refresh Workout
-        </button>
-        <p>{{currentworkout}}</p>
+
       </GlassBubble>
     </div>
 
@@ -133,6 +143,11 @@ export default {
     transform: scale(0.75);
     height: fit-content;
   }
+}
+
+#Body {
+  position: relative;
+  top: -150px
 }
 
 #current-workout {

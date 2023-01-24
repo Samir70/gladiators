@@ -42,6 +42,8 @@ const props = defineProps({
   tag: String,
 });
 
+const emit = defineEmits(["exerciseAdded"])
+
 const router = useRouter()
 
 // let results = [{ username: "Bob" }, { username: "Sally" }];
@@ -63,13 +65,14 @@ const addExercise = async (exercise) => {
   console.log("add exercise to array", exercise)
 
   store.commit("add_to_workout", exercise);
+  emit("exerciseAdded", exercise)
   // router.push("dashboard")
   return
 }
 
-const showDescription = async (exercise) => {
-  console.log("show the description", exercise)
-  window.alert("Description goes here")  
+const showDescription = async(exercise) => {
+  let desc = exercise.description
+  window.alert(desc)
 }
 
 console.log(props.tag);
@@ -83,7 +86,7 @@ getExercises();
   <div id="exercise-buttons">
     <GlassBubble>
       <p v-for="exercise of exercises">
-        <button @click="showDescription(exercise)">{{ exercise.name }}</button> <!-- // maybe an alert with the name of the added exercise as well? -->
+        <button @click="showDescription(exercise)">{{ exercise.name }}</button>
         <button @click="addExercise(exercise);">Add to Workout</button>
       </p>
     </GlassBubble>
@@ -98,108 +101,6 @@ getExercises();
 
 
 
-<style lang="scss" scoped>
-$black: #333;
-$white: #eee;
-$color-1: #00bcd4;
-$label-z: 200;
-$svg-z: 100;
-.muscle-groups {
-  // whole thing
-  float: left;
-  position: sticky;
-  background: #eee;
-  width: 320px;
-  height: 390px;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  box-shadow: 2px 2px 5px 0 rgba(black, 0.5);
-  overflow: hidden;
-  border-top: 0.75rem solid $color-1;
-  // text is now hidden
-  h1 {
-    margin: -0.5rem -1rem 1rem;
-    padding: 0 1rem 0.75rem;
-    background: $color-1;
-    color: $white;
-    text-align: center;
-    font-size: 1.25rem;
-  }
-  h2 {
-    position: relative;
-    margin: 0 0 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    text-align: left;
-  }
-  h3 {
-    text-align: left;
-    margin: 0 0 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    text-align: left;
-  }
-  label + h2 {
-    margin-top: 1rem;
-  }
-  label {
-    width: 50px;
-    display: block;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    font-size: 0.7rem;
-    opacity: 0.5;
-    position: left;
-    z-index: $label-z;
-    border-left: 5px solid transparent;
-    padding-left: 6px;
-    margin-left: -11px;
-    &:hover,
-    &.hover {
-      opacity: 1;
-      border-color: rgba($black, 0.75);
-    }
-  }
-  input:checked + label {
-    opacity: 1;
-    font-weight: bold;
-    color: $color-1;
-  }
+<style scoped>
 
-  //picturess
-  svg {
-    position: absolute;
-    align-items: right;
-    right: -1.5rem;
-    bottom: 3rem;
-    height: 320px;
-    z-index: $svg-z;
-  }
-  svg g[id] path {
-    opacity: 0.2;
-    transition: opacity 0.25s ease-in-out;
-  }
-  svg g g[id]:hover path {
-    cursor: pointer;
-    opacity: 0.5;
-    fill: $color-1 !important;
-  }
-  .muscles-helper {
-    display: none;
-  }
-  $groups: obliques, abs, quads, biceps, adductors, pectorals, deltoids,
-    hamstrings, quads, forearms, calves, triceps, glutes, lats, trapezius;
-  @each $muscle in $groups {
-    $upper: to-upper-case(str-slice($muscle, 1, 1)) + str-slice($muscle, 2);
-    label[for="#{$muscle}"]:hover ~ svg ##{$upper} path {
-      opacity: 0.75;
-    }
-    .#{$muscle}:checked ~ svg ##{$upper} path {
-      opacity: 0.8;
-      fill: $color-1 !important;
-    }
-  }
-}
 </style>
