@@ -1,4 +1,4 @@
-import LandingPage from './LandingPage.vue'
+import LandingPage from '../../../src/components/LandingPage.vue'
 
 describe('<LandingPage />', () => {
   it('renders', () => {

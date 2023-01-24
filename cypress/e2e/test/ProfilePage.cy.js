@@ -1,4 +1,4 @@
-import ProfilePage from './ProfilePage.vue'
+import ProfilePage from '../../../src/components/ProfilePage.vue'
 
 describe('<ProfilePage />', () => {
   it('renders', () => {

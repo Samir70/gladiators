@@ -1,4 +1,4 @@
-import SignUpPage from "./SignUpPage.vue";
+import SignUpPage from "../../../src/components/SignUpPage.vue";
 
 describe("<SignUpPage />", () => {
   it("renders", () => {

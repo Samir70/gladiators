@@ -1,4 +1,4 @@
-import Dashboard from './Dashboard.vue'
+import Dashboard from '../../../src/components/Dashboard.vue'
 
 describe('<Dashboard />', () => {
   it('renders', () => {

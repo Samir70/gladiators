@@ -1,4 +1,4 @@
-import TanyasPage from './TanyasPage.vue'
+import TanyasPage from '../../../src/components/TanyasPage.vue'
 
 describe('<TanyasPage />', () => {
   it('renders', () => {
