@@ -79,21 +79,21 @@ const updateExperience = async () => {
                     <label>
                         <input id="selectedBeginner" type="checkbox" :value="false" v-model="selectedBeginner"
                             :disabled="selectedBeginner" @click="selectExperience" />
-                        <span>Beginner <img class=toggles src="beginner.png"></span>
+                        <span>Beginner <img class=toggles src="/beginner.png"></span>
                     </label>
 
                     <label>
                         <input id="selectedIntermediate" type="checkbox" v-model="selectedIntermediate"
                             :disabled="selectedIntermediate" @click="selectExperience" />
-                        <span>Intermediate <img class=toggles src="intermediate.png"></span>
+                        <span>Intermediate <img class=toggles src="/intermediate.png"></span>
                     </label>
 
                     <label>
                         <input id="selectedAdvanced" type="checkbox" v-model="selectedAdvanced"
                             :disabled="selectedAdvanced" @click="selectExperience" />
-                        <span>Advanced <img class=toggles src="advanced.png"></span>
+                        <span>Advanced <img class=toggles src="/advanced.png"></span>
                     </label> <br>
-                    <button v-on:click="updateExperience" id="experienceupdate"> Confirm</button>
+                    <button v-on:click="updateExperience" id="/experienceupdate"> Confirm</button>
                 </div>
 
                 <div id="equipment" style="display:none">
@@ -103,13 +103,13 @@ const updateExperience = async () => {
                         <!-- checkbox, v-model links the model to userinput (here it is when a user checks the box (onclick) which then changes the value of v-model to false (triggers disabled)) -->
                         <input id="selectedUnequipped" type="checkbox" v-model="selectedUnequipped"
                             :disabled="selectedUnequipped" @click="selectEquipment" />
-                        <span>No <img class=toggles src="noequipment.png"></span>
+                        <span>No <img class=toggles src="/noequipment.png"></span>
                     </label>
 
                     <label>
                         <input id="selectedEquipped" type="checkbox" :value="false" v-model="selectedEquipped"
                             :disabled="selectedEquipped" @click="selectEquipment" />
-                        <span>Yes <img class=toggles src="equipment.png"></span> <br>
+                        <span>Yes <img class=toggles src="/equipment.png"></span> <br>
                         <button v-on:click="updateEquipment" id="equipmentupdate">Confirm</button>
                     </label>
                 </div>
