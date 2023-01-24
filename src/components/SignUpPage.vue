@@ -17,7 +17,7 @@ const signUp = async () => {
   let result = await fetch(`/.netlify/functions/addUser?email=${newUserEmail.value}&username=${newUserName.value}&password=${newUserPassword.value}`).then(response => response.json())
   console.log("From SignUp Page", result)
   store.commit("login", result)
-  router.push("dashboard")
+  router.push("survey")
 }
 </script>
 
