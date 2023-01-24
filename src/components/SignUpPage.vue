@@ -22,7 +22,7 @@ const signUp = async () => {
     signUpStatus.value = {signUpFailed: true, msg: result.msg}
   } else {
     store.commit("login", result.newUser)
-    router.push("dashboard")
+    router.push("survey")
   }
 }
 </script>

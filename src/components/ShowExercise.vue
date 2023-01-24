@@ -33,7 +33,6 @@ function increment() {
     justify-content: space-between;
     padding: 2px 10px;
 }
-
 .exercise-button {
     margin: 0px 3px;
 }

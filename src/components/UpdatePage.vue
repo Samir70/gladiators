@@ -6,73 +6,57 @@ import { store } from "../store"
 //current user
 const user = ref(store.state.user)
 
-//for experience toggles
-let selectedBeginner = ref(true);
-let selectedIntermediate = ref(false);
-let selectedAdvanced = ref(false);
-//maybe these will actually need to be pulled out of the database for each account
-//maybe would have to be 'selected({{user.experience}}) or something? and then have that =ref(true); we would initialise ref(false) for all 3 initially'
-function selectExperience() {
-    selectedBeginner.value = !selectedBeginner;
-    selectedIntermediate.value = !selectedIntermediate;
-    selectedAdvanced.value = !selectedAdvanced;
-    //need to add a route to send this to the database to update
-}
-//for equipment toggles
-let selectedUnequipped = ref(true);
-let selectedEquipped = ref(false);
-//if the value for equipped is selected, the toggle ref toggle is inverted
-function selectEquipment() {
-    selectedEquipped.value = !selectedEquipped;
-    selectedUnequipped.value = !selectedUnequipped;
-}
+//experience v-model
+let experience = ref("")
+//equipment v-model
+let equipmentStatus = ref("");
+
 let currentPassword = ref("")
 let newPassword = ref("")
 let confirmPassword = ref("")
+let updateMessage = ref("")
+// let completedPassForm = ref(currentPassword.value == "") // || newPassword.value === "" || confirmPassword.value === "")
 
 
 const changePassword = async () => {
-    let result = await fetch(`/.netlify/functions/updatePassword`, {
-        method: "POST",
-        body: JSON.stringify({ password: newPassword.value, username: user.value.username, currentPass: currentPassword.value, confirmPass: confirmPassword.value })
-    }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
+    if (currentPassword.value === user.value.password) {
+        if (newPassword.value === confirmPassword.value) {
+            let result = await fetch(`/.netlify/functions/updatePassword`, {
+                method: "POST",
+                body: JSON.stringify({ password: newPassword.value, username: user.value.username, currentPass: currentPassword.value, confirmPass: confirmPassword.value })
+            }).then(response => console.log(response))
+            updateMessage.value = "Password updated!"
+        } else {
+            updateMessage.value = "New passwords do not match. Please try again."
+        }} else {
+        //current pass is incorrect
+        updateMessage.value = "Incorrect password. Please try again."
+    }
 }
 
 //update equipment
 const updateEquipment = async () => {
     let result = await fetch(`/.netlify/functions/updateEquipment`, {
         method: "POST",
-        body: JSON.stringify({ equipped: selectedEquipped.value, username: user.value.username })
+        body: JSON.stringify({ equipped: equipmentStatus.value, username: user.value.username })
     }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
-    //only thing to be returned would be a mesasge that says update.. though no necessary - maybe leave out
+
 }
 
 //update experience
 const updateExperience = async () => {
     //get the true button
-    let experienceLevel = null;
-    if (selectedBeginner.value) {
-        experienceLevel = "B"
-    }
-    else if (selectedIntermediate.value) {
-        experienceLevel = "I"
-    }
-    else {
-        experienceLevel = "A"
-    }
     let result = await fetch(`/.netlify/functions/updateExperience`, {
         method: "POST",
-        body: JSON.stringify({ experience: experienceLevel, username: user.value.username })
+        body: JSON.stringify({ experience: experience.value, username: user.value.username })
     }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
 }
-
 
 
 
 </script>
 
 <template>
-
     <div id="pagecontainer">
         <GlassBubble>
             <div id="homebanner" style="display:inline-block;">
@@ -87,62 +71,65 @@ const updateExperience = async () => {
 
         <div id=mainbody>
             <GlassBubble id="passwordchangecontainer">
-                <h2> Change your password </h2>
-                <input type="password" v-model="currentPassword" id="current-password" name="current-password" required>
-                <label for="current-password"> Current Password</label>
-                <br>
-                <input type="password" v-model="newPassword" id="new-password" name="new-password" required>
-                <label for="new-password"> New Password</label>
-                <br>
-                <input type="password" v-model="confirmPassword" id="confirm-password" name="confirm-password" required>
-                <label for="confirm-password"> Confirm New Password</label><br>
-                <!-- <div id="passwordmessage">{{ passwordMessage }}</div> to do -> return message-->
-                <input v-on:click="changePassword" type="submit" value="Submit">
+                <fieldset>
+                    <h2> Change your password </h2>
+                    <input type="password" v-model="currentPassword" id="current-password" name="current-password"
+                        required>
+                    <label for="current-password"> Current Password</label>
+                    <br>
+                    <input type="password" v-model="newPassword" id="new-password" name="new-password" required>
+                    <label for="new-password"> New Password</label>
+                    <br>
+                    <input type="password" v-model="confirmPassword" id="confirm-password" name="confirm-password"
+                        required>
+                    <label for="confirm-password"> Confirm New Password</label><br>
+                    <div id="passwordUpdateComments">
+                        <p id="updateMessageContainer" v-if="updateMessage"> {{ updateMessage }}</p>
+                        <p></p>
 
+                    </div>
+                    <input v-bind:disabled="currentPassword === '' || newPassword === '' || confirmPassword === ''"
+                        v-on:click="changePassword" type="submit" value="Submit" id="passwordSubmitButton">
+                    <!-- <div id="passwordmessage">{{ passwordMessage }}</div> to do -> return message-->
+                </fieldset>
             </GlassBubble>
 
 
             <GlassBubble id="aboutcontainer">
                 <h2> About you </h2>
-                <div id="experience">
-                    <h4 style="display:inline-block">Your experience level</h4><br>
-                    <label>
-                        <input id="selectedBeginner" type="checkbox" :value="false" v-model="selectedBeginner" :disabled="selectedBeginner"
-                            @click="selectExperience" />
-                        <span>Beginner <img class=toggles src="/beginner.png"></span>
-                    </label>
+                <fieldset id="experiencechangebox">
+                    <h1> Your experience level </h1>
+                    <input type="radio" v-model="experience" name="experienceselection" id="beginner"
+                        value="B">Beginner<img class=toggles src="beginner.png">
+                    <input type="radio" v-model="experience" name="experienceselection" id="intermediate"
+                        value="I">Intermediate<img class=toggles src="intermediate.png">
+                    <input type="radio" v-model="experience" name="experienceselection" id="advanced"
+                        value="A">Advanced<img class=toggles src="advanced.png">
+                    <div id="experienceSelectionComments">
+                        <p v-if="experience === 'B'">You have just started on your journey to becoming a champion. </p>
+                        <p v-if="experience === 'I'">You are a challenger and know most movements. </p>
+                        <p v-if="experience === 'A'">You are a champion and can handle advanced movements. </p>
+                        <p v-if="experience == ''"> Select an option to update your experience level. </p>
+                    </div>
+                    <button v-bind:disabled="experience === ''" v-on:click="updateExperience" id="experienceUpdateButton">
+                        Update</button><br>
+                </fieldset><br>
+                <!-- <span>You've chosen {{ experience }}</span><br><br> -->
 
-                    <label>
-                        <input id="selectedIntermediate" type="checkbox" v-model="selectedIntermediate" :disabled="selectedIntermediate"
-                            @click="selectExperience" />
-                        <span>Intermediate <img class=toggles src="/intermediate.png"></span>
-                    </label>
-
-                    <label>
-                        <input id="selectedAdvanced" type="checkbox" v-model="selectedAdvanced" :disabled="selectedAdvanced"
-                            @click="selectExperience" />
-                        <span>Advanced <img class=toggles src="/advanced.png"></span>
-                    </label> <br>
-                    <button v-on:click="updateExperience" id="experienceupdate"> Update</button>
-                </div>
-
-                <div id="equipment">
-                    <h4 style="display:inline-block">Equipment access</h4><br>
-
-                    <label>
-                        <!-- checkbox, v-model links the model to userinput (here it is when a user checks the box (onclick) which then changes the value of v-model to false (triggers disabled)) -->
-                        <input id="selectedUnequipped" type="checkbox" v-model="selectedUnequipped" :disabled="selectedUnequipped"
-                            @click="selectEquipment" /> 
-                        <span>No <img class=toggles src="/noequipment.png"></span>
-                    </label>
-
-                    <label>
-                        <input id="selectedEquipped" type="checkbox" :value="false" v-model="selectedEquipped" :disabled="selectedEquipped"
-                            @click="selectEquipment" />
-                        <span>Yes <img class=toggles src="/equipment.png"></span> <br>
-                        <button id="equipmentupdate">Update</button>
-                    </label>
-                </div>
+                <fieldset id="equipmentchangebox">
+                    <h1>Equipment access</h1><br>
+                    <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="notequipped"
+                        value="false">No<img class=toggles src="noequipment.png">
+                    <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="equipped"
+                        value="true">Yes <img class=toggles src="equipment.png">
+                    <div id="equipmentSelectionComments">
+                        <p v-if="equipmentStatus === 'true'">You do have access to equipment/facilities. </p>
+                        <p v-if="equipmentStatus === 'false'">You do not have access to equipment/facilities.</p>
+                        <p v-if="equipmentStatus == ''"> Select an option to update your equipment preference.</p>
+                    </div>
+                    <button id=equipmentUpdateButton v-bind:disabled="equipmentStatus === ''" v-on:click="updateEquipment">
+                        Update</button><br>
+                </fieldset><br>
 
             </GlassBubble>
         </div>

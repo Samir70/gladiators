@@ -1,16 +1,18 @@
-import UpdatePage from './UpdatePage.vue'
+const { ConstantTypes } = require("@vue/compiler-core")
 
-describe('<UpdatePage />', () => {
-  it('renders', () => {
-    // see: https://on.cypress.io/mounting-vue
-    cy.mount(UpdatePage)
+describe('template spec', () => {
+  // before(() => {
+  //   Cypress.env('password', 'password') //for password validation
+  // })
+  it('renders the page', () => {
+    cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get("#homebutton").contains("Home")
     cy.get("#pagecontainer")
     cy.get("#homebanner")
     cy.get("#updatepage-title").contains("Your details")
   })
   it('has a change password container that has an input', () => {
-    cy.mount(UpdatePage)
+    cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get("#pagecontainer")
     cy.get("#mainbody")
     cy.get("#passwordchangecontainer").find("input")
@@ -19,8 +21,20 @@ describe('<UpdatePage />', () => {
     cy.get("#confirm-password").should("have.attr", "type", "password")
     cy.get('input[type="submit"]').should('exist')
   })
+  it('gives you messages for an incorrect password change that reflect the current state', () => {
+    cy.visit("http://localhost:8888/#/UpdateDetails")
+    cy.get('#passwordSubmitButton').should('be.disabled')
+    cy.get('input[id="current-password"]').type('hello').should('have.value','hello')
+    cy.get('#passwordSubmitButton').should('be.disabled')
+    cy.get('input[id="new-password"]').type('world').should('have.value','world')
+    cy.get('#passwordSubmitButton').should('be.disabled')
+    cy.get('input[id="confirm-password"]').type('itsmemario').should('have.value', 'itsmemario')
+    cy.get('#passwordSubmitButton').click()
+    cy.get('#updateMessageContainer').should('contain', 'Incorrect password')
+
+  })
   it('allows you to select equipment yes or no', () => {
-    cy.mount(UpdatePage)
+    cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get("#equipmentSelectionComments").should('contain', 'Select an option to update your equipment preference.')
     cy.get('button[id="equipmentUpdateButton"]').should('exist') //upbdate button for equipment exists
     cy.get('button[id="equipmentUpdateButton"]').should('be.disabled') //upbdate button disabled if no selection made
@@ -35,8 +49,7 @@ describe('<UpdatePage />', () => {
     cy.get('button[id="equipmentUpdateButton"]').click() //clickable
   })
   it('allows you to select your experience level and click update', () => {
-    cy.mount(UpdatePage)
-
+    cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get("#experienceSelectionComments").should('contain', 'Select an option to update your experience level.')
     cy.get('button[id="experienceUpdateButton"]').should('exist') //upbdate button for equipment exists
     cy.get('button[id="experienceUpdateButton"]').should('be.disabled') //upbdate button disabled if no selection made
@@ -56,4 +69,8 @@ describe('<UpdatePage />', () => {
     cy.get('input[id="advanced"]').should('be.checked')
     cy.get('button[id="experienceUpdateButton"]').click() //clickable
   })
+  xit('tests for inconsistent new passwords, though current password is correct', () => {
+
+  })
+  xit('gives a message that results for a successful password change', () => {})
 })
