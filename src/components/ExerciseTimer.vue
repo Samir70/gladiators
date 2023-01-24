@@ -1,9 +1,10 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
-import { ref } from "vue";
+import { ref, onBeforeUnmount } from "vue";
 const props = defineProps({
     exerciseTime: Number,
     restTime: Number,
+    circuits: Number,
     exerciseName: String
 })
 
@@ -26,29 +27,44 @@ const countDown = () => {
             console.log("emitting rest complete")
             emit('restComplete')
         }
-        // clearInterval(intervalID)
     }
 }
 const startTimer = () => {
-    started.value = true
-    intervalID = setInterval(countDown, 1000);
+    if (started.value) {
+        started.value = false
+        clearInterval(intervalID)
+    } else {
+        started.value = true
+        intervalID = setInterval(countDown, 1000);
+    }
 }
+
+onBeforeUnmount(() => {
+    console.log("beforeUnmount will stop the countdown timer")
+    clearInterval(intervalID)
+});
 </script>
 
 <template>
-    <GlassBubble id="exercise-timer-bubble">
-        <p v-if="!started" id="start-workout-button" @click="startTimer" class="bold-black-text">Start workout. First up: {{ exerciseName }}</p>
-        <p v-if="started && !resting" id="workout-action" class="bold-black-text">Do {{ exerciseName }} for {{
-            timerAmount
-        }}
-            seconds
+    <GlassBubble id="exercise-timer-bubble" @click="startTimer">
+        <p v-if="circuits > 0">Circuits completed: {{ circuits }}</p>
+        <p v-if="!started" id="start-workout-button">Start workout. First up: {{ exerciseName }}</p>
+        <p v-if="started && !resting" id="workout-action">
+            Do {{ exerciseName }} for {{ timerAmount }} seconds
         </p>
-        <p v-if="started && resting" id="workout-rest" class="bold-black-text">Rest for {{ timerAmount }} seconds</p>
+        <p v-if="started && resting" id="workout-rest">Rest for {{ timerAmount }} seconds</p>
+        <p v-if="started">Click to pause</p>
     </GlassBubble>
 </template>
 
 <style scoped>
 #exercise-timer-bubble {
     text-align: center;
+    cursor: pointer;
+}
+
+p {
+    color: black;
+    font-weight: bold;
 }
 </style>

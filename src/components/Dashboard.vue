@@ -9,12 +9,19 @@ import ExerciseTimer from "./ExerciseTimer.vue";
 const user = ref(store.state.user)
 const currentworkout = ref(store.state.currentworkout)
 const cur = ref(0)
-const unitTime = 5
-const restTime = 2
+const circuitCount = ref(0)
+
+// Eventually get the next two from user data in store
+const unitTime = 3
+const restTime = 1
 
 const unitComplete = () => {
     console.log("user has completed", currentworkout.value[cur.value].name)
-    cur.value = (cur.value + 1) % currentworkout.value.length
+    cur.value += 1;
+    if (cur.value === currentworkout.value.length) {
+        circuitCount.value += 1
+        cur.value = 0
+    }
 }
 
 const skipExercise = (exerciseID) => {
@@ -50,7 +57,7 @@ const markDone = (exerciseID) => {
             <h1>Gladiator Dashboard</h1>
             <p v-if="user" class="bold-black-text">{{ user.username }}</p>
             <GlassBubble id="current-workout-bubble">
-                <ExerciseTimer v-if="currentworkout.length > 0" :exercise-time="unitTime" :rest-time="restTime"
+                <ExerciseTimer v-if="currentworkout.length > 0" :circuits="circuitCount" :exercise-time="unitTime" :rest-time="restTime"
                     :exercise-name="currentworkout[cur].name" @unit-complete="unitComplete" />
                 <div v-for="( exercise, i ) in currentworkout">
                     <ShowExercise :exercise="exercise" @skip="skipExercise" @done="markDone"
