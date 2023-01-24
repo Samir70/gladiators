@@ -95,7 +95,6 @@ getExercises();
       <p v-for="exercise of exercises">
         <button @click="showDescription(exercise)">{{ exercise.name }}</button>
         <button @click="addExercise(exercise);">Add to Workout</button>
-        <button @click="removeExercise(exercise);">Remove from Workout</button>
       </p>
     </GlassBubble>
   </div>
