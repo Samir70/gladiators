@@ -5,9 +5,11 @@ export default defineConfig({
     devServer: {
       framework: "vue",
       bundler: "vite",
+
     },
   },
   e2e: {
     baseUrl: 'http://localhost:8888',
+    supportFile: false
   },
 });
