@@ -17,7 +17,7 @@ function increment() {
 
 <template>
     <GlassBubble v-bind:id="exercise._id" class="exercise-bubble">
-        <div :id="`${exercise._id}-title`">{{ exercise.name }}</div>
+        <div :id="`${exercise._id}-title`" class="bold-black-text">{{ exercise.name }}</div>
         <div class="exercise-buttons">
             <button v-on:click="increment" class="exercise-button">{{ startButton }}</button>
             <button class="exercise-button" @click="emit('skip', exercise._id)">Skip</button>
@@ -32,9 +32,6 @@ function increment() {
     flex-direction: row;
     justify-content: space-between;
     padding: 2px 10px;
-    color: black;
-    font-weight: bold;
-    text-transform: capitalize;
 }
 
 .exercise-button {

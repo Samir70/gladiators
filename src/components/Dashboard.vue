@@ -39,7 +39,7 @@ const markDone = (exerciseID) => {
 
         <div id="catalogue-current-container">
             <h1>Gladiator Dashboard</h1>
-            <p v-if="user">{{ user.username }}</p>
+            <p v-if="user" class="bold-black-text">{{ user.username }}</p>
             <GlassBubble id="current-workout-bubble">
                 <div v-for="exercise of currentworkout">
                 <ShowExercise :exercise="exercise" @skip="skipExercise" @done="markDone"></ShowExercise>
@@ -145,7 +145,6 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 60vmin;
-    height: 55vmin;
 }
 
 @media only screen and (max-width: 990px) {

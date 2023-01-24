@@ -91,6 +91,12 @@ button:focus-visible {
   /* align-items: left; */
 }
 
+.bold-black-text {
+  color: black;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #000000;
