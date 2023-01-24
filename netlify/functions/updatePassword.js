@@ -14,12 +14,12 @@ module.exports.handler = async (event) => {
     //from the username, find the current password and see if it matches
         const updatePassword = await collection
           .updateOne({ username: details.username }, { $set: { password: details.password } })
-        console.log("updatePasswordFunction:", updatePassword);
+        // console.log("updatePasswordFunction:", updatePassword);
         // response of the updateOne -> acknowledged should be true and modified count:1 
-        const newPass = await collection.findOne({ username: details.username });
-        console.log("Password is currently", newPass.password);
+        // const newPass = await collection.findOne({ username: details.username });
+        // console.log("Password is currently", newPass.password);
         //confirms that the password has been changed
-        return { statusCode: 200};
+        return { statusCode: 200, body:JSON.stringify("Success!")};
   } catch (error) {
     console.log("Password not changed");
     return { statusCode: 500, body: error.toString() };

@@ -16,12 +16,11 @@ module.exports.handler = async (event) => {
             .updateOne({ username: details.username }, { $set: { experience: details.experience } })
         console.log("updateExperienceFunction:", updateExperience);
         // response of the updateOne -> acknowledged should be true and modified count:1 
-        const newExperienceLevel = await collection.findOne({ username: details.username });
-        console.log("Experience is currently", newExperienceLevel.experience);
+        // const newExperienceLevel = await collection.findOne({ username: details.username });
+        // console.log("Experience is currently", newExperienceLevel.experience);
         //confirms that the experience level has been changed
-        const updateMessage = { msg: "Your experience is now set at: " + newExperienceLevel.experience }
-        return { statusCode: 200, body: JSON.stringify(updateMessage) };
-        //would like messages to be returned in the response body
+        // const updateMessage = { msg: "Your experience is now set at: " + newExperienceLevel.experience }
+        return { statusCode: 200, body: JSON.stringify("Success!") };
     }
 catch (error) {
     console.log("Could not be updated!");
