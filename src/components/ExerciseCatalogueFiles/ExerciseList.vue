@@ -61,44 +61,30 @@ const getExercises = async () => {
 
 const addExercise = async (exercise) => {
   console.log("add exercise to array", exercise)
-  // let result = await fetch(`/.netlify/functions/addExercise`, {
-  //   method: "POST",
-  //   body: JSON.stringify({ name: exercises.name })
-  // }).then(response => response.json())
-  // console.log("Exercise:", result)
-  store.commit("add_to_workout", exercise)
-  router.push("dashboard")
+
+  store.commit("add_to_workout", exercise);
+  // router.push("dashboard")
   return
 }
 
+const showDescription = async (exercise) => {
+  console.log("show the description", exercise)
+  window.alert("Description goes here")  
+}
 
 console.log(props.tag);
 getExercises();
 </script>
 
-
-
-
-
-
-
 <template>
-  <!--
-        Description of exercise (maybe later)  
-        Add button / toggle
-
-        
-  -->
-  <!-- <p>{{ results }}</p> -->
-  <!-- <p> {{ tag }}</p> -->
 
   <h2>Pick an exercise</h2>
 
   <div id="exercise-buttons">
     <GlassBubble>
       <p v-for="exercise of exercises">
-        <button>{{ exercise.name }}</button>
-        <button @click="addExercise(exercise)" >Add to Workout</button>
+        <button @click="showDescription(exercise)">{{ exercise.name }}</button> <!-- // maybe an alert with the name of the added exercise as well? -->
+        <button @click="addExercise(exercise);">Add to Workout</button>
       </p>
     </GlassBubble>
   </div>

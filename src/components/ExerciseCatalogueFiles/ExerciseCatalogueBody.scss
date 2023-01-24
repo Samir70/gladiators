@@ -10,7 +10,8 @@ $svg-z: 100;
   position: sticky;
   background: #eee;
   width: 320px;
-  height: 390px;
+  height: 420px;
+  right: 100px;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   box-shadow: 2px 2px 5px 0 rgba(black, 0.5);
@@ -71,7 +72,7 @@ $svg-z: 100;
   //picturess
   svg {
     position: absolute;
-    align-items: right;
+    align-items: center;
     right: -1.5rem;
     bottom: 3rem;
     height: 320px;
@@ -128,7 +129,7 @@ main {
     width: 250px;
     padding-top: 200px;
     color: $white;
-    padding-left: 2rem;
+    //padding-left: 2rem;
     opacity: 0.5;
     &:hover {
       opacity: 1;
