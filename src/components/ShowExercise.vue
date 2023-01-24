@@ -32,6 +32,9 @@ function increment() {
     flex-direction: row;
     justify-content: space-between;
     padding: 2px 10px;
+    color: black;
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
 .exercise-button {
