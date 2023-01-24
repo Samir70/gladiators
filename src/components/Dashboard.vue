@@ -8,6 +8,13 @@ import ShowExercise from "./ShowExercise.vue";
 const user = ref(store.state.user)
 const currentworkout = ref(store.state.currentworkout)
 
+const skipExercise = (exerciseID) => {
+    alert("User wants to skip exercise with id"+ exerciseID)
+}
+const markDone = (exerciseID) => {
+    alert("User wants to mark as done exercise with id"+ exerciseID)
+}
+
 </script>
 <template>
     <div id="dashboard">
@@ -35,7 +42,7 @@ const currentworkout = ref(store.state.currentworkout)
             <p v-if="user">{{ user.username }}</p>
             <GlassBubble id="current-workout-bubble">
                 <div v-for="exercise of currentworkout">
-                <ShowExercise :exercise="exercise"></ShowExercise>
+                <ShowExercise :exercise="exercise" @skip="skipExercise" @done="markDone"></ShowExercise>
                 </div>
                 <button class="button" @click="$router.push('exercisecatalogue')">
                     <p>Exercise Catalogue</p>

@@ -5,10 +5,13 @@ const props = defineProps({
     exercise: Object
 })
 
+const emit = defineEmits(["skip", "done"])
+
 let startButton = ref("Start")
 function increment() {
     startButton.value = 120;
-    setInterval(()=> startButton.value -=1,1000)}
+    setInterval(() => startButton.value -= 1, 1000)
+}
 
 </script>
 
@@ -17,8 +20,8 @@ function increment() {
         <div :id="`${exercise._id}-title`">{{ exercise.name }}</div>
         <div class="exercise-buttons">
             <button v-on:click="increment" class="exercise-button">{{ startButton }}</button>
-            <button class="exercise-button">Skip</button>
-            <button class="exercise-button">Done</button>
+            <button class="exercise-button" @click="emit('skip', exercise._id)">Skip</button>
+            <button class="exercise-button" @click="emit('done', exercise._id)">Done</button>
         </div>
     </GlassBubble>
 </template>
@@ -30,6 +33,7 @@ function increment() {
     justify-content: space-between;
     padding: 2px 10px;
 }
+
 .exercise-button {
     margin: 0px 3px;
 }
