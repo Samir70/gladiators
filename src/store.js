@@ -3,7 +3,7 @@ export const store = createStore({
     state() {
         return {
             count: 0, 
-            user: {username:"Steve"}
+            user: {username:"Steve", password:"pass"},
         }
     }, 
     mutations: {

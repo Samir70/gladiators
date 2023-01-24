@@ -8,6 +8,7 @@ module.exports.handler = async (event) => {
 
     try {
         let details = JSON.parse(event.body);
+        console.log(details)
         console.log("In updateExperience function, incoming:", details);
         const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
         const collection = db.collection("accounts");
