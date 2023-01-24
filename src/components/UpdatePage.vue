@@ -84,12 +84,12 @@ const updateExperience = async () => {
                         required>
                     <label for="confirm-password"> Confirm New Password</label><br>
                     <div id="passwordUpdateComments">
-                        <p v-if="updateMessage"> {{ updateMessage }}</p>
+                        <p id="updateMessageContainer" v-if="updateMessage"> {{ updateMessage }}</p>
                         <p></p>
 
                     </div>
                     <input v-bind:disabled="currentPassword === '' || newPassword === '' || confirmPassword === ''"
-                        v-on:click="changePassword" type="submit" value="Submit">
+                        v-on:click="changePassword" type="submit" value="Submit" id="passwordSubmitButton">
                     <!-- <div id="passwordmessage">{{ passwordMessage }}</div> to do -> return message-->
                 </fieldset>
             </GlassBubble>
@@ -111,7 +111,7 @@ const updateExperience = async () => {
                         <p v-if="experience === 'A'">You are a champion and can handle advanced movements. </p>
                         <p v-if="experience == ''"> Select an option to update your experience level. </p>
                     </div>
-                    <button v-bind:disabled="experience === ''" v-on:click="updateExperience" id="experienceUpdate">
+                    <button v-bind:disabled="experience === ''" v-on:click="updateExperience" id="experienceUpdateButton">
                         Update</button><br>
                 </fieldset><br>
                 <!-- <span>You've chosen {{ experience }}</span><br><br> -->
@@ -122,12 +122,12 @@ const updateExperience = async () => {
                         value="false">No<img class=toggles src="noequipment.png">
                     <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="equipped"
                         value="true">Yes <img class=toggles src="equipment.png">
-                    <div id="experienceSelectionComments">
+                    <div id="equipmentSelectionComments">
                         <p v-if="equipmentStatus === 'true'">You do have access to equipment/facilities. </p>
-                        <p v-if="equipmentStatus === 'false'">You do not have access to equipment/facilities. </p>
+                        <p v-if="equipmentStatus === 'false'">You do not have access to equipment/facilities.</p>
                         <p v-if="equipmentStatus == ''"> Select an option to update your equipment preference.</p>
                     </div>
-                    <button v-bind:disabled="equipmentStatus === ''" v-on:click="updateEquipment" id="equipmentUpdate">
+                    <button id=equipmentUpdateButton v-bind:disabled="equipmentStatus === ''" v-on:click="updateEquipment">
                         Update</button><br>
                 </fieldset><br>
 
