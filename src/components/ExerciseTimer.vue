@@ -19,9 +19,11 @@ const countDown = () => {
         resting.value = !resting.value
         if (resting.value) {
             timerAmount.value = props.restTime
+            console.log("emitting unit complete")
             emit('unitComplete');
         } else {
             timerAmount.value = props.exerciseTime
+            console.log("emitting rest complete")
             emit('restComplete')
         }
         // clearInterval(intervalID)
@@ -35,13 +37,13 @@ const startTimer = () => {
 
 <template>
     <GlassBubble id="exercise-timer-bubble">
-        <p v-if="!started" id="start-workout-button" @click="startTimer">Start {{ exerciseName }}</p>
+        <p v-if="!started" id="start-workout-button" @click="startTimer" class="bold-black-text">Start workout. First up: {{ exerciseName }}</p>
         <p v-if="started && !resting" id="workout-action" class="bold-black-text">Do {{ exerciseName }} for {{
             timerAmount
         }}
             seconds
         </p>
-        <p v-if="started && resting" id="workout-rest" class="bold-black-test">Rest for {{ timerAmount }} seconds</p>
+        <p v-if="started && resting" id="workout-rest" class="bold-black-text">Rest for {{ timerAmount }} seconds</p>
     </GlassBubble>
 </template>
 
