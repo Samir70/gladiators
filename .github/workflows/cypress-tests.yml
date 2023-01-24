@@ -11,7 +11,7 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: npx run cypress
-        uses: cypress-io/github-action@v5.x.x # use the explicit version number
+        uses: cypress-io/github-action@v12.3.0 # use the explicit version number
         with: 
           browser: chrome
           build: npm run build
