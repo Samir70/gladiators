@@ -13,9 +13,9 @@ Setup app
 *   Go to the cloned repo on your machine and switch branches to development
 *   Run npm install
 *   Install mongoldb
-        - Top level directory run brew tap mongodb/brew
-        - Then run brew install mongodb-community@6.0
-        - Run brew services start mongodb-community@6.0
+    *   Top level directory run brew tap mongodb/brew
+    *   Then run brew install mongodb-community@6.0
+    *   Run brew services start mongodb-community@6.0
 
 To set it up as a service
 *   Run brew services stop mongodb-community@6.0
