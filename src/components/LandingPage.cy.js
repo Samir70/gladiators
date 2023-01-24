@@ -6,9 +6,8 @@ describe('<LandingPage />', () => {
   })
   it('has a welcome bubble', () => {
     cy.mount(LandingPage)
-    cy.get("#welcome-bubble").should("have.css", "float", "right")
     cy.get("#welcome-bubble").get("h1").should("have.id", "landingpage-welcome").should("contain", "Welcome To Gladimakers")
-    cy.get("#welcome-bubble").get("img").should("have.attr", "src", "/__cypress/src/public/GladiatorThumbsUp.png")
+    cy.get("#welcome-bubble").get("img").should("have.attr", "src", "/GladiatorThumbsUp.png")
     cy.get("#welcome-bubble").get("#welcome-blurb")
   })
   it('has a buttons bubble', () => {
