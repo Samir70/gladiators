@@ -42,7 +42,7 @@ const accounts = [
 
 const seedAccounts = async () => {
   await Account.deleteMany({});
-  console.log("Seeding accounts");
+  // console.log("Seeding accounts");
   for (let u = 0; u < accounts.length; u++) {
     const account = new Account();
     account._id = accounts[u]._id;
@@ -55,7 +55,7 @@ const seedAccounts = async () => {
     account.equipment = accounts[u].equipment;
     //account.setPassword(accounts[u].password);
     await account.save();
-    console.log("seeded user:" + account);
+    // console.log("seeded user:" + account);
   }
 };
 

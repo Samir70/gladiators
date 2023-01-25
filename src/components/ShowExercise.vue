@@ -1,17 +1,19 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
+import { ref } from 'vue';
 const props = defineProps({
     exercise: Object
 })
+
+const emit = defineEmits(["remove"])
+
 </script>
 
 <template>
     <GlassBubble v-bind:id="exercise._id" class="exercise-bubble">
-        <div :id="`${exercise._id}-title`">{{ exercise.name }}</div>
+        <div :id="`${exercise._id}-title`" class="bold-black-text">{{ exercise.name }}</div>
         <div class="exercise-buttons">
-            <button class="exercise-button">Start</button>
-            <button class="exercise-button">Remove</button>
-            <button class="exercise-button">Done</button>
+            <button class="exercise-button" @click="emit('remove', exercise._id)">Remove</button>
         </div>
     </GlassBubble>
 </template>

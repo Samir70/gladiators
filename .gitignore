@@ -27,3 +27,7 @@ dist-ssr
 .netlify
 
 .env
+
+# cypress.io
+cypress/screenshots
+cypress/videos

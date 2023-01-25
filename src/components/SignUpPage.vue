@@ -17,12 +17,12 @@ const signUp = async () => {
     method: "POST",
     body: JSON.stringify({ username: newUserName.value, email: newUserEmail.value, password: newUserPassword.value })
   }).then(response => response.json())
-  console.log("From SignUp Page", result)
+  // console.log("From SignUp Page", result)
   if (result.signUpFailed) {
     signUpStatus.value = {signUpFailed: true, msg: result.msg}
   } else {
     store.commit("login", result.newUser)
-    router.push("dashboard")
+    router.push("survey")
   }
 }
 </script>

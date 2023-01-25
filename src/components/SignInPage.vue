@@ -12,12 +12,12 @@ const userPassword = ref("")
 const failedLogin = ref(false)
 
 const signIn = async () => {
-  console.log("user wants to sign in")
+  // console.log("user wants to sign in")
   let result = await fetch(`/.netlify/functions/loginUser`, {
     method: "POST",
     body: JSON.stringify({ email: userEmail.value, password: userPassword.value })
   }).then(response => response.json())
-  console.log("SignIn result:", result)
+  // console.log("SignIn result:", result)
   if (result === "Failed login") {
     failedLogin.value = true
   } else {

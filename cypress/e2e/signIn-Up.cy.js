@@ -1,9 +1,9 @@
 describe("template spec", () => {
   it("Can get to the signIn page and sign in", () => {
     const user = {
-      username: "Maximus Decimus Meridius",
-      email: "winner@colosseum.com",
-      password: "MarcusAurelius",
+      username: "Wolf",
+      email: "wolf@email.com",
+      password: "wolf",
     };
     cy.visit("http://localhost:8888/#/");
     cy.get("#buttons-bubble")
