@@ -86,6 +86,17 @@ console.log(props.tag);
 getExercises();
 </script>
 
+<!-- <script>
+
+export default {
+  methods: {
+    getExercises() {
+    }
+  }
+};
+
+</script> -->
+
 <template>
 
   <h2>Pick an exercise</h2>

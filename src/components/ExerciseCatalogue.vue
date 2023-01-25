@@ -5,36 +5,24 @@ import GlassBubble from "./GlassBubble.vue";
 import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBody.vue";
 import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
 import ShowExercise from "./ShowExercise.vue";
+import ProfileButton from "./Buttons/ProfileButton.vue";
 
 let show = ref("");
-let currentworkout = ref(store.state.currentworkout)
+let currentworkout = ref(store.state.currentworkout);
 let exercisechoice = ref(store.state.currentworkout);
 const exercisecount = ref(exercisechoice.value.length);
-const exAdded = (exercise) => {
+const exAdded = () => {
   exercisechoice.value = store.state.currentworkout;
   exercisecount.value = exercisechoice.value.length;
   currentworkout.value = store.state.currentworkout;
-}
+};
 
 const removeExercise = (exerciseID) => {
-    console.log("before removing, workout is", currentworkout.value)
-    store.commit("removeFromWorkout", exerciseID)
-    exercisechoice.value = store.state.currentworkout;
-    currentworkout.value = store.state.currentworkout;
-    exercisecount.value = exercisechoice.value.length;
-}
-
-
-
-</script>
-
-<script>
-export default {
-  methods: {
-    refreshPage() {
-      this.$forceUpdate();
-    },
-  },
+  console.log("before removing, workout is", currentworkout.value);
+  store.commit("removeFromWorkout", exerciseID);
+  exercisechoice.value = store.state.currentworkout;
+  currentworkout.value = store.state.currentworkout;
+  exercisecount.value = exercisechoice.value.length;
 };
 </script>
 
@@ -44,13 +32,14 @@ export default {
       <button class="button" @click="$router.push('dashboard')">
         <p>Dashboard</p>
       </button>
-      <button class="button" @click="$router.push('profilepage')">
+      <ProfileButton />
+      <!-- <button class="button" @click="$router.push('profilepage')">
         <img
           id="profile_logo"
           src="/spartan-helmet.png"
           style="width: 50px; height: 50px"
         />
-      </button>
+      </button> -->
 
       <button class="button" @click="$router.push('/')">
         <p>Log Out</p>
@@ -89,28 +78,37 @@ export default {
       </GlassBubble>
     </div>
 
-    <div v-if="exercisecount < 5" v-for="choice in ['strength', 'flex', 'cardio']">
-
+    <div
+      v-if="exercisecount < 5"
+      v-for="choice in ['strength', 'flex', 'cardio']"
+    >
       <ExerciseList
-      v-if="show == choice || show == 'all'"
-      :tag="choice" @exercise-added="exAdded"
-     ></ExerciseList>
+        v-if="show == choice || show == 'all'"
+        :tag="choice"
+        @exercise-added="exAdded"
+      ></ExerciseList>
     </div>
-
-   
 
     <div id="current-workout">
       <GlassBubble>
         <p>{{ exercisecount }} of 5 exercises selected</p>
-        <div >
-                    <ShowExercise v-for="( exercise, i ) in currentworkout" :exercise="exercise" @remove="removeExercise"
-                        :class="i === cur ? 'active-exercise' : ''" :key="Math.random()"></ShowExercise>
-                </div>
+        <div>
+          <ShowExercise
+            v-for="(exercise, i) in currentworkout"
+            :exercise="exercise"
+            @remove="removeExercise"
+            :class="i === cur ? 'active-exercise' : ''"
+            :key="Math.random()"
+          ></ShowExercise>
+        </div>
+        <button class="button" @click="$router.push('dashboard')">
+          <p>Go to workout!</p>
+        </button>
       </GlassBubble>
     </div>
-<br>
-<br>
-<br>
+    <br />
+    <br />
+    <br />
     <div id="Body">
       <ExerciseCatalogueBody> </ExerciseCatalogueBody>
     </div>

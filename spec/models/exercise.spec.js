@@ -25,7 +25,8 @@ describe("Exercise model", () => {
                 name: "Star jump",
                 tags: ["conditioning", "cardio"],
                 experience: "B",
-                bodyarea: "wholebody"
+                bodyarea: "wholebody",
+                description: "Whole body. Jump and expand legs out to the side and arms out and upwards."
             });
             await exercise.save()
             Exercise.findOne({name: "Star jump"}), (err, exerciseDetails) => {
