@@ -1,6 +1,16 @@
 describe('Signup survey component', () => {
-  it('can select options and submit it before revealing another selection (experience level -> equipment status and then redirects on last confirmation', () => {
-    cy.visit("http://localhost:8888/#/Survey");
+  it('can select options and submit it before revealing another selection (experience level -> equipment status and then redirects on last confirmation - user needs to be signed in', () => {
+    cy.visit("http://localhost:8888/#/")
+    cy.get('button').contains('Sign In').click()
+    cy.get('input[type="email"]').type('wolf@email.com')
+    cy.get('input[type="password"]').type('wolf')
+    cy.get('button').contains('Sign In').click()
+    // cy.get('input[type="email"]').type('newusertest@email.com')
+    // cy.get('input[id="name-field"]').type('newusertest')
+    // cy.get('input[type="password"]').type('password')
+    // cy.get('button').contains('Sign Up').click()
+    //signup only works for new accounts - so have to sign in instead using wolf
+    cy.visit("http://localhost:8888/#/Survey")
     cy.get("#experienceSelectionComments").should('contain', 'Select an option to update your experience level.')
     cy.get('button[id="experienceUpdateButton"]').should('exist') //upbdate button for equipment exists
     cy.get('button[id="experienceUpdateButton"]').should('be.disabled') //upbdate button disabled if no selection made
@@ -26,7 +36,6 @@ describe('Signup survey component', () => {
     cy.get("#equipmentSelectionComments").should('contain','You do not have access to equipment/facilities.')
     cy.get('input[id="notequipped"]').should('be.checked')
     cy.get('button[id="equipmentUpdateButton"]').should('be.enabled') //upbdate button disabled if no selection made
-    cy.get('button[id="equipmentUpdateButton"]').click() //clickable
     cy.get('input[id="equipped"]').click()
     cy.get('input[id="equipped"]').should('be.checked')
     cy.get("#equipmentSelectionComments").should('contain', 'You do have access to equipment/facilities.')
