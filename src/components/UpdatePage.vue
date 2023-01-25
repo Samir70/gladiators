@@ -40,7 +40,8 @@ const updateEquipment = async () => {
         method: "POST",
         body: JSON.stringify({ equipped: equipmentStatus.value, username: user.value.username })
     }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
-    store.state.user.equipment = equipment.value;
+    store.state.user.equipment = equipmentStatus.value;
+
 
 }
 
