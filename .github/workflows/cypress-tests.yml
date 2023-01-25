@@ -6,14 +6,18 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     steps:
-      - name: start server
+      - name: Checkout
         uses: actions/checkout@v3
-
-        # uses: cypress-io/github-action@v4.1.0 # use the explicit version number
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: start server
+        uses: nwtgck/actions-netlify@v1.2
         with: 
           wait-on: "http://localhost:8888"
-          config-file: cypress.config.js
           build: npm run build
           start: netlify dev
       - name: run cypress test
+        uses: cypress-io/github-action@v4.1.0 # use the explicit version number
         run: npx cypress run --component
+        with:
+          config-file: cypress.config.js
