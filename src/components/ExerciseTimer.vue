@@ -20,11 +20,11 @@ const countDown = () => {
         resting.value = !resting.value
         if (resting.value) {
             timerAmount.value = props.restTime
-            console.log("emitting unit complete")
+            // console.log("emitting unit complete")
             emit('unitComplete');
         } else {
             timerAmount.value = props.exerciseTime
-            console.log("emitting rest complete")
+            // console.log("emitting rest complete")
             emit('restComplete')
         }
     }
@@ -40,7 +40,7 @@ const startTimer = () => {
 }
 
 onBeforeUnmount(() => {
-    console.log("beforeUnmount will stop the countdown timer")
+    // console.log("beforeUnmount will stop the countdown timer")
     clearInterval(intervalID)
 });
 </script>
