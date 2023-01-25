@@ -17,7 +17,7 @@ jobs:
           build: npm run build
           start: netlify dev
       - name: run cypress test
-        uses: cypress-io/github-action@v4.1.0 # use the explicit version number
-        # run: npx cypress run --component
+        # uses: cypress-io/github-action@v4.1.0 # use the explicit version number
+        run: npx cypress run --component
         with:
-          config-file: cypress.config.js
+            config-file: cypress.config.js
