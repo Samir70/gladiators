@@ -25,24 +25,22 @@ const user = ref(store.state.user)
 
     <div id="body-container">
       <GlassBubble id="profmenu">
-        <div id="profmenu">
 
-          <h4> <u>Info:</u> </h4>
+        <h4> <u>Info:</u> </h4>
 
-          <!-- to display email: with users email -->
-          <h5 v-if="user" id="infomenu">Email: {{ user.email }}</h5>
-          <h5> My experience level is: </h5>
-          <div v-if="user" id="experience">
-            <h5 v-if="user.experience === 'B'"> Beginner </h5>
-            <h5 v-if="user.experience === 'I'"> Intermediate </h5>
-            <h5 v-if="user.experience === 'A'"> Advanced </h5>
-          </div>
+        <!-- to display email: with users email -->
+        <h5 v-if="user" id="infomenu">Email: {{ user.email }}</h5>
+        <h5> My experience level is: </h5>
+        <div v-if="user" id="experience">
+          <h5 v-if="user.experience === 'B'"> Beginner </h5>
+          <h5 v-if="user.experience === 'I'"> Intermediate </h5>
+          <h5 v-if="user.experience === 'A'"> Advanced </h5>
+        </div>
 
-          <h5> Equipment: </h5>
-          <div v-if="user" id="equipment">
-            <h5 v-if="user.equipment === 'true'"> You have access to equipment </h5>
-            <h5 v-if="user.equipment === 'false'"> You don't have access to equipment </h5>
-          </div>
+        <h5> Equipment: </h5>
+        <div v-if="user" id="equipment">
+          <h5 v-if="user.equipment === 'true'"> You have access to equipment </h5>
+          <h5 v-if="user.equipment === 'false'"> You don't have access to equipment </h5>
         </div>
       </GlassBubble>
 
