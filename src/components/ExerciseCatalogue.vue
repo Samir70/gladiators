@@ -8,10 +8,15 @@ import ShowExercise from "./ShowExercise.vue";
 
 let show = ref("");
 
-const exercisecount = ref(store.state.currentworkout.length);
+let exercisechoice = ref(store.state.currentworkout);
+const exercisecount = ref(exercisechoice.value.length);
 const exAdded = (exercise) => {
-  exercisecount.value += 1;
+  exercisechoice.value = store.state.currentworkout;
+  exercisecount.value = exercisechoice.value.length;
+  console.log()
 }
+
+
 
 </script>
 
@@ -76,11 +81,12 @@ export default {
       </GlassBubble>
     </div>
 
-    <div v-for="choice in ['strength', 'flex', 'cardio']">
+    <div v-if="exercisecount < 5" v-for="choice in ['strength', 'flex', 'cardio']">
+
       <ExerciseList
       v-if="show == choice || show == 'all'"
       :tag="choice" @exercise-added="exAdded"
-    ></ExerciseList>
+     ></ExerciseList>
     </div>
 
     <!-- <ExerciseList
@@ -102,7 +108,9 @@ export default {
         
       </GlassBubble>
     </div>
-
+<br>
+<br>
+<br>
     <div id="Body">
       <ExerciseCatalogueBody> </ExerciseCatalogueBody>
     </div>
