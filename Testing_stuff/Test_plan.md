@@ -59,10 +59,13 @@ toggle all items to Completed or Not Completed
 ​
 We have 3 testers available for this project in our test team.
 The testers assigned to this project are:
-* `A.Adams` - Test Team Lead, the most experienced member of the team.
-* `B.Barker` - Test Engineer who's been the primary tester on TodoMVC for the 
-entire project.
-* `C.Chapel` - Test Engineer who joined the company last week and is primarily 
+* `A.Little` - Test Engineer who joined the company last week and is primarily 
+still completing onboarding.
+* `A.Patel` - Test Engineer who joined the company last week and is primarily 
+still completing onboarding.
+* `I.Pala` - Test Engineer who joined the company last week and is primarily 
+still completing onboarding.
+* `S.Rahman` - Test Engineer who joined the company last week and is primarily 
 still completing onboarding.
 ​
 ## Test Estimation
