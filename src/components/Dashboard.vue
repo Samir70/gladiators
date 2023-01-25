@@ -12,8 +12,8 @@ const cur = ref(0)
 const circuitCount = ref(0)
 
 // Eventually get the next two from user data in store
-const unitTime = 3
-const restTime = 1
+const unitTime = 30
+const restTime = 10
 
 const unitComplete = () => {
     console.log("user has completed", currentworkout.value[cur.value].name)
@@ -57,7 +57,7 @@ const removeExercise = (exerciseID) => {
                 <ExerciseTimer v-if="currentworkout.length > 0" :circuits="circuitCount" :exercise-time="unitTime" :rest-time="restTime"
                     :exercise-name="currentworkout[cur].name" @unit-complete="unitComplete" />
                 <div v-for="( exercise, i ) in currentworkout">
-                    <ShowExercise :exercise="exercise" @remove="skipExercise"
+                    <ShowExercise :exercise="exercise" @remove="removeExercise"
                         :class="i === cur ? 'active-exercise' : ''"></ShowExercise>
                 </div>
                 <button class="button" @click="$router.push('exercisecatalogue')">
