@@ -9,13 +9,8 @@ describe("Account model", () => {
     //   done();
     // });
     seedAccounts().then(() => {
-      console.log("from beforeEach");
       done();
     });
-    // (()=>{
-    //   console.log("from beforeEach")
-    //   done()
-    // })
   });
   it("has the right number of seeded users", (done) => {
     const account = new Account({
@@ -26,7 +21,6 @@ describe("Account model", () => {
 
     Account.find((err, accounts) => {
       expect(err).toBeNull();
-      console.log("accounts:", accounts);
       expect(accounts.length).toEqual(4);
       done();
     });
