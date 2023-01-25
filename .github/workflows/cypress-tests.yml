@@ -19,4 +19,4 @@ jobs:
           config-file: cypress.config.js
       - name: run cypress test
         # uses: cypress-io/github-action@v4.1.0 # use the explicit version number
-        run: npx cypress run --component
+        run: npx cypress run 
