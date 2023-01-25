@@ -33,7 +33,7 @@ export default {
         start: new Date(2023, 0, 26),
         end: new Date(2023, 0, 26),
         class: 'blue-event'
-      }
+      }  
     ]
   }),
 
@@ -85,6 +85,8 @@ export default {
   width: 85vw;
 }
 
+.vuecal__header {
+background:red !important}
 .blue-event{
   background-color: black;
   
