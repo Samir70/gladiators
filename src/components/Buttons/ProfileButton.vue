@@ -11,8 +11,8 @@
 
 <style scoped>
 img {
-    width: 150px;
-    height: 100px;
+    width: 75px;
+    height: 50px;
     border-radius: 80px;
 }
 

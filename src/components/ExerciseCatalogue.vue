@@ -5,12 +5,13 @@ import GlassBubble from "./GlassBubble.vue";
 import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBody.vue";
 import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
 import ShowExercise from "./ShowExercise.vue";
+import ProfileButton from "./Buttons/ProfileButton.vue";
 
 let show = ref("");
 let currentworkout = ref(store.state.currentworkout);
 let exercisechoice = ref(store.state.currentworkout);
 const exercisecount = ref(exercisechoice.value.length);
-const exAdded = (exercise) => {
+const exAdded = () => {
   exercisechoice.value = store.state.currentworkout;
   exercisecount.value = exercisechoice.value.length;
   currentworkout.value = store.state.currentworkout;
@@ -25,29 +26,20 @@ const removeExercise = (exerciseID) => {
 };
 </script>
 
-<script>
-export default {
-  methods: {
-    refreshPage() {
-      this.$forceUpdate();
-    },
-  },
-};
-</script>
-
 <template>
   <div id="exercise-catalogue">
     <GlassBubble id="userguide-nav-bubble">
       <button class="button" @click="$router.push('dashboard')">
         <p>Dashboard</p>
       </button>
-      <button class="button" @click="$router.push('profilepage')">
+      <ProfileButton />
+      <!-- <button class="button" @click="$router.push('profilepage')">
         <img
           id="profile_logo"
           src="/spartan-helmet.png"
           style="width: 50px; height: 50px"
         />
-      </button>
+      </button> -->
 
       <button class="button" @click="$router.push('/')">
         <p>Log Out</p>

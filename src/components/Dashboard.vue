@@ -5,11 +5,13 @@ import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
 import ShowExercise from "./ShowExercise.vue";
 import ExerciseTimer from "./ExerciseTimer.vue";
+// import {getExercises} from "./ExerciseCatalogueFiles/ExerciseList.vue";
 
 const user = ref(store.state.user)
 let currentworkout = ref(store.state.currentworkout)
 let cur = ref(0)
 let circuitCount = ref(0)
+
 
 // Eventually get the next two from user data in store
 const unitTime = 30
@@ -34,6 +36,11 @@ const clearWork = () => {
     currentworkout.value = store.state.currentworkout
 }
 
+// const randomize = () => {
+//     let randomArray = [getExercises()]
+//     console.log(randomArray)
+// }
+
 </script>
 <template>
     <div id="dashboard">
@@ -41,7 +48,7 @@ const clearWork = () => {
             <ProfileButton />
 
             <button class="button">
-                <img id="spotify_logo" src="/spotify_logo.png">
+                <img id="spotify_logo.png" src="/spotify_logo.png">
                 <p>Spotify</p>
             </button>
 
@@ -69,7 +76,8 @@ const clearWork = () => {
                 <button class="button" @click="$router.push('exercisecatalogue')">
                     <p>Exercise Catalogue</p>
                 </button>
-                <button>
+                    <!-- <button class="button" @click="randomize"> -->
+                   <button>
                     <p>Random Workout Generator</p>
                 </button>
                 <button>
@@ -83,7 +91,7 @@ const clearWork = () => {
         </div>
 
         <GlassBubble id="utilities-bubble">
-            <p>Utilities</p>
+
             <button class="button" @click="$router.push('/')">
                 <p>Log Out</p>
             </button>
