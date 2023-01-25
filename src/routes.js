@@ -1,5 +1,3 @@
-import HelloWorld from "./components/HelloWorld.vue";
-// import TanyasPage from "./components/TanyasPage.vue";
 import LandingPage from "./components/LandingPage.vue";
 import SignUpPage from "./components/SignUpPage.vue";
 import SignInPage from "./components/SignInPage.vue";
