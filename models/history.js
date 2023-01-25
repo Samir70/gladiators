@@ -2,9 +2,10 @@ const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
 
 const HistorySchema = new mongoose.Schema({
-  date: Date,
-  exercises: [{type:ObjectId, ref:"Exercise"}],
-  user: {type:ObjectId, ref:"Account"}
+  username: String,
+  workout: [{date: Date,
+  exercises: [String]},
+  ]
 });
 
 const History= mongoose.model("History", HistorySchema);

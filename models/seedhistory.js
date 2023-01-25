@@ -4,22 +4,31 @@ const { wolfHistoryID, jetHistoryID } = require("./historyids");
 
 const Exercise = require('./exercise')
 const {
-    curlID,
-    squatID,
-    benchpressID,
-    lungeID
+  curlID,
+  squatID,
+  benchpressID,
+  lungeID
 } = require("./exerciseids");
 
 const accounts = [
   {
-    date: "2023-01-26",
-    _id: wolfHistoryID, //will need ot be found by username (store query)
-    exercises: [curlID, squatID]
+    username: "Wolf", //will need ot be found by username (store query)
+    workout: [{
+      date: "2023-01-26",
+      exercises: ["curl", "squat"]
+    }, { 
+      date: "2023-01-27", 
+      exercises: ["squat"] 
+    }, { 
+      date: "2023-01-28", 
+      exercises: ["curl"] }]
   },
   {
-    date:"2023-01-27",
-    _id: jetHistoryID,
-    exercises: [benchpressID, lungeID]
+    username: "Jet", //will need to be found by username (store query)
+    workout: [{
+      date: "2023-01-27",
+      exercises: ["bench press", "lunge"]
+    }]
   }
 ]
 
