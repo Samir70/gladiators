@@ -1,9 +1,10 @@
 <script setup>
-import { store } from "../store"
-import { ref } from "vue"
 import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
 import ShowExercise from "./ShowExercise.vue";
+import { store } from "../store";
+import { ref } from "vue";
+
 
 const user = ref(store.state.user)
 const currentworkout = ref(store.state.currentworkout)
