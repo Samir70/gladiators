@@ -5,6 +5,7 @@ describe('Signup survey component', () => {
     cy.get('input[type="email"]').type('wolf@email.com')
     cy.get('input[type="password"]').type('wolf')
     cy.get('button').contains('Sign In').click()
+    cy.wait(1000);
     // cy.get('input[type="email"]').type('newusertest@email.com')
     // cy.get('input[id="name-field"]').type('newusertest')
     // cy.get('input[type="password"]').type('password')
