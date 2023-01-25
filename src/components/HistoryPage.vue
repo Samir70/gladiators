@@ -16,6 +16,9 @@ import vueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 
 export default {
+  components: {
+    vueCal
+  },
   data: () => ({
     events: [
       {
@@ -33,9 +36,7 @@ export default {
       }
     ]
   }),
-  components: {
-    vueCal
-  }
+
 }
 </script>
 
@@ -64,7 +65,7 @@ export default {
     active-view="month"
     :disable-views="['week']"
     :events="events"
-    style="width: 540px;height: 600px">
+    style="width: 540px;height: 600px;">
 </vue-cal>
 
 
@@ -82,6 +83,11 @@ export default {
 <style scoped>
 #profilecontainer {
   width: 85vw;
+}
+
+.blue-event{
+  background-color: black;
+  
 }
 
 
