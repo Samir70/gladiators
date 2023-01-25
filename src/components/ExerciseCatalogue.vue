@@ -7,11 +7,24 @@ import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
 import ShowExercise from "./ShowExercise.vue";
 
 let show = ref("");
-
-const exercisecount = ref(store.state.currentworkout.length);
+let currentworkout = ref(store.state.currentworkout)
+let exercisechoice = ref(store.state.currentworkout);
+const exercisecount = ref(exercisechoice.value.length);
 const exAdded = (exercise) => {
-  exercisecount.value += 1;
+  exercisechoice.value = store.state.currentworkout;
+  exercisecount.value = exercisechoice.value.length;
+  currentworkout.value = store.state.currentworkout;
 }
+
+const removeExercise = (exerciseID) => {
+    console.log("before removing, workout is", currentworkout.value)
+    store.commit("removeFromWorkout", exerciseID)
+    exercisechoice.value = store.state.currentworkout;
+    currentworkout.value = store.state.currentworkout;
+    exercisecount.value = exercisechoice.value.length;
+}
+
+
 
 </script>
 
@@ -76,33 +89,28 @@ export default {
       </GlassBubble>
     </div>
 
-    <div v-for="choice in ['strength', 'flex', 'cardio']">
+    <div v-if="exercisecount < 5" v-for="choice in ['strength', 'flex', 'cardio']">
+
       <ExerciseList
       v-if="show == choice || show == 'all'"
       :tag="choice" @exercise-added="exAdded"
-    ></ExerciseList>
+     ></ExerciseList>
     </div>
 
-    <!-- <ExerciseList
-      v-if="show == 'strength' || show == 'all'"
-      tag="strength" @exercise-added="exAdded"
-    ></ExerciseList>
-    <ExerciseList
-      v-if="show == 'flex' || show == 'all'"
-      tag="flex"
-    ></ExerciseList>
-    <ExerciseList
-      v-if="show == 'cardio' || show == 'all'"
-      tag="cardio"
-    ></ExerciseList> -->
+   
 
     <div id="current-workout">
       <GlassBubble>
         <p>{{ exercisecount }} of 5 exercises selected</p>
-        
+        <div >
+                    <ShowExercise v-for="( exercise, i ) in currentworkout" :exercise="exercise" @remove="removeExercise"
+                        :class="i === cur ? 'active-exercise' : ''" :key="Math.random()"></ShowExercise>
+                </div>
       </GlassBubble>
     </div>
-
+<br>
+<br>
+<br>
     <div id="Body">
       <ExerciseCatalogueBody> </ExerciseCatalogueBody>
     </div>
@@ -146,7 +154,6 @@ export default {
 
 #Body {
   position: relative;
-  top: -150px
 }
 
 #current-workout {
