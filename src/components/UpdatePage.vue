@@ -97,7 +97,6 @@ const updateExperience = async () => {
                 </fieldset>
             </GlassBubble>
 
-
             <GlassBubble id="aboutcontainer">
                 <h2> About you </h2>
                 <fieldset id="experiencechangebox">
