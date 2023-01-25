@@ -11,8 +11,6 @@ import UpdatePage from "./components/UpdatePage.vue";
 import SignupSurvey from "./components/SignupSurvey.vue"
 
 export const routes = [
-   { path: "/hello", name: "HelloWorld", component: HelloWorld },
-  // { path: "/tanyaspage", name: "TanyasPage", component: TanyasPage },
   { path: "/", name: "LandingPage", component: LandingPage },
   { path: "/SignUpPage", name: "SignUpPage", component: SignUpPage },
   { path: "/SignInPage", name: "SignInPage", component: SignInPage },
