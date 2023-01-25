@@ -1,5 +1,5 @@
-const { Account } = require("./account");
-const { wolfID, jetID, hunterID, shadowID } = require("./userids");
+const { Account } = require("./account.cjs");
+const { wolfID, jetID, hunterID, shadowID } = require("./userids.cjs");
 
 const accounts = [
   {

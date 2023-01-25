@@ -5,6 +5,8 @@ describe("template spec", () => {
       email: "wolf@email.com",
       password: "wolf",
     };
+    cy.task("connect")
+    cy.task("resetUsers", "form SignUp e2e")
     cy.visit("http://localhost:8888/#/");
     cy.get("#buttons-bubble")
       .find("button")
