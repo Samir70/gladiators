@@ -40,8 +40,8 @@ const user = ref(store.state.user)
 
           <h5> Equipment: </h5>
           <div v-if="user" id="equipment">
-            <h5 v-if="user.equipment === true"> You have access to equipment </h5>
-            <h5 v-if="user.equipment === false"> You don't have access to equipment </h5>
+            <h5 v-if="user.equipment === 'true'"> You have access to equipment </h5>
+            <h5 v-if="user.equipment === 'false'"> You don't have access to equipment </h5>
           </div>
         </div>
       </GlassBubble>
