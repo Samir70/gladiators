@@ -24,11 +24,8 @@ const unitComplete = () => {
     }
 }
 
-const skipExercise = (exerciseID) => {
+const removeExercise = (exerciseID) => {
     alert("User wants to skip exercise with id" + exerciseID)
-}
-const markDone = (exerciseID) => {
-    alert("User wants to mark as done exercise with id" + exerciseID)
 }
 
 </script>
@@ -60,7 +57,7 @@ const markDone = (exerciseID) => {
                 <ExerciseTimer v-if="currentworkout.length > 0" :circuits="circuitCount" :exercise-time="unitTime" :rest-time="restTime"
                     :exercise-name="currentworkout[cur].name" @unit-complete="unitComplete" />
                 <div v-for="( exercise, i ) in currentworkout">
-                    <ShowExercise :exercise="exercise" @skip="skipExercise" @done="markDone"
+                    <ShowExercise :exercise="exercise" @remove="skipExercise"
                         :class="i === cur ? 'active-exercise' : ''"></ShowExercise>
                 </div>
                 <button class="button" @click="$router.push('exercisecatalogue')">

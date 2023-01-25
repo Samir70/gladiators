@@ -5,7 +5,7 @@ const props = defineProps({
     exercise: Object
 })
 
-const emit = defineEmits(["skip", "done"])
+const emit = defineEmits(["remove"])
 
 </script>
 
@@ -13,8 +13,7 @@ const emit = defineEmits(["skip", "done"])
     <GlassBubble v-bind:id="exercise._id" class="exercise-bubble">
         <div :id="`${exercise._id}-title`" class="bold-black-text">{{ exercise.name }}</div>
         <div class="exercise-buttons">
-            <button class="exercise-button" @click="emit('skip', exercise._id)">Skip</button>
-            <button class="exercise-button" @click="emit('done', exercise._id)">Done</button>
+            <button class="exercise-button" @click="emit('remove', exercise._id)">Remove</button>
         </div>
     </GlassBubble>
 </template>
