@@ -1,110 +1,88 @@
 $black: #333;
 $white: #eee;
-$color-1: #00bcd4;
+$color-1: #00BCD4;
 $label-z: 200;
 $svg-z: 100;
 
 .muscle-groups {
-  // whole thing
-  float: left;
-  position: sticky;
+  position: relative;
   background: #eee;
-  width: 320px;
-  height: 390px;
-  padding: 0.5rem 1rem;
+  width: 380px;
+  padding: .5rem 1rem;
   border-radius: 5px;
-  box-shadow: 2px 2px 5px 0 rgba(black, 0.5);
+  box-shadow: 2px 2px 5px 0 rgba(black, .5);
   overflow: hidden;
-  border-top: 0.75rem solid $color-1;
-  // text is now hidden
+  border-top: .75rem solid $color-1;
   h1 {
-    margin: -0.5rem -1rem 1rem;
-    padding: 0 1rem 0.75rem;
+    margin: -.5rem -1rem 1rem;
+    padding: 0 1rem .75rem;
     background: $color-1;
     color: $white;
     text-align: center;
     font-size: 1.25rem;
   }
   h2 {
-    position: relative;
-    margin: 0 0 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: -0.03em;
+    margin: 0 0 .5rem;
+    font-size: .8rem;
+    letter-spacing: -.03em;
     text-transform: uppercase;
-    text-align:left
+    color: #111;
+    text-align: left
   }
-  h3 {
-    text-align:left;
-    margin: 0 0 0.5rem;
-    font-size: 0.8rem;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    text-align:left
-  }
-  label + h2 {
-    margin-top: 1rem;
-  }
+  label + h2 { margin-top: 1rem; }
   label {
     width: 50px;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem;
     cursor: pointer;
-    font-size: 0.7rem;
-    opacity: 0.5;
-    position: left;
+    font-size: .7rem;
+    opacity: .5;
+    position: relative;
     z-index: $label-z;
     border-left: 5px solid transparent;
     padding-left: 6px;
     margin-left: -11px;
-    &:hover,
-    &.hover {
+    &:hover, &.hover {
       opacity: 1;
-      border-color: rgba($black, 0.75);
+      border-color: rgba($black, .75);
     }
+    color: #111;
   }
   input:checked + label {
     opacity: 1;
     font-weight: bold;
     color: $color-1;
   }
-
-  //picturess
   svg {
     position: absolute;
-    align-items: right;
     right: -1.5rem;
     bottom: 3rem;
-    height: 320px;
+    height: 350px;
     z-index: $svg-z;
   }
   svg g[id] path {
-    opacity: 0.2;
-    transition: opacity 0.25s ease-in-out;
+    opacity: .2;
+    transition: opacity .25s ease-in-out;
   }
   svg g g[id]:hover path {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: .5;
     fill: $color-1 !important;
   }
   .muscles-helper {
     display: none;
   }
-  $groups: obliques, abs, quads, biceps, adductors, pectorals, deltoids,
-    hamstrings, quads, forearms, calves, triceps, glutes, lats, trapezius;
+  $groups: obliques, abs, quads, biceps, adductors, pectorals, deltoids, hamstrings, quads, forearms, calves, triceps, glutes, lats, trapezius;
   @each $muscle in $groups {
     $upper: to-upper-case(str-slice($muscle, 1, 1)) + str-slice($muscle, 2);
     label[for="#{$muscle}"]:hover ~ svg ##{$upper} path {
-      opacity: 0.75;
+      opacity: .75;
     }
     .#{$muscle}:checked ~ svg ##{$upper} path {
-      opacity: 0.8;
+      opacity: .8;
       fill: $color-1 !important;
     }
   }
-}
-
-.labels {
-  visibility: hidden;
 }
 
 html {
@@ -119,17 +97,17 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  min-height: 100vh;
   width: 100%;
   padding: 2rem 0;
   .info {
-    font-size: 0.8rem;
+    font-size: .8rem;
     display: block;
     width: 250px;
     padding-top: 200px;
     color: $white;
     padding-left: 2rem;
-    opacity: 0.5;
+    opacity: .5;
     &:hover {
       opacity: 1;
     }

@@ -15,12 +15,11 @@ module.exports.handler = async (event) => {
             .updateOne({ username: details.username }, { $set: { equipment: details.equipped } })
         console.log("updateEquipmentFunction:", updateEquipment);
         // response of the updateOne -> acknowledged should be true and modified count:1 
-        const newEquipmentStatus = await collection.findOne({ username: details.username });
-        console.log("Equipped status is currently:", newEquipmentStatus.equipment);
-        //confirms that the password has been changed
-        const updateMessage = { msg: "Equipment status updated!" }
-        return { statusCode: 200, body: JSON.stringify(updateMessage) };
-        //would like messages to be returned in the response body
+        // const newEquipmentStatus = await collection.findOne({ username: details.username });
+        // console.log("Equipped status is currently:", newEquipmentStatus.equipment);
+        // //confirms that the password has been changed
+        // const updateMessage = { msg: "Equipment status updated!" }
+        return { statusCode: 200, body: JSON.stringify("Success!") };
     }
 catch (error) {
     console.log("Could not be updated!");

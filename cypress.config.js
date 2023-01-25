@@ -9,10 +9,9 @@ export default defineConfig({
 
     },
   },
-  
+
   e2e: {
-    baseUrl: "http://localhost:8888",
+    baseUrl: 'http://localhost:8888',
     supportFile: false
   },
 });
-

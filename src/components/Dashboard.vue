@@ -5,15 +5,30 @@ import ShowExercise from "./ShowExercise.vue";
 import { store } from "../store";
 import { ref } from "vue";
 
+import ExerciseTimer from "./ExerciseTimer.vue";
 
 const user = ref(store.state.user)
-const currentworkout = ref(store.state.currentworkout)
+let currentworkout = ref(store.state.currentworkout)
+let cur = ref(0)
+let circuitCount = ref(0)
 
-const skipExercise = (exerciseID) => {
-    alert("User wants to skip exercise with id"+ exerciseID)
+// Eventually get the next two from user data in store
+const unitTime = 30
+const restTime = 10
+
+const unitComplete = () => {
+    console.log("user has completed", currentworkout.value[cur.value].name)
+    cur.value += 1;
+    if (cur.value === currentworkout.value.length) {
+        circuitCount.value += 1
+        cur.value = 0
+    }
 }
-const markDone = (exerciseID) => {
-    alert("User wants to mark as done exercise with id"+ exerciseID)
+
+const removeExercise = (exerciseID) => {
+    console.log("before removing, workout is", currentworkout.value)
+    store.commit("removeFromWorkout", exerciseID)
+    currentworkout.value = store.state.currentworkout
 }
 
 </script>
@@ -42,8 +57,11 @@ const markDone = (exerciseID) => {
             <h1>Gladiator Dashboard</h1>
             <p v-if="user" class="bold-black-text">{{ user.username }}</p>
             <GlassBubble id="current-workout-bubble">
-                <div v-for="exercise of currentworkout">
-                <ShowExercise :exercise="exercise" @skip="skipExercise" @done="markDone"></ShowExercise>
+                <ExerciseTimer v-if="currentworkout.length > 0" :circuits="circuitCount" :exercise-time="unitTime" :rest-time="restTime"
+                    :exercise-name="currentworkout[cur].name" @unit-complete="unitComplete" />
+                <div >
+                    <ShowExercise v-for="( exercise, i ) in currentworkout" :exercise="exercise" @remove="removeExercise"
+                        :class="i === cur ? 'active-exercise' : ''" :key="Math.random()"></ShowExercise>
                 </div>
                 <button class="button" @click="$router.push('exercisecatalogue')">
                     <p>Exercise Catalogue</p>
@@ -146,6 +164,10 @@ h1 {
     display: flex;
     flex-direction: column;
     width: 60vmin;
+}
+
+.active-exercise {
+    border: 2px solid green;
 }
 
 @media only screen and (max-width: 990px) {

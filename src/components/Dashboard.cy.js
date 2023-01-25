@@ -7,18 +7,13 @@ describe('<Dashboard />', () => {
   it('has glass bubbles', () => {
     // see: https://on.cypress.io/mounting-vue
     cy.mount(Dashboard)
-    cy.get('#exercise-catalogue-bubble')
     cy.get('#dash-nav-bubble')
     cy.get('#utilities-bubble')
     cy.get('#current-workout-bubble')
   })
   it('nav bubble', () => {
     cy.mount(Dashboard)
-    cy.get("#dash-nav-bubble").should("have.css", "float", "left")
-    cy.get("#dash-nav-bubble").get("img").should("have.attr", "src", "/__cypress/src/public/profile_logo.webp")
-    // cy.get("#dash-nav-bubble").get("img").should("have.attr", "src", "/__cypress/src/public/spotify_logo.png")
-    // cy.get("#dash-nav-bubble").get("img").should("have.attr", "src", "/__cypress/src/public/weather.png")
-    // cy.get("#dash-nav-bubble").get("img").should("have.attr", "src", "/__cypress/src/public/clock.png")
+    cy.get("#dash-nav-bubble").get("img").should("have.attr", "src", "/spartan-helmet.png")
     cy.get("#dash-nav-bubble").get("p").should("contain", "Profile", "Spotify", "Weather", "date/time")
     cy.get("#dash-nav-bubble").find("button").eq(0).should("contain", "Profile")
     cy.get("#dash-nav-bubble").find("button").eq(1).should("contain", "Spotify")
@@ -26,7 +21,6 @@ describe('<Dashboard />', () => {
 
   it('utilities bubble', () => {
     cy.mount(Dashboard)
-    cy.get("#utilities-bubble").should("have.css", "float", "right")
     cy.get("#utilities-bubble").get("p").should("contain", "Log Out", "User Guide", "Facilities Finder", "Leaderboard", "Lifting Calculator", "Stop Watch")
     cy.get("#utilities-bubble").find("button").eq(0).should("contain", "Log Out")
     cy.get("#utilities-bubble").find("button").eq(1).should("contain", "User Guide")

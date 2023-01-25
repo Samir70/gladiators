@@ -37,56 +37,43 @@ document
   <main>
     <div class="muscle-groups">
       <h1>Muscle Group Selector</h1>
-      <div class="labels">
-        <h3>Arms</h3>
-        <input type="checkbox" class="biceps muscles-helper" id="biceps" />
-        <label for="biceps">Biceps</label>
-        <input type="checkbox" class="deltoids muscles-helper" id="deltoids" />
-        <label for="deltoids">Deltoids</label>
-        <input type="checkbox" class="forearms muscles-helper" id="forearms" />
-        <label for="forearms">Forearms</label>
-        <input type="checkbox" class="triceps muscles-helper" id="triceps" />
-        <label for="triceps">Triceps</label>
-        <h3>Back</h3>
-        <input
-          type="checkbox"
-          class="trapezius muscles-helper"
-          id="trapezius"
-        />
-        <label for="trapezius">Trapezius</label>
-        <input type="checkbox" class="lats muscles-helper" id="lats" />
-        <label for="lats">Lats</label>
-        <h3>Core</h3>
-        <input type="checkbox" class="abs muscles-helper" id="abs" />
-        <label for="abs">Abs</label>
-        <input type="checkbox" class="obliques muscles-helper" id="obliques" />
-        <label for="obliques">Obliques</label>
-        <input
-          type="checkbox"
-          class="pectorals muscles-helper"
-          id="pectorals"
-        />
-        <label for="pectorals">Pectorals</label>
-        <h3>Legs</h3>
-        <input
-          type="checkbox"
-          class="adductors muscles-helper"
-          id="adductors"
-        />
-        <label for="adductors">Adductors</label>
-        <input type="checkbox" class="calves muscles-helper" id="calves" />
-        <label for="calves">Calves</label>
-        <input
-          type="checkbox"
-          class="hamstrings muscles-helper"
-          id="hamstrings"
-        />
-        <label for="hamstrings">Hamstrings</label>
-        <input type="checkbox" class="glutes muscles-helper" id="glutes" />
-        <label for="glutes">Glutes</label>
-        <input type="checkbox" class="quads muscles-helper" id="quads" />
-        <label for="quads">Quads</label>
-      </div>
+      <h2>Arms</h2>
+      <input type="checkbox" class="biceps muscles-helper" id="biceps" />
+      <label for="biceps">Biceps</label>
+      <input type="checkbox" class="deltoids muscles-helper" id="deltoids" />
+      <label for="deltoids">Deltoids</label>
+      <input type="checkbox" class="forearms muscles-helper" id="forearms" />
+      <label for="forearms">Forearms</label>
+      <input type="checkbox" class="triceps muscles-helper" id="triceps" />
+      <label for="triceps">Triceps</label>
+      <h2>Back</h2>
+      <input type="checkbox" class="trapezius muscles-helper" id="trapezius" />
+      <label for="trapezius">Trapezius</label>
+      <input type="checkbox" class="lats muscles-helper" id="lats" />
+      <label for="lats">Lats</label>
+      <h2>Core</h2>
+      <input type="checkbox" class="abs muscles-helper" id="abs" />
+      <label for="abs">Abs</label>
+      <input type="checkbox" class="obliques muscles-helper" id="obliques" />
+      <label for="obliques">Obliques</label>
+      <input type="checkbox" class="pectorals muscles-helper" id="pectorals" />
+      <label for="pectorals">Pectorals</label>
+      <h2>Legs</h2>
+      <input type="checkbox" class="adductors muscles-helper" id="adductors" />
+      <label for="adductors">Adductors</label>
+      <input type="checkbox" class="calves muscles-helper" id="calves" />
+      <label for="calves">Calves</label>
+      <input
+        type="checkbox"
+        class="hamstrings muscles-helper"
+        id="hamstrings"
+      />
+      <label for="hamstrings">Hamstrings</label>
+      <input type="checkbox" class="glutes muscles-helper" id="glutes" />
+      <label for="glutes">Glutes</label>
+      <input type="checkbox" class="quads muscles-helper" id="quads" />
+      <label for="quads">Quads</label>
+
       <svg
         width="100%"
         height="100%"
