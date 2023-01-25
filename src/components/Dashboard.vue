@@ -2,6 +2,7 @@
 import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
 import ShowExercise from "./ShowExercise.vue";
+import LogoutButton from "./LogoutButton.vue"
 import { store } from "../store";
 import { ref } from "vue";
 
@@ -93,9 +94,7 @@ const clearWork = () => {
 
         <GlassBubble id="utilities-bubble">
 
-            <button class="button" @click="$router.push('/')">
-                <p>Log Out</p>
-            </button>
+            <LogoutButton />
 
             <button class="button" @click="$router.push('guideandtipspage')">
                 <p>User Guide</p>

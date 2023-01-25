@@ -1,7 +1,7 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
 import ProfileButton from './Buttons/ProfileButton.vue';
-
+import LogoutButton from "./LogoutButton.vue";
 
 </script>
 
@@ -17,9 +17,7 @@ import ProfileButton from './Buttons/ProfileButton.vue';
 
 <ProfileButton />
 
-<button class="button" @click="$router.push('/')"> 
-<p>Log Out</p>
-</button>
+<LogoutButton />
 
 <br>
   </GlassBubble>

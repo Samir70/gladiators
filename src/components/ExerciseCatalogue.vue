@@ -6,6 +6,8 @@ import ExerciseCatalogueBody from "./ExerciseCatalogueFiles/ExerciseCatalogueBod
 import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
 import ShowExercise from "./ShowExercise.vue";
 import ProfileButton from "./Buttons/ProfileButton.vue";
+import LogoutButton from "./LogoutButton.vue"
+
 
 let show = ref("");
 let currentworkout = ref(store.state.currentworkout);
@@ -41,9 +43,7 @@ const removeExercise = (exerciseID) => {
         />
       </button> -->
 
-      <button class="button" @click="$router.push('/')">
-        <p>Log Out</p>
-      </button>
+      <LogoutButton />
     </GlassBubble>
 
     <div id="ExerciseCatalogue">
