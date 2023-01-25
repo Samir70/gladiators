@@ -22,9 +22,15 @@ describe('template spec', () => {
     cy.get('input[type="submit"]').should('exist')
   })
   it('gives you messages for an incorrect password change that reflect the current state', () => {
+    cy.visit("http://localhost:8888/#/")
+    cy.get('button').contains('Sign In').click()
+    cy.get('input[type="email"]').type('wolf@email.com')
+    cy.get('input[type="password"]').type('wolf')
+    cy.get('button').contains('Sign In').click()
     cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get('#passwordSubmitButton').should('be.disabled')
-    cy.get('input[id="current-password"]').type('hello').should('have.value','hello')
+    cy.get('input[id="current-password"]').as('currentpass').click()
+    cy.get('@currentpass').type('hello').should('have.value','hello')
     cy.get('#passwordSubmitButton').should('be.disabled')
     cy.get('input[id="new-password"]').type('world').should('have.value','world')
     cy.get('#passwordSubmitButton').should('be.disabled')
@@ -34,6 +40,11 @@ describe('template spec', () => {
 
   })
   it('allows you to select equipment yes or no', () => {
+    cy.visit("http://localhost:8888/#/")
+    cy.get('button').contains('Sign In').click()
+    cy.get('input[type="email"]').type('wolf@email.com')
+    cy.get('input[type="password"]').type('wolf')
+    cy.get('button').contains('Sign In').click()
     cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get("#equipmentSelectionComments").should('contain', 'Select an option to update your equipment preference.')
     cy.get('button[id="equipmentUpdateButton"]').should('exist') //upbdate button for equipment exists
@@ -48,7 +59,12 @@ describe('template spec', () => {
     cy.get("#equipmentSelectionComments").should('contain', 'You do have access to equipment/facilities.')
     cy.get('button[id="equipmentUpdateButton"]').click() //clickable
   })
-  it('allows you to select your experience level and click update', () => {
+  it('allows you to select your experience level and click update, needs to be signed in', () => {
+    cy.visit("http://localhost:8888/#/")
+    cy.get('button').contains('Sign In').click()
+    cy.get('input[type="email"]').type('wolf@email.com')
+    cy.get('input[type="password"]').type('wolf')
+    cy.get('button').contains('Sign In').click()
     cy.visit("http://localhost:8888/#/UpdateDetails")
     cy.get("#experienceSelectionComments").should('contain', 'Select an option to update your experience level.')
     cy.get('button[id="experienceUpdateButton"]').should('exist') //upbdate button for equipment exists
