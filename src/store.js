@@ -21,5 +21,8 @@ export const store = createStore({
         (ex) => ex._id !== payload
       );
     },
+    clearAll(state) {
+      state.currentworkout = []
+    }
   },
 });

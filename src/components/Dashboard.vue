@@ -29,6 +29,10 @@ const removeExercise = (exerciseID) => {
     store.commit("removeFromWorkout", exerciseID)
     currentworkout.value = store.state.currentworkout
 }
+const clearWork = () => {
+    store.commit("clearAll")
+    currentworkout.value = store.state.currentworkout
+}
 
 </script>
 <template>
@@ -71,11 +75,9 @@ const removeExercise = (exerciseID) => {
                 <button>
                     <p>Workout Complete</p>
                 </button>
-                <button>
+                <button class="button" @click="clearWork">
                     <p>Clear All</p>
                 </button>
-
-                <p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
 
             </GlassBubble>
         </div>
