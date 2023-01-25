@@ -7,13 +7,21 @@ import ExerciseList from "./ExerciseCatalogueFiles/ExerciseList.vue";
 import ShowExercise from "./ShowExercise.vue";
 
 let show = ref("");
-
+let currentworkout = ref(store.state.currentworkout)
 let exercisechoice = ref(store.state.currentworkout);
 const exercisecount = ref(exercisechoice.value.length);
 const exAdded = (exercise) => {
   exercisechoice.value = store.state.currentworkout;
   exercisecount.value = exercisechoice.value.length;
-  console.log()
+  currentworkout.value = store.state.currentworkout;
+}
+
+const removeExercise = (exerciseID) => {
+    console.log("before removing, workout is", currentworkout.value)
+    store.commit("removeFromWorkout", exerciseID)
+    exercisechoice.value = store.state.currentworkout;
+    currentworkout.value = store.state.currentworkout;
+    exercisecount.value = exercisechoice.value.length;
 }
 
 
@@ -89,23 +97,15 @@ export default {
      ></ExerciseList>
     </div>
 
-    <!-- <ExerciseList
-      v-if="show == 'strength' || show == 'all'"
-      tag="strength" @exercise-added="exAdded"
-    ></ExerciseList>
-    <ExerciseList
-      v-if="show == 'flex' || show == 'all'"
-      tag="flex"
-    ></ExerciseList>
-    <ExerciseList
-      v-if="show == 'cardio' || show == 'all'"
-      tag="cardio"
-    ></ExerciseList> -->
+   
 
     <div id="current-workout">
       <GlassBubble>
         <p>{{ exercisecount }} of 5 exercises selected</p>
-        
+        <div >
+                    <ShowExercise v-for="( exercise, i ) in currentworkout" :exercise="exercise" @remove="removeExercise"
+                        :class="i === cur ? 'active-exercise' : ''" :key="Math.random()"></ShowExercise>
+                </div>
       </GlassBubble>
     </div>
 <br>
@@ -154,7 +154,6 @@ export default {
 
 #Body {
   position: relative;
-  top: -150px
 }
 
 #current-workout {

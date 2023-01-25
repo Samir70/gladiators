@@ -89,7 +89,7 @@ getExercises();
 <template>
 
   <h2>Pick an exercise</h2>
-
+  <p>Click an exercise to view instructions</p>
   <div id="exercise-buttons">
     <GlassBubble>
       <p v-for="exercise of exercises">
