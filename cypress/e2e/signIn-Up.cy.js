@@ -1,6 +1,6 @@
 describe("template spec", () => {
   it('visits page', () => {
-    cy.visit("http://localhost:8888/#/");
+    cy.visit("http://localhost:8880/#/");
 
   })
 //   it("Can get to the signIn page and sign in", () => {
