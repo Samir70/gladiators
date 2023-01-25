@@ -11,13 +11,12 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: start server
-        uses: nwtgck/actions-netlify@v1.2
+        uses: cypress-io/github-action@v4.1.0 # use the explicit version number
         with: 
           wait-on: "http://localhost:8888"
           build: npm run build
           start: netlify dev
+          config-file: cypress.config.js
       - name: run cypress test
         # uses: cypress-io/github-action@v4.1.0 # use the explicit version number
         run: npx cypress run --component
-        with:
-            config-file: cypress.config.js
