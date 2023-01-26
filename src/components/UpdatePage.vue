@@ -40,7 +40,7 @@ const updateEquipment = async () => {
         method: "POST",
         body: JSON.stringify({ equipped: equipmentStatus.value, username: user.value.username })
     }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
-    store.state.user.equipment = equipmentStatus.value;
+    store.commit("updateEquipment", equipmentStatus.value)
 
 
 }
@@ -52,7 +52,7 @@ const updateExperience = async () => {
         method: "POST",
         body: JSON.stringify({ experience: experience.value, username: user.value.username })
     }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
-    store.state.user.experience = experience.value;
+    store.commit("updateExperience", experience.value)
 }
 
 
