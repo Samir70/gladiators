@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          build: npm run build
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Start MongoDB
@@ -19,10 +21,10 @@ jobs:
         with:
           wait-on: "http://localhost:8888"
           config-file: cypress.config.cjs
-          build: npm run build
+          # build: npm run build
           start: netlify dev
         env:
-          MONGODB_URI: "http://localhost:27017"
+          MONGODB_URI: "mongodb://0.0.0.0/"
           MONGODB_DATABASE: "gladiators"
       - name: run cypress component test
         run: npx cypress run --component
