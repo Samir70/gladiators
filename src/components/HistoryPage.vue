@@ -13,7 +13,7 @@ const user = ref(store.state.user)
 let loggedIn = ref(user.value === null ? false : true)
 
 let userHistory = ref("")
-let userWorkoutCount = ref("")
+let userWorkoutCount = ref(0)
 let events = ref([])
 let showCalendar = ref(false)
 
