@@ -20,7 +20,7 @@ module.exports.handler = async (event) => {
         // console.log("Experience is currently", newExperienceLevel.experience);
         //confirms that the experience level has been changed
         // const updateMessage = { msg: "Your experience is now set at: " + newExperienceLevel.experience }
-        return { statusCode: 200, body: JSON.stringify("Success!") };
+        return { statusCode: 200, body: JSON.stringify("Experience level updated successfully!") };
     }
 catch (error) {
     console.log("Could not be updated!");

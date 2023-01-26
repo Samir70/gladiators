@@ -16,7 +16,8 @@ let newPassword = ref("")
 let confirmPassword = ref("")
 let updateMessage = ref("")
 // let completedPassForm = ref(currentPassword.value == "") // || newPassword.value === "" || confirmPassword.value === "")
-
+let experienceUpdateMessage = ref("")
+let equipmentUpdateMessage = ref("")
 
 const changePassword = async () => {
     if (currentPassword.value === user.value.password) {
@@ -39,7 +40,7 @@ const updateEquipment = async () => {
     let result = await fetch(`/.netlify/functions/updateEquipment`, {
         method: "POST",
         body: JSON.stringify({ equipped: equipmentStatus.value, username: user.value.username })
-    }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
+    }).then(function (response) { return response.json() }).then(function (data) { equipmentUpdateMessage.value=data })
     store.commit("updateEquipment", equipmentStatus.value)
 
 
@@ -51,7 +52,7 @@ const updateExperience = async () => {
     let result = await fetch(`/.netlify/functions/updateExperience`, {
         method: "POST",
         body: JSON.stringify({ experience: experience.value, username: user.value.username })
-    }).then(function (response) { return response.json() }).then(function (data) { console.log(data.msg) })
+    }).then(function (response) { return response.json() }).then(function (data) { experienceUpdateMessage.value=data })
     store.commit("updateExperience", experience.value)
 }
 
@@ -87,7 +88,7 @@ const updateExperience = async () => {
                         required>
                     <label for="confirm-password"> Confirm New Password</label><br>
                     <div id="passwordUpdateComments">
-                        <p id="updateMessageContainer" v-if="updateMessage"> {{ updateMessage }}</p>
+                        <p id="updateMessageContainer" v-if="updateMessage"> {{ updateMessage.value }}</p>
                         <p></p>
 
                     </div>
@@ -101,11 +102,11 @@ const updateExperience = async () => {
                 <h2> About you </h2>
                 <fieldset id="experiencechangebox">
                     <h1> Your experience level </h1>
-                    <input type="radio" v-model="experience" name="experienceselection" id="beginner"
+                    <input v-on:click="experienceUpdateMessage=false" type="radio" v-model="experience" name="experienceselection" id="beginner"
                         value="B">Beginner<img class=toggles src="/beginner.png">
-                    <input type="radio" v-model="experience" name="experienceselection" id="intermediate"
+                    <input v-on:click="experienceUpdateMessage=false" type="radio" v-model="experience" name="experienceselection" id="intermediate"
                         value="I">Intermediate<img class=toggles src="/intermediate.png">
-                    <input type="radio" v-model="experience" name="experienceselection" id="advanced"
+                    <input v-on:click="experienceUpdateMessage=false" type="radio" v-model="experience" name="experienceselection" id="advanced"
                         value="A">Advanced<img class=toggles src="/advanced.png">
                     <div id="experienceSelectionComments">
                         <p v-if="experience === 'B'">You have just started on your journey to becoming a champion. </p>
@@ -113,6 +114,7 @@ const updateExperience = async () => {
                         <p v-if="experience === 'A'">You are a champion and can handle advanced movements. </p>
                         <p v-if="experience == ''"> Select an option to update your experience level. </p>
                     </div>
+                    <p id="experienceUpdateMessageContainer" v-if="experienceUpdateMessage"> {{ experienceUpdateMessage }}</p>
                     <button v-bind:disabled="experience === ''" v-on:click="updateExperience" id="experienceUpdateButton">
                         Update</button><br>
                 </fieldset><br>
@@ -120,15 +122,16 @@ const updateExperience = async () => {
 
                 <fieldset id="equipmentchangebox">
                     <h1>Equipment access</h1><br>
-                    <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="notequipped"
+                    <input v-on:click="equipmentUpdateMessage=false" type="radio" v-model="equipmentStatus" name="equipmentselection" id="notequipped"
                         value="false">No<img class=toggles src="/noequipment.png">
-                    <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="equipped"
+                    <input v-on:click="equipmentUpdateMessage=false" type="radio" v-model="equipmentStatus" name="equipmentselection" id="equipped"
                         value="true">Yes <img class=toggles src="/equipment.png">
                     <div id="equipmentSelectionComments">
                         <p v-if="equipmentStatus === 'true'">You do have access to equipment/facilities. </p>
                         <p v-if="equipmentStatus === 'false'">You do not have access to equipment/facilities.</p>
                         <p v-if="equipmentStatus == ''"> Select an option to update your equipment preference.</p>
                     </div>
+                    <p id="equipmentUpdateMessageContainer" v-if="equipmentUpdateMessage"> {{ equipmentUpdateMessage }}</p>
                     <button id=equipmentUpdateButton v-bind:disabled="equipmentStatus === ''" v-on:click="updateEquipment">
                         Update</button><br>
                 </fieldset><br>
