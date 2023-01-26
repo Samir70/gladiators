@@ -11,6 +11,10 @@ export const store = createStore({
       // console.log("store.login payload is", payload)
       state.user = payload;
     },
+    logout(state, payload) {
+      state.user = null;
+      state.currentworkout = []
+    },
     add_to_workout(state, payload) {
       // console.log("adding this: ", payload)
       state.currentworkout = state.currentworkout.concat(payload);
@@ -21,5 +25,8 @@ export const store = createStore({
         (ex) => ex._id !== payload
       );
     },
+    clearAll(state) {
+      state.currentworkout = []
+    }
   },
 });

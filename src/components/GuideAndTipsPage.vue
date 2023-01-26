@@ -1,10 +1,12 @@
 <script setup>
 import GlassBubble from './GlassBubble.vue';
-
+import ProfileButton from './Buttons/ProfileButton.vue';
+import LogoutButton from "./LogoutButton.vue";
 
 </script>
 
 <template>
+  <div id="guidepage">
   <h1>Guide and Tips Page</h1>
 
   <GlassBubble id="userguide-nav-bubble">
@@ -13,17 +15,9 @@ import GlassBubble from './GlassBubble.vue';
 <p>Dashboard</p>
 </button>
 
-    <button class="button" @click="$router.push('profilepage')">
-        <img src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top" style="width: 150px;
-    height: 100px; border-radius: 80px;">
-        <p>Profile</p>
-    </button>
+<ProfileButton />
 
-    <br>
-
-<button class="button" @click="$router.push('/')"> 
-<p>Log Out</p>
-</button>
+<LogoutButton />
 
 <br>
   </GlassBubble>
@@ -46,12 +40,34 @@ import GlassBubble from './GlassBubble.vue';
     <h2> Maximal Strength Training</h2>
     <p> Weight - 85% to 100% of 1 Rep Max</p>
     <p>REPS - 1 to 5</p>
-    <p>Sets - </p>
+    <p>Sets 3 - 6</p>
   </GlassBubble>
+</div>
 
 </template>
 
 <style scoped>
+
+@media only screen and (max-width: 600px) {
+  #guidepage {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  #userguide-nav-bubble {
+    flex-direction: row;
+    margin: auto;
+    transform: scale(0.75);
+    height: fit-content;
+  }
+  #info {
+    flex-direction: row;
+    margin: auto;
+    transform: scale(0.75);
+    height: fit-content;
+  }
+}
+
 button {
   background-color: rgba(255, 255, 255, 0.248);
   border: none;

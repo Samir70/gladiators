@@ -1,5 +1,3 @@
-import HelloWorld from "./components/HelloWorld.vue";
-// import TanyasPage from "./components/TanyasPage.vue";
 import LandingPage from "./components/LandingPage.vue";
 import SignUpPage from "./components/SignUpPage.vue";
 import SignInPage from "./components/SignInPage.vue";
@@ -13,8 +11,6 @@ import UpdatePage from "./components/UpdatePage.vue";
 import SignupSurvey from "./components/SignupSurvey.vue"
 
 export const routes = [
-   { path: "/hello", name: "HelloWorld", component: HelloWorld },
-  // { path: "/tanyaspage", name: "TanyasPage", component: TanyasPage },
   { path: "/", name: "LandingPage", component: LandingPage },
   { path: "/SignUpPage", name: "SignUpPage", component: SignUpPage },
   { path: "/SignInPage", name: "SignInPage", component: SignInPage },

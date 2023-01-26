@@ -4,17 +4,22 @@ import GlassBubble from './GlassBubble.vue';
 
 <template>
   <div id="landingpage">
-    <GlassBubble id="buttons-bubble">
-      <button @click="$router.push('signinpage')">Sign In</button>
+    <GlassBubble id="welcome-bubble">
+
+      <GlassBubble id="buttons-bubble">
+      <button @click="$router.push('signinpage')">Sign In</button> <p></p>
       <button @click="$router.push('signuppage')">Sign Up</button>
     </GlassBubble>
 
-    <GlassBubble id="welcome-bubble">
+    <br>
+
       <h1 id="landingpage-welcome">Welcome To Gladimakers</h1>
-      <img id="gladiator-thumbsup" src="/GladiatorThumbsUp.png" />
+      <img id="spartan-helmet.png" src="/spartan-helmet.png" style="height: 400px; width: 400px;">
+      <!-- <img id="gladiator-thumbsup" src="/GladiatorThumbsUp.png" /> -->
       <p id="welcome-blurb">Even if your name isn't Maximus Decimus Meridius, we can still help you achieve your goals.
       </p>
     </GlassBubble>
+
   </div>
 </template>
 
@@ -44,23 +49,26 @@ import GlassBubble from './GlassBubble.vue';
 }
 
 #welcome-bubble {
-  float: right;
+  /* float: centre; */
   top: 50px;
   width: fit-content;
   padding: 20px 0px;
 }
 
 #buttons-bubble {
+  display: inline-block;
+}
+/* #buttons-bubble {
   display: flex;
   flex-direction: column;
+  margin: right;
   justify-content: center;
-  position: absolute;
-  float: left;
-  top: 50;
+  flex:content;
+  top: 550;
   padding: 0px 20px;
   width: fit-content;
-  /* max-width: 25vw; */
-}
+  max-width: 25vw;
+} */
 
 button {
   width: fit-content;

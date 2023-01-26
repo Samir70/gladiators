@@ -15,8 +15,6 @@ describe("<ShowExercise />", () => {
     });
     cy.get("#curlID")
     cy.get("#curlID-title")
-    cy.get(".exercise-buttons").get("button").eq(0).should("contain", "Start").click()
-    cy.get(".exercise-buttons").get("button").eq(1).should("contain", "Skip").click()
-    cy.get(".exercise-buttons").get("button").eq(2).should("contain", "Done").click()
+    cy.get(".exercise-buttons").get("button").eq(0).should("contain", "Remove").click()
   });
 });

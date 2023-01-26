@@ -1,15 +1,19 @@
 <script setup>
-import { store } from "../store"
-import { ref } from "vue"
 import GlassBubble from './GlassBubble.vue';
 import ProfileButton from "./Buttons/ProfileButton.vue";
 import ShowExercise from "./ShowExercise.vue";
+import LogoutButton from "./LogoutButton.vue"
+import { store } from "../store";
+import { ref } from "vue";
+
 import ExerciseTimer from "./ExerciseTimer.vue";
+// import {getExercises} from "./ExerciseCatalogueFiles/ExerciseList.vue";
 
 const user = ref(store.state.user)
 let currentworkout = ref(store.state.currentworkout)
 let cur = ref(0)
 let circuitCount = ref(0)
+
 
 // Eventually get the next two from user data in store
 const unitTime = 30
@@ -29,6 +33,15 @@ const removeExercise = (exerciseID) => {
     store.commit("removeFromWorkout", exerciseID)
     currentworkout.value = store.state.currentworkout
 }
+const clearWork = () => {
+    store.commit("clearAll")
+    currentworkout.value = store.state.currentworkout
+}
+
+// const randomize = () => {
+//     let randomArray = [getExercises()]
+//     console.log(randomArray)
+// }
 
 </script>
 <template>
@@ -37,7 +50,7 @@ const removeExercise = (exerciseID) => {
             <ProfileButton />
 
             <button class="button">
-                <img id="spotify_logo" src="/spotify_logo.png">
+                <img id="spotify_logo.png" src="/spotify_logo.png">
                 <p>Spotify</p>
             </button>
 
@@ -65,26 +78,23 @@ const removeExercise = (exerciseID) => {
                 <button class="button" @click="$router.push('exercisecatalogue')">
                     <p>Exercise Catalogue</p>
                 </button>
-                <button>
+                    <!-- <button class="button" @click="randomize"> -->
+                   <button>
                     <p>Random Workout Generator</p>
                 </button>
                 <button>
                     <p>Workout Complete</p>
                 </button>
-                <button>
+                <button class="button" @click="clearWork">
                     <p>Clear All</p>
                 </button>
-
-                <p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
 
             </GlassBubble>
         </div>
 
         <GlassBubble id="utilities-bubble">
-            <p>Utilities</p>
-            <button class="button" @click="$router.push('/')">
-                <p>Log Out</p>
-            </button>
+
+            <LogoutButton />
 
             <button class="button" @click="$router.push('guideandtipspage')">
                 <p>User Guide</p>

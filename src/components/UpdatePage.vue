@@ -97,17 +97,16 @@ const updateExperience = async () => {
                 </fieldset>
             </GlassBubble>
 
-
             <GlassBubble id="aboutcontainer">
                 <h2> About you </h2>
                 <fieldset id="experiencechangebox">
                     <h1> Your experience level </h1>
                     <input type="radio" v-model="experience" name="experienceselection" id="beginner"
-                        value="B">Beginner<img class=toggles src="beginner.png">
+                        value="B">Beginner<img class=toggles src="/beginner.png">
                     <input type="radio" v-model="experience" name="experienceselection" id="intermediate"
-                        value="I">Intermediate<img class=toggles src="intermediate.png">
+                        value="I">Intermediate<img class=toggles src="/intermediate.png">
                     <input type="radio" v-model="experience" name="experienceselection" id="advanced"
-                        value="A">Advanced<img class=toggles src="advanced.png">
+                        value="A">Advanced<img class=toggles src="/advanced.png">
                     <div id="experienceSelectionComments">
                         <p v-if="experience === 'B'">You have just started on your journey to becoming a champion. </p>
                         <p v-if="experience === 'I'">You are a challenger and know most movements. </p>
@@ -122,9 +121,9 @@ const updateExperience = async () => {
                 <fieldset id="equipmentchangebox">
                     <h1>Equipment access</h1><br>
                     <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="notequipped"
-                        value="false">No<img class=toggles src="noequipment.png">
+                        value="false">No<img class=toggles src="/noequipment.png">
                     <input type="radio" v-model="equipmentStatus" name="equipmentselection" id="equipped"
-                        value="true">Yes <img class=toggles src="equipment.png">
+                        value="true">Yes <img class=toggles src="/equipment.png">
                     <div id="equipmentSelectionComments">
                         <p v-if="equipmentStatus === 'true'">You do have access to equipment/facilities. </p>
                         <p v-if="equipmentStatus === 'false'">You do not have access to equipment/facilities.</p>
