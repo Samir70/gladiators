@@ -14,7 +14,7 @@ jobs:
         uses: cypress-io/github-action@v4.1.0 # use the explicit version number
         with:
           wait-on: "http://localhost:8888"
-          config-file: cypress.config.js
+          config-file: cypress.config.cjs
           build: npm run build
           start: netlify dev
       - name: run cypress test

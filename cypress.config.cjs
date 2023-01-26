@@ -28,7 +28,9 @@ module.exports = defineConfig({
           return null;
         },
         connect() {
-          mongoose.connect(process.env.MONGODB_URI + "/" + process.env.MONGODB_DATABASES, {
+          // console.log("Trying to connect", process.env.MONGODB_URI + process.env.MONGODB_DATABASE)
+          // "mongodb://0.0.0.0/gladiators"
+          mongoose.connect(process.env.MONGODB_URI + process.env.MONGODB_DATABASE, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
           });
