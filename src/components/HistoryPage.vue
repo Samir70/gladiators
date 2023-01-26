@@ -9,9 +9,6 @@ import moment from 'moment'
 
 
 const user = ref(store.state.user)
-const current = ref(store.state.currentworkout)
-
-
 
 let userHistory = ref("")
 let userWorkoutCount = ref("")
@@ -33,32 +30,23 @@ const getHistory = async () => {
           list += `<li>${item}</li>`
         })
         events.value.push({
-          title: "Workout " + i + 1,
+          title: "Workout " + (Number(i)+1),
           start: moment(userHistory.workout[i].date).format('YYYY-MM-DD'),
           end: moment(userHistory.workout[i].date).format('YYYY-MM-DD'),
           content: list,
           class: 'done'
         });
+        console.log(userWorkoutCount)
         const calendarReveal = document.getElementById("workoutcalendar")
         calendarReveal.style = "display:block"
+        const workoutCounter = document.getElementById("workoutCounter")
+        workoutCounter.style = "display:block"
         document.getElementById("revealbutton").disabled = true;
 
       }
 
     })
 }
-
-const addToHistory = async () => {
-  console.log(current)
-  let result = await fetch(`/.netlify/functions/completeWorkout`, {
-    method: "POST",
-    body: JSON.stringify({ username: user.value.username, workout: current.value, completionDate: Date.now()})
-  })
-    .then(function (response) {
-      return response
-        .json()
-    }).then(function (data) {console.log(data.value);})}
-
 
 
 </script>
@@ -75,9 +63,10 @@ const addToHistory = async () => {
     <div style="display:inline-block;">
       <h1 id="profile-title">My Workout History</h1>
     </div>
+
   </GlassBubble>
-<button v-on:click="addToHistory">Add</button>
-  <h2> You have worked out {{ userWorkoutCount }} times since you began your journey! </h2>
+  <h2 id="workoutCounter" style="display:none"> You have worked out {{ userWorkoutCount}} times since you began your journey! </h2>
+  
   <button id="revealbutton" v-on:click="getHistory">View your history</button>
 
 
