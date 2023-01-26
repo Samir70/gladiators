@@ -1,14 +1,14 @@
-const { History } = require("./history");
-const { wolfHistoryID, jetHistoryID } = require("./historyids");
+const { History } = require("./history.cjs");
+const { wolfHistoryID, jetHistoryID } = require("./historyids.cjs");
 
 
-const Exercise = require('./exercise')
-const {
-  curlID,
-  squatID,
-  benchpressID,
-  lungeID
-} = require("./exerciseids");
+// const Exercise = require('./exercise.cjs')
+// const {
+//   curlID,
+//   squatID,
+//   benchpressID,
+//   lungeID
+// } = require("./exerciseids.cjs");
 
 const accounts = [
   {

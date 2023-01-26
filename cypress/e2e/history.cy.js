@@ -1,5 +1,7 @@
 describe('template spec', () => {
   it('renders the page and lets use see calender', () => {
+    cy.task("connect");
+    cy.task("resetHistory", "Seedhistory e2e")
     cy.visit("http://localhost:8888/#/")
     cy.get('button').contains('Sign In').click()
     cy.get('input[type="email"]').type('wolf@email.com')
@@ -10,6 +12,8 @@ describe('template spec', () => {
     cy.get("#workoutcalendar").should("exist")
   })
   it('adds an item to workout and adds to calendar', () => {
+    cy.task("connect");
+    cy.task("resetHistory", "Seedhistory e2e")
     cy.visit("http://localhost:8888/#/")
     cy.get('button').contains('Sign In').click()
     cy.get('input[type="email"]').type('wolf@email.com')

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const {History} = require("../../models/history"); //import the model
-const seedHistory = require("../../models/seedhistory"); //to add the seed data to the exercise model
+const {History} = require("../../models/history.cjs"); //import the model
+const seedHistory = require("../../models/seedhistory.cjs"); //to add the seed data to the exercise model
 const { wolfID, jetID, hunterID, shadowID } = require("../../models/userids");
 
 

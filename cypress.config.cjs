@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const seedAccounts = require("./models/seedaccount.cjs");
 const seedExercises = require("./models/seedexercise.cjs");
+const seedHistory = require("./models/seedhistory.cjs");
 require("dotenv").config();
 var mongoose = require("mongoose");
 
@@ -25,6 +26,11 @@ module.exports = defineConfig({
         resetExercises(testFile) {
           console.log("seeding exercises table via a task set in " + testFile);
           seedExercises();
+          return null;
+        },
+        resetHistory(testFile) {
+          console.log("seeding History table via a task set in " + testFile);
+          seedHistory();
           return null;
         },
         connect() {

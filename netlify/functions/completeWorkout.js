@@ -1,5 +1,5 @@
 const moment = require('moment')
-const { History } = require("../../models/history");
+const { History } = require("../../models/history.cjs");
 const { MongoClient } = require("mongodb");
 require("dotenv").config();
 const mongoClient = new MongoClient(process.env.MONGODB_URI);

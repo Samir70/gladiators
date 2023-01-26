@@ -1,5 +1,5 @@
 // const { mongoose } = require("mongoose");
-const { History } = require("../../models/history");
+const { History } = require("../../models/history.cjs");
 // console.log("getHistory function")
 // require("dotenv").config();
 
