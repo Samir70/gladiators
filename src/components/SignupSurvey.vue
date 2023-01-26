@@ -20,7 +20,8 @@ const updateEquipment = async () => {
     let result = await fetch(`/.netlify/functions/updateEquipment`, {
         method: "POST",
         body: JSON.stringify({ equipped: equipmentStatus.value, username: user.value.username })
-    }).then(response => console.log(response))
+    }).then(response => response.json())
+    store.commit("updateEquipment", equipmentStatus.value)
     router.push("dashboard")
 }
 
@@ -31,6 +32,7 @@ const updateExperience = async () => {
         method: "POST",
         body: JSON.stringify({ experience: experience.value, username: user.value.username })
     }).then(response => console.log(response))
+    store.commit("updateExperience", experience.value)
     const equipmentDiv = document.getElementById("equipmentcontainer")
     equipmentDiv.style.display="block";
 }

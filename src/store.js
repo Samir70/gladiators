@@ -27,6 +27,12 @@ export const store = createStore({
     },
     clearAll(state) {
       state.currentworkout = []
+    },
+    updateEquipment(state, payload) {
+      state.user.equipment = payload
+    },
+    updateExperience(state, payload) {
+      state.user.experience = payload
     }
   },
 });
