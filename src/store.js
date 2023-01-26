@@ -3,7 +3,7 @@ export const store = createStore({
   state() {
     return {
       user: {username:"Wolf"},
-      currentworkout: [],
+      currentworkout: ['punch walls', 'have adventures'],
     };
   },
   mutations: {
