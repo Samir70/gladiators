@@ -1,5 +1,6 @@
 const { defineConfig } = require("cypress");
 const seedAccounts = require("./models/seedaccount.cjs");
+const seedExercises = require("./models/seedexercise.cjs");
 var mongoose = require("mongoose");
 
 module.exports = defineConfig({
@@ -18,6 +19,11 @@ module.exports = defineConfig({
         resetUsers(testFile) {
           console.log("seeding accounts table via a task set in " + testFile);
           seedAccounts();
+          return null;
+        },
+        resetExercises(testFile) {
+          console.log("seeding exercises table via a task set in " + testFile);
+          seedExercises();
           return null;
         },
         connect() {
