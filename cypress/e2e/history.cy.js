@@ -7,9 +7,6 @@ describe('template spec', () => {
     cy.get('button').contains('Sign In').click()
     cy.wait(1000);
     cy.visit("http://localhost:8888/#/history")
-    cy.get("button[id='revealbutton']").should("exist")
-    cy.get("#workoutcalender").should("not.exist")
-    cy.get("button[id='revealbutton']").click()
     cy.get("#workoutcalendar").should("exist")
   })
   it('adds an item to workout and adds to calendar', () => {
@@ -25,9 +22,6 @@ describe('template spec', () => {
     cy.get("button").contains("Go to workout!").click()
     cy.get("button").contains("Workout Complete").click()
     cy.visit("http://localhost:8888/#/history")
-    cy.get("button[id='revealbutton']").should("exist")
-    cy.get("#workoutcalender").should("not.exist")
-    cy.get("button[id='revealbutton']").click()
     cy.get("#workoutcalendar").should("exist")
 })
 })

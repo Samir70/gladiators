@@ -27,9 +27,9 @@ const getHistory = async () => {
         .json()
     }).then(function (data) {
       userHistory = data;
+      console.log("Userhistory:", userHistory)
       userWorkoutCount.value = userHistory.workout.length;
       showCalendar.value = true;
-      // console.log(userWorkoutCount)
       for (let i = 0; i < userWorkoutCount.value; i++) {
         let list = '<ul>'
         userHistory.workout[i].exercises.forEach(item => {
