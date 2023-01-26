@@ -2,8 +2,8 @@ import { createStore } from "vuex";
 export const store = createStore({
   state() {
     return {
-      user: {username:"Wolf"},
-      currentworkout: ['punch walls', 'have adventures'],
+      user: null,
+      currentworkout: [],
     };
   },
   mutations: {

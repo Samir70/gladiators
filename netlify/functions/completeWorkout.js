@@ -11,7 +11,7 @@ const handler = async (event) => {
     let details = JSON.parse(event.body)
     // console.log("incoming", details)
     let dateFormatted = (moment(details.completionDate).format('YYYY-MM-DD'))
-    let workout = {workout: {date: dateFormatted, exercises:details.workout}}
+    let workout = {workout: {date: dateFormatted, exercises:details.workout.map(e=>e.name)}}
     //console.log("In getHistoryfunction", details);
     const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
     const collection = db.collection("histories");
