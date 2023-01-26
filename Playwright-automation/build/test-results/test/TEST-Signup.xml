@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Signup" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-26T12:17:57" hostname="MASTUDENT-Sanam-Rehman-KXDVQGRQ54.local" time="2.291">
+  <properties/>
+  <testcase name="empty_signup_test()" classname="Signup" time="2.291"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
