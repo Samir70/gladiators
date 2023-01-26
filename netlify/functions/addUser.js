@@ -1,22 +1,49 @@
-const { MongoClient } = require("mongodb");
+const { mongoose } = require("mongoose");
+const { AccountSchema } = require("../../models/account");
 require("dotenv").config();
-const mongoClient = new MongoClient(process.env.MONGODB_URI);
-
-const clientPromise = mongoClient.connect();
 
 module.exports.handler = async (event) => {
   try {
-    // console.log("In addUser function, incoming:", event.queryStringParameters);
-    const db = (await clientPromise).db(process.env.MONGODB_DATABASE);
-    const collection = db.collection("accounts");
-    const newUserId = await collection
-      .insertOne(event.queryStringParameters)
-      .then((res) => res.insertedId);
-    // console.log("In addUser function: made newUserId", newUserId);
-    // .findById doesn't seem to exist
-    const newUser = await collection.findOne({ _id: newUserId });
-    // console.log("In addUser function: made newUser", newUser);
-    return { statusCode: 200, body: JSON.stringify(newUser) };
+    let details = JSON.parse(event.body);
+    // console.log("In addUser function, incoming:", details);
+    console.log("In addUser function, number of connections:", mongoose.connection.base.connections.length);
+    const db = await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: "gladiators",
+    });
+    const Account = db.model("Account", AccountSchema);
+    let msg = await Account.findOne({
+      $or: [{ email: details.email }, { username: details.username }],
+    }).then((account) => {
+      if (account === null) {
+        return null;
+      } else if (account.email === details.email) {
+        return "that email is in use";
+      } else {
+        return "that username is in use";
+      }
+    });
+    // console.log("Out of Account.findOne() with msg", msg);
+    if (msg === null) {
+      const newAccount = new Account(details);
+      let newUser = await newAccount.save();
+      // console.log("Made newUser:", newUser)
+      return {
+        statusCode: 200,
+        body: JSON.stringify({
+          signUpFailed: false,
+          msg,
+          newUser
+        }),
+      };
+    } else {
+      return {
+        statusCode: 401,
+        body: JSON.stringify({
+          signUpFailed: true,
+          msg
+        }),
+      };
+    }
   } catch (error) {
     console.log("In addUser function: ERROR");
     return { statusCode: 500, body: error.toString() };

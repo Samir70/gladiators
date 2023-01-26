@@ -10,26 +10,38 @@ const router = useRouter()
 const newUserName = ref("")
 const newUserEmail = ref("")
 const newUserPassword = ref("")
+const signUpStatus = ref({signUpFailed: false, msg: ""})
 
 const signUp = async () => {
-  // console.log(newUserName.value, newUserEmail.value, newUserPassword.value)
-  // must be better way to send the data, the below gets displayed by the server
-  let result = await fetch(`/.netlify/functions/addUser?email=${newUserEmail.value}&username=${newUserName.value}&password=${newUserPassword.value}`).then(response => response.json())
-  console.log("From SignUp Page", result)
-  store.commit("login", result)
-  router.push("dashboard")
+  let result = await fetch(`/.netlify/functions/addUser`, {
+    method: "POST",
+    body: JSON.stringify({ username: newUserName.value, email: newUserEmail.value, password: newUserPassword.value })
+  }).then(response => response.json())
+  // console.log("From SignUp Page", result)
+  if (result.signUpFailed) {
+    signUpStatus.value = {signUpFailed: true, msg: result.msg}
+  } else {
+    store.commit("login", result.newUser)
+    router.push("survey")
+  }
 }
 </script>
 
 <template>
+  <GlassBubble id="home-link">
+   <button @click="$router.push('/')" id="home-button"> Home </button>
+
+ </GlassBubble>
   <GlassBubble id="signup-bubble">
     <h1>Sign Up</h1>
+    <p id="signup-failed-error" v-if="signUpStatus.signUpFailed">Unable to sign up because: {{ signUpStatus.msg }}</p>
     <input id="name-field" type="text" placeholder="Username" v-model="newUserName" required />
     <input id="email-field" type="email" placeholder="Email" v-model="newUserEmail" required />
     <input id="password-field" type="password" placeholder="Password" v-model="newUserPassword" required />
-    <p></p>
     <button id="signup-button" v-on:click="signUp">Sign Up</button>
   </GlassBubble>
+  
+  
 
 </template>
 
@@ -38,13 +50,23 @@ input {
   width: 40vw;
 }
 
+#home-link {
+  width: fit-content;
+  padding: 10px;
+}
+
 #signup-bubble {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 5px 40px;
 }
 
 button {
   width: fit-content;
+}
+
+#signup-failed-error {
+  color: red;
+  font-weight: bold;
 }
 </style>

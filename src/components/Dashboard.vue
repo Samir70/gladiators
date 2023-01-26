@@ -1,262 +1,214 @@
 <script setup>
-import { store } from "../store"
-import {ref} from "vue"
+import GlassBubble from './GlassBubble.vue';
+import ProfileButton from "./Buttons/ProfileButton.vue";
+import ShowExercise from "./ShowExercise.vue";
+import LogoutButton from "./LogoutButton.vue"
+import { store } from "../store";
+import { ref } from "vue";
+
+import ExerciseTimer from "./ExerciseTimer.vue";
+// import {getExercises} from "./ExerciseCatalogueFiles/ExerciseList.vue";
 
 const user = ref(store.state.user)
+let currentworkout = ref(store.state.currentworkout)
+let cur = ref(0)
+let circuitCount = ref(0)
+
+
+// Eventually get the next two from user data in store
+const unitTime = 30
+const restTime = 10
+
+const unitComplete = () => {
+    console.log("user has completed", currentworkout.value[cur.value].name)
+    cur.value += 1;
+    if (cur.value === currentworkout.value.length) {
+        circuitCount.value += 1
+        cur.value = 0
+    }
+}
+
+const removeExercise = (exerciseID) => {
+    console.log("before removing, workout is", currentworkout.value)
+    store.commit("removeFromWorkout", exerciseID)
+    currentworkout.value = store.state.currentworkout
+}
+const clearWork = () => {
+    store.commit("clearAll")
+    currentworkout.value = store.state.currentworkout
+}
+
+// const randomize = () => {
+//     let randomArray = [getExercises()]
+//     console.log(randomArray)
+// }
 
 </script>
-
-
 <template>
+    <div id="dashboard">
+        <GlassBubble id="dash-nav-bubble">
+            <ProfileButton />
 
-<div id="dashboard">
-  <h1>Gladiator Dashboard</h1>
-    <p v-if="user">{{ user.username }}</p>
-<br>
+            <button class="button">
+                <img id="spotify_logo.png" src="/spotify_logo.png">
+                <p>Spotify</p>
+            </button>
 
+            <button class="button">
+                <img id="weather" src="/weather.png">
+                <p>Weather</p>
+            </button>
 
-  <!-- Navigation -->
-  <div class="glass_bubble" style="width: 30vmin;
-    height: 90vmin; float:left;">
+            <button class="button">
+                <img id="clock" src="/clock.png">
+                <p>date/time</p>
+            </button>
+        </GlassBubble>
 
-<br>
-<button class="button"> 
-    <img src="https://cdn.dribbble.com/users/1018252/screenshots/4659653/media/a2417f6c672fe11596822ea7c4cebcc8.png?compress=1&resize=400x300&vertical=top" style="width: 150px;
-    height: 100px; border-radius: 80px;">
-    <p>Profile</p>
-    </button>
+        <div id="catalogue-current-container">
+            <h1>Gladiator Dashboard</h1>
+            <p v-if="user" class="bold-black-text">{{ user.username }}</p>
+            <GlassBubble id="current-workout-bubble">
+                <ExerciseTimer v-if="currentworkout.length > 0" :circuits="circuitCount" :exercise-time="unitTime" :rest-time="restTime"
+                    :exercise-name="currentworkout[cur].name" @unit-complete="unitComplete" />
+                <div >
+                    <ShowExercise v-for="( exercise, i ) in currentworkout" :exercise="exercise" @remove="removeExercise"
+                        :class="i === cur ? 'active-exercise' : ''" :key="Math.random()"></ShowExercise>
+                </div>
+                <button class="button" @click="$router.push('exercisecatalogue')">
+                    <p>Exercise Catalogue</p>
+                </button>
+                    <!-- <button class="button" @click="randomize"> -->
+                   <button>
+                    <p>Random Workout Generator</p>
+                </button>
+                <button>
+                    <p>Workout Complete</p>
+                </button>
+                <button class="button" @click="clearWork">
+                    <p>Clear All</p>
+                </button>
 
-    <br>
+            </GlassBubble>
+        </div>
 
-    <button class="button"> 
-    <img src="https://cdn.icon-icons.com/icons2/3685/PNG/512/spotify_logo_icon_229290.png" style="width: 100px;
-    height: 100px; border-radius: 80px;">
-     <p>Spotify</p>
-    </button>
+        <GlassBubble id="utilities-bubble">
 
-    <br>
+            <LogoutButton />
 
-    <button class="button"> 
-    <img src="https://cdn-icons-png.flaticon.com/512/1779/1779940.png" style="width: 100px;
-    height: 100px; border-radius: 80px;">
-    <p>Weather</p>
-    </button>
+            <button class="button" @click="$router.push('guideandtipspage')">
+                <p>User Guide</p>
+            </button>
 
-    <br>
+            <button class="button">
+                <p>Facilities Finder</p>
+            </button>
 
-    <button class="button">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd6y2CpNlcrydpptu63X_yAyk_tIuF2sYByA&usqp=CAU" style="width: 100px;
-    height: 100px; border-radius: 80px;">
-    <p>date/time</p>
-    </button>
+            <button class="button">
+                <p>Leaderboard</p>
+            </button>
 
-  </div>
+            <button class="button">
+                <p>Lifting Calculator</p>
+            </button>
 
+            <button class="button">
+                <p>Stop Watch</p>
+            </button>
+        </GlassBubble>
 
-  <!-- Utilities -->
-  <div class="glass_bubble" style="width: 30vmin;
-    height: 90vmin; float:right;">
-    <p>Utilities</p>
-
-    <br>
-
-<button class="button"> 
-<p>Log Out</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>User Guide</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>Facilities Finder</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>Leaderboard</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>Lifting Calculator</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>Stop Watch</p>
-</button>
-  </div>
-
-
-<!-- Exercise catalogue -->
- <div class="glass_bubble" style="width: 60vmin;
-    height: 30vmin; margin-left: auto;
-  margin-right: auto;">
-<button class="button">
-    <p>Exercise Catalogue</p>
-</button>
-</div>
-
-
- 
-   <br>
-
-
-
-  <div class="glass_bubble" style="position: relative; width: 60vmin;
-    height: 55vmin; margin-left: auto;
-  margin-right: auto;">
-    <p>current workout</p>
-
-    <br>
-
-<button class="button"> 
-<p>Random Workout Generator</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>Workout Complete</p>
-</button>
-
-<br>
-
-<button class="button"> 
-<p>Clear All</p>
-</button>
-
-<p>(remove individual exercise button, for each, similar to like/unlike idea)</p>
-
-  </div>
-
-</div>
+    </div>
 </template>
 
 
 
 
 <style scoped>
-
-#dashboard{
-    width: 95vw;
-}
-
-body, .glass_bubble::before {
-    background-position: 40%;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-/* .background {
-    width: 100vw;
-    height: 100vh;
+#dashboard {
     display: flex;
-    justify-content: center;
-    align-items: center;
-} */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: fit-content;
+}
 
-h1, h2 {
-    font-family: 'Roboto', sans-serif;
-    color: rgb(0, 0, 0);
+#catalogue-current-container {
+    display: flex;
+    flex-direction: column;
+}
+
+button img {
+    width: 100px;
+    height: 100px;
+    border-radius: 80px;
 }
 
 h1 {
+    font-family: 'Roboto', sans-serif;
+    color: rgb(0, 0, 0);
     font-size: 4vmin;
     letter-spacing: .6vmin;
     text-transform: uppercase;
 }
 
-h2 {
-    font-size: 2.7vmin;
-    letter-spacing: .3vmin;
-}
-
-.glass_bubble {
-    /* position: relative;
-    width: 70vmin;
-    height: 50vmin; */
-    background: rgba(255, 255, 255, 0.2);
-    border: .1vmin solid rgba(219, 219, 219, 0.1);
-    border-radius: 80px;
-    /* padding: 10px 10px; */
-    overflow: hidden;
-    box-shadow: 0 .5vmin 1vmin rgba(0, 0, 0, .4);
-}
-
-.glass_bubble::before {
-    content: "";
-    position: relative;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    filter: blur(4.5vmin);
-    margin: -5vmin;
-}
-
-.button {
-  background-color: rgba(255, 255, 255, 0.248);
-  border: none;
-  color: black;
-  padding: 10px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 80px;
-}
-
-/* .innercard {
-    position: relative;
-    width: 70vmin;
-    height: 50vmin;
+#dash-nav-bubble {
     display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-.text {
-    position: absolute;
-    top: 16vmin;
+    flex-direction: column;
+    width: fit-content;
+    padding: 3px;
 }
 
-@media (min-width: 731px) {
-
-    h1 {
-        font-size: 3vmin;
-    }
-
-    h2 {
-        font-size: 2.4vmin;
-    }
-
-    .card, .innercard {
-        width: 60vmin;
-        height: 45vmin;
-    }
-
-    .text {
-        top: 15vmin;
-    }
-/* 
-    .button {
-        bottom: 16vmin;
-    }
-
-    button {
-        width: 25vmin;
-        height: 7vmin;
-    } */
+#utilities-bubble {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
 }
 
+#exercise-catalogue-bubble {
+    width: 60vmin;
+    height: 30vmin;
+}
+
+#current-workout-bubble {
+    display: flex;
+    flex-direction: column;
+    width: 60vmin;
+}
+
+.active-exercise {
+    border: 2px solid green;
+}
+
+@media only screen and (max-width: 990px) {
+    #dashboard {
+        flex-direction: column;
+        margin: auto;
+    }
+
+    #dash-nav-bubble {
+        flex-direction: row;
+        margin: auto;
+        transform: scale(0.75);
+    }
+
+    #catalogue-current-container {
+        margin: auto;
+    }
+
+    #utilities-bubble {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: auto;
+        justify-content: center;
+        max-width: 85vw;
+    }
+
+    #exercise-catalogue-bubble {
+        width: 90vmin;
+    }
+
+    #current-workout-bubble {
+        width: 90vmin;
+    }
+}
 </style>

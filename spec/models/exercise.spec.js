@@ -13,8 +13,8 @@ describe("Exercise model", () => {
   it("has the right number of seeded exercises", (done) => {
       Exercise.find((err, exercises) => {
           expect(err).toBeNull();
-          console.log("exercises:", exercises);
-          expect(exercises.length).toEqual(4);
+          // console.log("exercises:", exercises);
+          expect(exercises.length).toEqual(11);
           expect(exercises[0].tags).toContain("arms")
           expect(exercises[0].experience).toEqual("B")
           done()
@@ -25,7 +25,8 @@ describe("Exercise model", () => {
                 name: "Star jump",
                 tags: ["conditioning", "cardio"],
                 experience: "B",
-                bodyarea: "wholebody"
+                bodyarea: "wholebody",
+                description: "Whole body. Jump and expand legs out to the side and arms out and upwards."
             });
             await exercise.save()
             Exercise.findOne({name: "Star jump"}), (err, exerciseDetails) => {
