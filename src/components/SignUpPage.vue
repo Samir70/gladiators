@@ -34,11 +34,13 @@ const signUp = async () => {
  </GlassBubble>
   <GlassBubble id="signup-bubble">
     <h1>Sign Up</h1>
-    <p id="signup-failed-error" v-if="signUpStatus.signUpFailed">Unable to sign up because: {{ signUpStatus.msg }}</p>
-    <input id="name-field" type="text" placeholder="Username" v-model="newUserName" required />
-    <input id="email-field" type="email" placeholder="Email" v-model="newUserEmail" required />
-    <input id="password-field" type="password" placeholder="Password" v-model="newUserPassword" required />
-    <button id="signup-button" v-on:click="signUp">Sign Up</button>
+    <form id="signup-form" @submit.prevent="signUp">
+      <p id="signup-failed-error" v-if="signUpStatus.signUpFailed">Unable to sign up because: {{ signUpStatus.msg }}</p>
+      <input id="name-field" type="text" placeholder="Username" v-model="newUserName" required />
+      <input id="email-field" type="email" placeholder="Email" v-model="newUserEmail" required />
+      <input id="password-field" type="password" placeholder="Password" v-model="newUserPassword" required />
+      <button id="signup-button" v-on:click="signUp">Sign Up</button>
+    </form>
   </GlassBubble>
   
   
@@ -55,7 +57,7 @@ input {
   padding: 10px;
 }
 
-#signup-bubble {
+#signup-bubble #signup-form {
   display: flex;
   flex-direction: column;
   padding: 5px 40px;

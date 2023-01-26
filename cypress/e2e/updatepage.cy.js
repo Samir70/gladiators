@@ -21,12 +21,13 @@ describe("template spec", () => {
     cy.get("#confirm-password").should("have.attr", "type", "password");
     cy.get('input[type="submit"]').should("exist");
   });
-  xit("gives you messages for an incorrect password change that reflect the current state", () => {
+  it("gives you messages for an incorrect password change that reflect the current state", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000)
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#passwordSubmitButton").should("be.disabled");
     cy.get('input[id="current-password"]').type("hello");
@@ -37,12 +38,13 @@ describe("template spec", () => {
     cy.get("#passwordSubmitButton").click();
     cy.get("#updateMessageContainer").should("contain", "Incorrect password");
   });
-  xit("allows you to select equipment yes or no", () => {
+  it("allows you to select equipment yes or no", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#equipmentSelectionComments").should(
       "contain",
@@ -66,12 +68,13 @@ describe("template spec", () => {
     );
     cy.get('button[id="equipmentUpdateButton"]').click(); //clickable
   });
-  xit("allows you to select your experience level and click update, needs to be signed in", () => {
+  it("allows you to select your experience level and click update, needs to be signed in", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#experienceSelectionComments").should(
       "contain",
@@ -105,13 +108,14 @@ describe("template spec", () => {
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
   });
 
-  xit("allows you to select your experience level and checks the profilepage to see it update", () => {
+  it("allows you to select your experience level and checks the profilepage to see it update", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
     //signs in
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#experienceSelectionComments").should(
       "contain",
@@ -127,6 +131,7 @@ describe("template spec", () => {
     cy.get('input[id="beginner"]').should("be.checked");
     cy.get('button[id="experienceUpdateButton"]').should("be.enabled"); //upbdate button disabled if no selection made
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#experience").should("contain", "Beginner");
 
@@ -144,6 +149,7 @@ describe("template spec", () => {
     );
     cy.get('input[id="intermediate"]').should("be.checked");
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#experience").should("contain", "Intermediate");
 
@@ -161,20 +167,23 @@ describe("template spec", () => {
     );
     cy.get('input[id="advanced"]').should("be.checked");
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#experience").should("contain", "Advanced");
   });
-  xit("allows you to see your equipment update on your profile page", () => {
+  it("allows you to see your equipment update on your profile page", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
     //signs in
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get('input[id="notequipped"]').click();
     cy.get('input[id="notequipped"]').should("be.checked");
     cy.get('button[id="equipmentUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#equipment").should(
       "contain",
@@ -185,16 +194,18 @@ describe("template spec", () => {
     cy.get('input[id="equipped"]').click();
     cy.get('input[id="equipped"]').should("be.checked");
     cy.get('button[id="equipmentUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#equipment").should("contain", "You have access to equipment");
   });
 
-  xit("tests for inconsistent new passwords, though current password is correct", () => {
+  it("tests for inconsistent new passwords, though current password is correct", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     //signs in - wolfs password is wolf for this example...
     cy.get("#passwordSubmitButton").should("be.disabled");
@@ -209,12 +220,13 @@ describe("template spec", () => {
       "New passwords do not match. Please try again."
     );
   });
-  xit("gives a message that results for a successful password change", () => {
+  it("gives a message that results for a successful password change", () => {
     cy.visit("http://localhost:8888/#/");
     cy.get("button").contains("Sign In").click();
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     //signs in - wolfs password is wolf for this example... and we will change it to wolf so it doesn't ruin other tests
     cy.get("#passwordSubmitButton").should("be.disabled");
@@ -224,6 +236,7 @@ describe("template spec", () => {
     cy.get("#passwordSubmitButton").should("be.disabled");
     cy.get('input[id="confirm-password"]').type("wolf");
     cy.get("#passwordSubmitButton").click();
+    cy.wait(1000);
     cy.get("#updateMessageContainer").should("contain", "Password updated!");
   });
 });

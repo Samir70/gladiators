@@ -42,6 +42,20 @@ const clearWork = () => {
 //     let randomArray = [getExercises()]
 //     console.log(randomArray)
 // }
+const addToHistory = async () => {
+  //console.log(currentworkout)
+  let result = await fetch(`/.netlify/functions/completeWorkout`, {
+    method: "POST",
+    body: JSON.stringify({ username: user.value.username, workout: currentworkout.value, completionDate: Date.now()})
+  })
+    .then(function (response) {
+      return response
+        .json()
+    }).then(function (data) {console.log(data.value);
+        clearWork()
+    }
+    )}
+
 
 </script>
 <template>
@@ -82,7 +96,7 @@ const clearWork = () => {
                    <button>
                     <p>Random Workout Generator</p>
                 </button>
-                <button>
+                <button class="button" @click="addToHistory">
                     <p>Workout Complete</p>
                 </button>
                 <button class="button" @click="clearWork">

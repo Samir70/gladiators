@@ -1,4 +1,4 @@
-const Exercise = require('./exercise')
+const Exercise = require('./exercise.cjs')
 const {
     curlID,
     squatID,
@@ -11,7 +11,7 @@ const {
     frontsplitsID,
     neckreleaseID,
     pectoralstretchID
-} = require("./exerciseids");
+} = require("./exerciseids.cjs");
 
 const exercises = [
     { _id: curlID, name:"curl", tags: ["arms", "equipped", "hypertrophy", "strength"], experience: "B", bodyarea: "upper", description: "Upper body, muscle worked: biceps. Feet hip width apart, neutral spine, elbows locked into side of body, hinge at the elbow" },
