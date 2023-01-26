@@ -35,15 +35,22 @@ const signIn = async () => {
   </GlassBubble>
   <GlassBubble id="signin-bubble">
     <h1>Sign In</h1>
-    <p id="failed-login-warning" v-if="failedLogin">Sorry. At least one of email/password is wrong</p>
-    <input id="email-field" type="email" placeholder="Email" v-model="userEmail" required />
-    <input id="password-field" type="password" placeholder="Password" v-model="userPassword" required />
-    <button id="signin-button" v-on:click="signIn" type="submit">Sign In</button>
+    <form id="signin-form" @submit.prevent="signIn">
+      <p id="failed-login-warning" v-if="failedLogin">Sorry. At least one of email/password is wrong</p>
+      <input id="email-field" type="email" placeholder="Email" v-model="userEmail" required />
+      <input id="password-field" type="password" placeholder="Password" v-model="userPassword" required />
+      <button id="signin-button" v-on:click="signIn" type="submit">Sign In</button>
+    </form>
   </GlassBubble>
 </template>
 
 <style scoped>
 #signin-bubble {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+#signin-form {
   display: flex;
   flex-direction: column;
   padding: 20px;
