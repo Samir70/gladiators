@@ -22,7 +22,7 @@ jobs:
           build: npm run build
           start: netlify dev
         env:
-          MONGODB_URI: http://localhost:27017
-          MONGODB_DATABASE: gladiators
+          MONGODB_URI: "http://localhost:27017"
+          MONGODB_DATABASE: "gladiators"
       - name: run cypress component test
         run: npx cypress run --component
