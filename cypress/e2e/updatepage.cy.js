@@ -44,6 +44,7 @@ describe("template spec", () => {
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#equipmentSelectionComments").should(
       "contain",
@@ -73,6 +74,7 @@ describe("template spec", () => {
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#experienceSelectionComments").should(
       "contain",
@@ -113,6 +115,7 @@ describe("template spec", () => {
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
     //signs in
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get("#experienceSelectionComments").should(
       "contain",
@@ -128,6 +131,7 @@ describe("template spec", () => {
     cy.get('input[id="beginner"]').should("be.checked");
     cy.get('button[id="experienceUpdateButton"]').should("be.enabled"); //upbdate button disabled if no selection made
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#experience").should("contain", "Beginner");
 
@@ -145,6 +149,7 @@ describe("template spec", () => {
     );
     cy.get('input[id="intermediate"]').should("be.checked");
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#experience").should("contain", "Intermediate");
 
@@ -162,6 +167,7 @@ describe("template spec", () => {
     );
     cy.get('input[id="advanced"]').should("be.checked");
     cy.get('button[id="experienceUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#experience").should("contain", "Advanced");
   });
@@ -172,10 +178,12 @@ describe("template spec", () => {
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
     //signs in
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     cy.get('input[id="notequipped"]').click();
     cy.get('input[id="notequipped"]').should("be.checked");
     cy.get('button[id="equipmentUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#equipment").should(
       "contain",
@@ -186,6 +194,7 @@ describe("template spec", () => {
     cy.get('input[id="equipped"]').click();
     cy.get('input[id="equipped"]').should("be.checked");
     cy.get('button[id="equipmentUpdateButton"]').click(); //clickable
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/ProfilePage");
     cy.get("#equipment").should("contain", "You have access to equipment");
   });
@@ -196,6 +205,7 @@ describe("template spec", () => {
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     //signs in - wolfs password is wolf for this example...
     cy.get("#passwordSubmitButton").should("be.disabled");
@@ -216,6 +226,7 @@ describe("template spec", () => {
     cy.get('input[type="email"]').type("wolf@email.com");
     cy.get('input[type="password"]').type("wolf");
     cy.get("button").contains("Sign In").click();
+    cy.wait(1000);
     cy.visit("http://localhost:8888/#/UpdateDetails");
     //signs in - wolfs password is wolf for this example... and we will change it to wolf so it doesn't ruin other tests
     cy.get("#passwordSubmitButton").should("be.disabled");
@@ -225,6 +236,7 @@ describe("template spec", () => {
     cy.get("#passwordSubmitButton").should("be.disabled");
     cy.get('input[id="confirm-password"]').type("wolf");
     cy.get("#passwordSubmitButton").click();
+    cy.wait(1000);
     cy.get("#updateMessageContainer").should("contain", "Password updated!");
   });
 });

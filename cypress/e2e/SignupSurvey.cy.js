@@ -1,5 +1,7 @@
 describe('Signup survey component', () => {
-  xit('can select options and submit it before revealing another selection (experience level -> equipment status and then redirects on last confirmation - user needs to be signed in', () => {
+  it('can select options and submit it before revealing another selection (experience level -> equipment status and then redirects on last confirmation - user needs to be signed in', () => {
+    cy.task("connect");
+    cy.task("resetUsers", "form SignUp e2e");
     cy.visit("http://localhost:8888/#/")
     cy.get('button').contains('Sign In').click()
     cy.get('input[type="email"]').type('wolf@email.com')

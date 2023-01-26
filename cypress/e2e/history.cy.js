@@ -1,6 +1,7 @@
 describe('template spec', () => {
   it('renders the page and lets use see calender', () => {
     cy.task("connect");
+    cy.task("resetUsers", "form SignUp e2e");
     cy.task("resetHistory", "Seedhistory e2e")
     cy.visit("http://localhost:8888/#/")
     cy.get('button').contains('Sign In').click()
@@ -13,6 +14,8 @@ describe('template spec', () => {
   })
   it('adds an item to workout and adds to calendar', () => {
     cy.task("connect");
+    cy.task("resetUsers", "form SignUp e2e");
+    cy.task("resetExercises", "form SignUp e2e");
     cy.task("resetHistory", "Seedhistory e2e")
     cy.visit("http://localhost:8888/#/")
     cy.get('button').contains('Sign In').click()
