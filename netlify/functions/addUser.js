@@ -1,5 +1,5 @@
 const { mongoose } = require("mongoose");
-const { AccountSchema } = require("../../models/account");
+const { AccountSchema } = require("../../models/account.cjs");
 require("dotenv").config();
 
 module.exports.handler = async (event) => {

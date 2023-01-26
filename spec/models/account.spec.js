@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const seedAccounts = require("../../models/seedaccount");
 require("../mongodb_helper");
-const { Account } = require("../../models/account");
+const { Account } = require("../../models/account.cjs");
 
 describe("Account model", () => {
   beforeEach((done) => {
