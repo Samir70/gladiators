@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
 const seedAccounts = require("./models/seedaccount.cjs");
 const seedExercises = require("./models/seedexercise.cjs");
+require("dotenv").config();
 var mongoose = require("mongoose");
 
 module.exports = defineConfig({
@@ -27,7 +28,7 @@ module.exports = defineConfig({
           return null;
         },
         connect() {
-          mongoose.connect("mongodb://0.0.0.0/gladiators", {
+          mongoose.connect(process.env.MONGODB_URI + "/" + process.env.MONGODB_DATABASES, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
           });
